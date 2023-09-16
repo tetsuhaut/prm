@@ -14,7 +14,6 @@ import entities.Action;
 import entities.Card;
 import entities.GameType;
 import entities.Seat;
-import language.containers; // FMap
 import system.Time;
 
 export class [[nodiscard]] Hand final {
@@ -30,9 +29,9 @@ private:
   Time m_date;
   std::array<Card, 5> m_heroCards;
   std::array<Card, 5> m_boardCards;
-  language::containers::FMap<std::string, 10> m_seats;
+  std::unordered_map<Seat, std::string> m_seats;
   std::vector<std::unique_ptr<Action>> m_actions;
-  language::containers::FMap<std::string, 10> m_winners;
+  std::array<std::string, 10> m_winners;
 
 public:
   struct [[nodiscard]] Params final {
@@ -45,11 +44,11 @@ public:
     int level;
     long ante;
     const Time& startDate;
-    const language::containers::FMap<std::string, 10>& seatPlayers;
+    const std::unordered_map<Seat, std::string>& seatPlayers;
     const std::array<Card, 5>& heroCards;
     const std::array<Card, 5>& boardCards;
     std::vector<std::unique_ptr<Action>> actions;
-    const language::containers::FMap<std::string, 10>& winners;
+    const std::array<std::string, 10>& winners;
   }; // struct Params
 
   explicit Hand(Params& p)
@@ -71,6 +70,7 @@ public:
     assert(!m_siteName.empty() && "site is empty");
     assert(!m_tableName.empty() && "table is empty");
     assert(m_ante >= 0 && "ante is negative");
+    assert(m_seats.size() > 1 && m_seats.size() < 11);
   }
 
   Hand(const Hand&) = delete;
@@ -83,7 +83,7 @@ public:
   [[nodiscard]] GameType getGameType() const noexcept { return m_gameType; }
   [[nodiscard]] std::string getSiteName() const noexcept { return m_siteName; }
   [[nodiscard]] std::string getTableName() const noexcept { return m_tableName; }
-  [[nodiscard]] language::containers::FMap<std::string, 10> getSeats() const noexcept { return m_seats; }
+  [[nodiscard]] std::unordered_map<Seat, std::string> getSeats() const noexcept { return m_seats; }
   [[nodiscard]] Seat getButtonSeat() const noexcept { return m_buttonSeat; }
   [[nodiscard]] Seat getMaxSeats() const noexcept { return m_maxSeats; }
   [[nodiscard]] int getLevel()const noexcept { return m_level; }
