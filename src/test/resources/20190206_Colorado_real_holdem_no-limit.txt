@@ -1,0 +1,2747 @@
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4174329-1549487680 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:14:40 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: HusKKy (2.11€)
+Seat 2: sabre_laser (2€)
+Seat 3: MasonJercier (1.28€)
+Seat 4: Omnipouet (2.03€)
+Seat 5: SR.Varianza (5.72€)
+Seat 6: Mr Shelbi (2.39€)
+*** ANTE/BLINDS ***
+HusKKy posts small blind 0.01€
+sabre_laser posts big blind 0.02€
+Dealt to sabre_laser [4c 3s]
+*** PRE-FLOP *** 
+MasonJercier folds
+Omnipouet folds
+SR.Varianza raises 0.04€ to 0.06€
+Mr Shelbi calls 0.06€
+HusKKy folds
+sabre_laser folds
+*** FLOP *** [5d Kh 3d]
+SR.Varianza bets 0.08€
+Mr Shelbi folds
+SR.Varianza collected 0.22€ from pot
+*** SUMMARY ***
+Total pot 0.22€ | Rake 0.01€
+Board: [5d Kh 3d]
+Seat 5: SR.Varianza won 0.22€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4174392-1549487698 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:14:58 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: RogerMyGod (2.81€)
+Seat 2: LuckyBurns (2.09€)
+Seat 3: sabre_laser (1.97€)
+Seat 4: Gilgameshlil (2€)
+Seat 5: ZERCAL (2.48€)
+Seat 6: CORDEVIGO (4.76€)
+*** ANTE/BLINDS ***
+RogerMyGod posts small blind 0.01€
+LuckyBurns posts big blind 0.02€
+Dealt to sabre_laser [Jh 4s]
+*** PRE-FLOP *** 
+sabre_laser folds
+Gilgameshlil folds
+ZERCAL folds
+CORDEVIGO folds
+RogerMyGod folds
+LuckyBurns collected 0.03€ from pot
+*** SUMMARY ***
+Total pot 0.03€ | No rake
+Seat 2: LuckyBurns (big blind) won 0.03€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4174408-1549487702 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:15:02 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: papinette69 (0.58€)
+Seat 2: anibalon III (5.93€)
+Seat 3: BetoBarrio (2.08€)
+Seat 4: RogerMyGod (2.79€)
+Seat 5: sabre_laser (1.97€)
+Seat 6: gumers (4.74€)
+*** ANTE/BLINDS ***
+papinette69 posts small blind 0.01€
+anibalon III posts big blind 0.02€
+Dealt to sabre_laser [4s Kc]
+*** PRE-FLOP *** 
+BetoBarrio raises 0.04€ to 0.06€
+RogerMyGod folds
+sabre_laser folds
+gumers folds
+papinette69 folds
+anibalon III folds
+BetoBarrio collected 0.09€ from pot
+*** SUMMARY ***
+Total pot 0.09€ | No rake
+Seat 3: BetoBarrio won 0.09€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4174396-1549487699 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:14:59 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: BicepsOuSouc (0.74€)
+Seat 2: HusKKy (2.34€)
+Seat 3: Flipy368 (1.48€)
+Seat 4: sabre_laser (1.97€)
+Seat 5: JteBroke (2.51€)
+Seat 6: titopedro (0.78€)
+*** ANTE/BLINDS ***
+BicepsOuSouc posts small blind 0.01€
+HusKKy posts big blind 0.02€
+Dealt to sabre_laser [4c 6c]
+*** PRE-FLOP *** 
+Flipy368 folds
+sabre_laser folds
+JteBroke folds
+titopedro folds
+BicepsOuSouc raises 0.02€ to 0.04€
+HusKKy folds
+BicepsOuSouc collected 0.06€ from pot
+*** SUMMARY ***
+Total pot 0.06€ | No rake
+Seat 1: BicepsOuSouc (small blind) won 0.06€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4174401-1549487700 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:15:00 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: OctopolR (2.17€)
+Seat 2: boris77 (2€)
+Seat 3: Flipy368 (1.48€)
+Seat 4: El matiadore (3.74€)
+Seat 5: sabre_laser (1.97€)
+Seat 6: miguelpujant (2€)
+*** ANTE/BLINDS ***
+OctopolR posts small blind 0.01€
+boris77 posts big blind 0.02€
+Dealt to sabre_laser [Ks 3s]
+*** PRE-FLOP *** 
+Flipy368 folds
+El matiadore folds
+sabre_laser folds
+miguelpujant raises 0.04€ to 0.06€
+OctopolR folds
+boris77 folds
+miguelpujant collected 0.09€ from pot
+*** SUMMARY ***
+Total pot 0.09€ | No rake
+Seat 6: miguelpujant (button) won 0.09€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4174365-1549487692 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:14:52 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: sabre_laser (1.98€)
+Seat 2: ImCHIPS&FISH (2.55€)
+Seat 3: ProfessorSat (3.64€)
+Seat 4: HusKKy (2€)
+Seat 5: Gilgameshlil (2€)
+Seat 6: gatsby_22 (3.03€)
+*** ANTE/BLINDS ***
+sabre_laser posts small blind 0.01€
+ImCHIPS&FISH posts big blind 0.02€
+Dealt to sabre_laser [As 8d]
+*** PRE-FLOP *** 
+ProfessorSat raises 0.04€ to 0.06€
+HusKKy folds
+Gilgameshlil folds
+gatsby_22 folds
+sabre_laser folds
+ImCHIPS&FISH calls 0.04€
+*** FLOP *** [6s Kd 5h]
+ImCHIPS&FISH checks
+ProfessorSat bets 0.06€
+ImCHIPS&FISH folds
+ProfessorSat collected 0.18€ from pot
+*** SUMMARY ***
+Total pot 0.18€ | Rake 0.01€
+Board: [6s Kd 5h]
+Seat 3: ProfessorSat won 0.18€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4174404-1549487701 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:15:01 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: HM7342 (4.03€)
+Seat 2: skankun (2.03€)
+Seat 3: MaRZaS (2€)
+Seat 4: CORDEVIGO (4.75€)
+Seat 5: Set1SansC (2.19€)
+Seat 6: sabre_laser (1.97€)
+*** ANTE/BLINDS ***
+HM7342 posts small blind 0.01€
+skankun posts big blind 0.02€
+Dealt to sabre_laser [8s 5h]
+*** PRE-FLOP *** 
+MaRZaS folds
+CORDEVIGO folds
+Set1SansC raises 0.04€ to 0.06€
+sabre_laser folds
+HM7342 folds
+skankun folds
+Set1SansC collected 0.09€ from pot
+*** SUMMARY ***
+Total pot 0.09€ | No rake
+Seat 5: Set1SansC won 0.09€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4174412-1549487703 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:15:03 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Donkeyo (0.56€)
+Seat 2: sabre_laser (1.97€)
+Seat 3: RogerMyGod (2.79€)
+Seat 4: Fr33Run19 (5.45€)
+Seat 5: CORDEVIGO (4.75€)
+Seat 6: SnOw1ch (0.99€)
+*** ANTE/BLINDS ***
+Donkeyo posts small blind 0.01€
+sabre_laser posts big blind 0.02€
+Dealt to sabre_laser [8c 5d]
+*** PRE-FLOP *** 
+RogerMyGod folds
+Fr33Run19 folds
+CORDEVIGO raises 0.04€ to 0.06€
+SnOw1ch folds
+Donkeyo folds
+sabre_laser folds
+CORDEVIGO collected 0.09€ from pot
+*** SUMMARY ***
+Total pot 0.09€ | No rake
+Seat 5: CORDEVIGO won 0.09€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4174516-1549487733 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:15:33 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: sabre_laser (1.95€)
+Seat 2: gumers (1.74€)
+Seat 3: anibalon III (5.94€)
+Seat 4: -zimette- (2.59€)
+Seat 5: skankun (2.03€)
+Seat 6: PTITEGATERIE (2.10€)
+*** ANTE/BLINDS ***
+sabre_laser posts small blind 0.01€
+gumers posts big blind 0.02€
+Dealt to sabre_laser [2d 4s]
+*** PRE-FLOP *** 
+anibalon III folds
+-zimette- folds
+skankun folds
+PTITEGATERIE folds
+sabre_laser folds
+gumers collected 0.03€ from pot
+*** SUMMARY ***
+Total pot 0.03€ | No rake
+Seat 2: gumers (big blind) won 0.03€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4174523-1549487735 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:15:35 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: SR.Varianza (2.72€)
+Seat 2: MasonJercier (1.40€)
+Seat 3: sabre_laser (1.94€)
+Seat 4: mfaithfull (3.35€)
+Seat 5: AfterWork64 (2.05€)
+Seat 6: anibalon III (5.94€)
+*** ANTE/BLINDS ***
+SR.Varianza posts small blind 0.01€
+MasonJercier posts big blind 0.02€
+Dealt to sabre_laser [Jh Ad]
+*** PRE-FLOP *** 
+sabre_laser raises 0.02€ to 0.04€
+mfaithfull folds
+AfterWork64 folds
+anibalon III raises 0.13€ to 0.17€
+SR.Varianza folds
+MasonJercier folds
+sabre_laser calls 0.13€
+*** FLOP *** [3c Kc 6c]
+sabre_laser checks
+anibalon III bets 0.19€
+sabre_laser folds
+anibalon III collected 0.54€ from pot
+*** SUMMARY ***
+Total pot 0.54€ | Rake 0.02€
+Board: [3c Kc 6c]
+Seat 6: anibalon III (button) won 0.54€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4174651-1549487773 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:16:13 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: MitchATP65 (2.85€)
+Seat 2: JteBroke (2.45€)
+Seat 3: MaRZaS (4.54€)
+Seat 4: sabre_laser (1.77€)
+Seat 5: Varfull (2.46€)
+Seat 6: clobapt (1.82€)
+*** ANTE/BLINDS ***
+MitchATP65 posts small blind 0.01€
+JteBroke posts big blind 0.02€
+Dealt to sabre_laser [4c Jc]
+*** PRE-FLOP *** 
+MaRZaS raises 0.04€ to 0.06€
+sabre_laser folds
+Varfull folds
+clobapt folds
+MitchATP65 folds
+JteBroke folds
+MaRZaS collected 0.09€ from pot
+*** SUMMARY ***
+Total pot 0.09€ | No rake
+Seat 3: MaRZaS won 0.09€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4174656-1549487774 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:16:14 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Yoshi-Flyer (2.03€)
+Seat 2: El matiadore (3.70€)
+Seat 3: SR.Varianza (6.28€)
+Seat 4: Adriserg (2.39€)
+Seat 5: Moux187 (3.21€)
+Seat 6: sabre_laser (1.77€)
+*** ANTE/BLINDS ***
+Yoshi-Flyer posts small blind 0.01€
+El matiadore posts big blind 0.02€
+Dealt to sabre_laser [Th 7s]
+*** PRE-FLOP *** 
+SR.Varianza raises 0.04€ to 0.06€
+Adriserg folds
+Moux187 folds
+sabre_laser folds
+Yoshi-Flyer calls 0.05€
+El matiadore folds
+*** FLOP *** [8d 9d Kd]
+Yoshi-Flyer checks
+SR.Varianza checks
+*** TURN *** [8d 9d Kd][5s]
+Yoshi-Flyer checks
+SR.Varianza bets 0.09€
+Yoshi-Flyer folds
+SR.Varianza collected 0.22€ from pot
+*** SUMMARY ***
+Total pot 0.22€ | Rake 0.01€
+Board: [8d 9d Kd 5s]
+Seat 3: SR.Varianza won 0.22€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4174658-1549487775 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:16:15 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: marco 82 (3.77€)
+Seat 2: tchen29 (0.68€)
+Seat 3: boris77 (3.82€)
+Seat 4: clobapt (1.82€)
+Seat 5: Henri_IV (1.76€)
+Seat 6: sabre_laser (1.77€)
+*** ANTE/BLINDS ***
+marco 82 posts small blind 0.01€
+tchen29 posts big blind 0.02€
+Dealt to sabre_laser [Kd As]
+*** PRE-FLOP *** 
+boris77 folds
+clobapt raises 0.04€ to 0.06€
+Henri_IV calls 0.06€
+sabre_laser raises 0.12€ to 0.18€
+marco 82 folds
+tchen29 folds
+clobapt calls 0.12€
+Henri_IV calls 0.12€
+*** FLOP *** [3h Qc 3d]
+clobapt checks
+Henri_IV bets 0.10€
+sabre_laser calls 0.10€
+clobapt folds
+*** TURN *** [3h Qc 3d][Ah]
+Henri_IV bets 0.15€
+sabre_laser calls 0.15€
+*** RIVER *** [3h Qc 3d Ah][8s]
+Henri_IV bets 0.15€
+sabre_laser calls 0.15€
+*** SHOW DOWN ***
+Henri_IV shows [Ac Ks] (Two pairs : Aces and 3)
+sabre_laser shows [Kd As] (Two pairs : Aces and 3)
+sabre_laser collected 0.65€ from pot
+Henri_IV collected 0.64€ from pot
+*** SUMMARY ***
+Total pot 1.29€ | Rake 0.08€
+Board: [3h Qc 3d Ah 8s]
+Seat 5: Henri_IV showed [Ac Ks] and won 0.64€ with Two pairs : Aces and 3
+Seat 6: sabre_laser (button) showed [Kd As] and won 0.65€ with Two pairs : Aces and 3
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4174856-1549487831 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:17:11 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Adriserg (2.37€)
+Seat 2: sabre_laser (1.84€)
+Seat 3: ZERCAL (2.31€)
+Seat 4: HusKKy (2.09€)
+Seat 5: B2O45 (2.08€)
+Seat 6: Henri_IV (1.82€)
+*** ANTE/BLINDS ***
+Adriserg posts small blind 0.01€
+sabre_laser posts big blind 0.02€
+Dealt to sabre_laser [7c 6c]
+*** PRE-FLOP *** 
+ZERCAL folds
+HusKKy folds
+B2O45 raises 0.03€ to 0.05€
+Henri_IV folds
+Adriserg calls 0.04€
+sabre_laser calls 0.03€
+*** FLOP *** [Qc Ks 9c]
+Adriserg checks
+sabre_laser checks
+B2O45 bets 0.06€
+Adriserg calls 0.06€
+sabre_laser calls 0.06€
+*** TURN *** [Qc Ks 9c][Qd]
+Adriserg checks
+sabre_laser checks
+B2O45 bets 0.13€
+Adriserg folds
+sabre_laser calls 0.13€
+*** RIVER *** [Qc Ks 9c Qd][Kh]
+sabre_laser checks
+B2O45 checks
+*** SHOW DOWN ***
+sabre_laser shows [7c 6c] (Two pairs : Kings and Queens)
+B2O45 shows [Js Ts] (Straight King high)
+B2O45 collected 0.56€ from pot
+*** SUMMARY ***
+Total pot 0.56€ | Rake 0.03€
+Board: [Qc Ks 9c Qd Kh]
+Seat 2: sabre_laser (big blind) showed [7c 6c] and lost with Two pairs : Kings and Queens
+Seat 5: B2O45 showed [Js Ts] and won 0.56€ with Straight King high
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175144-1549487923 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:18:43 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: sabre_laser (1.60€)
+Seat 2: MasonJercier (1.56€)
+Seat 3: MitchATP65 (2.09€)
+Seat 4: B2O45 (2.40€)
+Seat 5: ParloJM (2€)
+Seat 6: BlueAvocado (1.97€)
+*** ANTE/BLINDS ***
+sabre_laser posts small blind 0.01€
+MasonJercier posts big blind 0.02€
+Dealt to sabre_laser [4d As]
+*** PRE-FLOP *** 
+MitchATP65 folds
+B2O45 raises 0.04€ to 0.06€
+ParloJM folds
+BlueAvocado folds
+sabre_laser folds
+MasonJercier folds
+B2O45 collected 0.09€ from pot
+*** SUMMARY ***
+Total pot 0.09€ | No rake
+Seat 4: B2O45 won 0.09€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175168-1549487933 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:18:53 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Henri_IV (0.76€)
+Seat 2: BlueAvocado (1.97€)
+Seat 3: LeFlow29 (2€)
+Seat 4: sabre_laser (1.59€)
+Seat 5: davidae32 (3€)
+Seat 6: Allegaert.O (1.79€)
+*** ANTE/BLINDS ***
+Henri_IV posts small blind 0.01€
+BlueAvocado posts big blind 0.02€
+Dealt to sabre_laser [Jh 3c]
+*** PRE-FLOP *** 
+LeFlow29 folds
+sabre_laser folds
+davidae32 folds
+Allegaert.O folds
+Henri_IV folds
+BlueAvocado collected 0.03€ from pot
+*** SUMMARY ***
+Total pot 0.03€ | No rake
+Seat 2: BlueAvocado (big blind) won 0.03€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175173-1549487933 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:18:53 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: 4-Knox (3.07€)
+Seat 2: JteBroke (3.82€)
+Seat 3: MasonJercier (1.54€)
+Seat 4: Cumulus 59 (2.64€)
+Seat 5: sabre_laser (1.59€)
+Seat 6: -zimette- (5.14€)
+*** ANTE/BLINDS ***
+4-Knox posts small blind 0.01€
+JteBroke posts big blind 0.02€
+Dealt to sabre_laser [4d 6c]
+*** PRE-FLOP *** 
+MasonJercier folds
+Cumulus 59 folds
+sabre_laser folds
+-zimette- folds
+4-Knox folds
+JteBroke collected 0.03€ from pot
+*** SUMMARY ***
+Total pot 0.03€ | No rake
+Seat 2: JteBroke (big blind) won 0.03€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175176-1549487935 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:18:55 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: MitchATP65 (2.98€)
+Seat 2: 4-Knox (3.06€)
+Seat 3: Iv4nj0e (2€)
+Seat 4: Gilgameshlil (2€)
+Seat 5: TROY-Z (4.17€)
+Seat 6: sabre_laser (1.59€)
+*** ANTE/BLINDS ***
+MitchATP65 posts small blind 0.01€
+4-Knox posts big blind 0.02€
+Dealt to sabre_laser [2c 7s]
+*** PRE-FLOP *** 
+Iv4nj0e folds
+Gilgameshlil folds
+TROY-Z folds
+sabre_laser folds
+MitchATP65 folds
+4-Knox collected 0.03€ from pot
+*** SUMMARY ***
+Total pot 0.03€ | No rake
+Seat 2: 4-Knox (big blind) won 0.03€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175179-1549487935 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:18:55 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: ciatik (2.14€)
+Seat 2: sabre_laser (1.59€)
+Seat 3: Weed594 (4.08€)
+Seat 4: d0six (3.58€)
+Seat 5: Yoshi-Flyer (2.08€)
+Seat 6: TROY-Z (4.17€)
+*** ANTE/BLINDS ***
+ciatik posts small blind 0.01€
+sabre_laser posts big blind 0.02€
+Dealt to sabre_laser [Qs Kd]
+*** PRE-FLOP *** 
+Weed594 calls 0.02€
+d0six folds
+Yoshi-Flyer folds
+TROY-Z raises 0.04€ to 0.06€
+ciatik raises 0.12€ to 0.18€
+sabre_laser folds
+Weed594 folds
+TROY-Z folds
+ciatik collected 0.28€ from pot
+*** SUMMARY ***
+Total pot 0.28€ | No rake
+Seat 1: ciatik (small blind) won 0.28€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175166-1549487931 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:18:51 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: catstalents (2.38€)
+Seat 2: Fr33Run19 (4.80€)
+Seat 3: sabre_laser (1.59€)
+Seat 4: mars_one (8.95€)
+Seat 5: emmagis5792 (2.26€)
+Seat 6: Pulsar4 (2.01€)
+*** ANTE/BLINDS ***
+catstalents posts small blind 0.01€
+Fr33Run19 posts big blind 0.02€
+Dealt to sabre_laser [Qd 9h]
+*** PRE-FLOP *** 
+sabre_laser folds
+mars_one folds
+emmagis5792 folds
+Pulsar4 raises 0.03€ to 0.05€
+catstalents raises 0.10€ to 0.15€
+Fr33Run19 folds
+Pulsar4 calls 0.10€
+*** FLOP *** [Kc Tc 7h]
+catstalents bets 0.21€
+Pulsar4 calls 0.21€
+*** TURN *** [Kc Tc 7h][Ad]
+catstalents bets 0.49€
+Pulsar4 calls 0.49€
+*** RIVER *** [Kc Tc 7h Ad][Kh]
+catstalents checks
+Pulsar4 bets 1.16€ and is all-in
+catstalents folds
+Pulsar4 collected 2.78€ from pot
+*** SUMMARY ***
+Total pot 2.78€ | Rake 0.10€
+Board: [Kc Tc 7h Ad Kh]
+Seat 6: Pulsar4 (button) won 2.78€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175328-1549487982 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:19:42 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Degu96 (10.09€)
+Seat 2: _Jrz_ (2.26€)
+Seat 3: sabre_laser (1.56€)
+Seat 4: JteBroke (3.79€)
+Seat 5: T0NYP0K (1.36€)
+Seat 6: -Oscar- (5.71€)
+*** ANTE/BLINDS ***
+Degu96 posts small blind 0.01€
+_Jrz_ posts big blind 0.02€
+Dealt to sabre_laser [7h 8d]
+*** PRE-FLOP *** 
+sabre_laser folds
+JteBroke raises 0.03€ to 0.05€
+T0NYP0K calls 0.05€
+-Oscar- folds
+Degu96 folds
+_Jrz_ folds
+*** FLOP *** [6c 9d 7c]
+JteBroke bets 0.13€
+T0NYP0K folds
+JteBroke collected 0.25€ from pot
+*** SUMMARY ***
+Total pot 0.25€ | Rake 0.01€
+Board: [6c 9d 7c]
+Seat 4: JteBroke won 0.25€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175241-1549487954 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:19:14 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: sabre_laser (1.57€)
+Seat 2: Omnipouet (2.68€)
+Seat 3: ECLYPSE (1.76€)
+Seat 4: POKSAVARY (2.51€)
+Seat 5: enricque (0.83€)
+Seat 6: Fabiozo84 (2.66€)
+*** ANTE/BLINDS ***
+sabre_laser posts small blind 0.01€
+Omnipouet posts big blind 0.02€
+Dealt to sabre_laser [2c 9d]
+*** PRE-FLOP *** 
+ECLYPSE folds
+POKSAVARY folds
+enricque raises 0.06€ to 0.08€
+Fabiozo84 calls 0.08€
+sabre_laser folds
+Omnipouet folds
+*** FLOP *** [3c 3s 6d]
+enricque bets 0.14€
+Fabiozo84 folds
+enricque collected 0.32€ from pot
+*** SUMMARY ***
+Total pot 0.32€ | Rake 0.01€
+Board: [3c 3s 6d]
+Seat 5: enricque won 0.32€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175462-1549488024 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:20:24 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: BetoBarrio (2€)
+Seat 2: sabre_laser (1.54€)
+Seat 3: MasonJercier (1.28€)
+Seat 4: Gilgameshlil (2€)
+Seat 5: marco 82 (6.47€)
+Seat 6: POKSAVARY (2.01€)
+*** ANTE/BLINDS ***
+BetoBarrio posts small blind 0.01€
+sabre_laser posts big blind 0.02€
+Dealt to sabre_laser [3c 7s]
+*** PRE-FLOP *** 
+MasonJercier folds
+Gilgameshlil folds
+marco 82 folds
+POKSAVARY folds
+BetoBarrio folds
+sabre_laser collected 0.03€ from pot
+*** SUMMARY ***
+Total pot 0.03€ | No rake
+Seat 2: sabre_laser (big blind) won 0.03€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175333-1549487984 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:19:44 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: HM7342 (3.65€)
+Seat 2: SR.Varianza (2.83€)
+Seat 3: gatsby_22 (5.05€)
+Seat 4: sabre_laser (1.56€)
+Seat 5: ImCHIPS&FISH (2.66€)
+Seat 6: Lara1908 (2.09€)
+*** ANTE/BLINDS ***
+HM7342 posts small blind 0.01€
+SR.Varianza posts big blind 0.02€
+Dealt to sabre_laser [Kh Qd]
+*** PRE-FLOP *** 
+gatsby_22 folds
+sabre_laser calls 0.02€
+ImCHIPS&FISH folds
+Lara1908 folds
+HM7342 calls 0.01€
+SR.Varianza checks
+*** FLOP *** [Ah 2s Tc]
+HM7342 checks
+SR.Varianza checks
+sabre_laser checks
+*** TURN *** [Ah 2s Tc][4s]
+HM7342 bets 0.06€
+SR.Varianza calls 0.06€
+sabre_laser folds
+*** RIVER *** [Ah 2s Tc 4s][9h]
+HM7342 bets 0.12€
+SR.Varianza calls 0.12€
+*** SHOW DOWN ***
+SR.Varianza shows [Jh Ad] (One pair : Aces)
+HM7342 shows [9c As] (Two pairs : Aces and 9)
+HM7342 collected 0.40€ from pot
+*** SUMMARY ***
+Total pot 0.40€ | Rake 0.02€
+Board: [Ah 2s Tc 4s 9h]
+Seat 1: HM7342 (small blind) showed [9c As] and won 0.40€ with Two pairs : Aces and 9
+Seat 2: SR.Varianza (big blind) showed [Jh Ad] and lost with One pair : Aces
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175455-1549488022 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:20:22 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Fr33Run19 (5.39€)
+Seat 2: Pulsar4 (2.63€)
+Seat 3: ghosgaslou (5.25€)
+Seat 4: tchen29 (0.95€)
+Seat 5: sabre_laser (1.54€)
+Seat 6: Condit2b (2.07€)
+*** ANTE/BLINDS ***
+Fr33Run19 posts small blind 0.01€
+Pulsar4 posts big blind 0.02€
+Dealt to sabre_laser [Kd 8h]
+*** PRE-FLOP *** 
+ghosgaslou calls 0.02€
+tchen29 calls 0.02€
+sabre_laser folds
+Condit2b folds
+Fr33Run19 folds
+Pulsar4 checks
+*** FLOP *** [8d 7s Qc]
+Pulsar4 checks
+ghosgaslou checks
+tchen29 checks
+*** TURN *** [8d 7s Qc][6d]
+Pulsar4 checks
+ghosgaslou bets 0.02€
+tchen29 folds
+Pulsar4 folds
+ghosgaslou collected 0.09€ from pot
+*** SUMMARY ***
+Total pot 0.09€ | No rake
+Board: [8d 7s Qc 6d]
+Seat 3: ghosgaslou won 0.09€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175459-1549488023 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:20:23 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: catstalents (1.56€)
+Seat 2: Der_VeRRukti (2.23€)
+Seat 3: emmagis5792 (2.25€)
+Seat 4: sabre_laser (1.54€)
+Seat 5: Condit2b (2.07€)
+Seat 6: Mr Shelbi (3.61€)
+*** ANTE/BLINDS ***
+catstalents posts small blind 0.01€
+Der_VeRRukti posts big blind 0.02€
+Dealt to sabre_laser [9d 6c]
+*** PRE-FLOP *** 
+emmagis5792 folds
+sabre_laser folds
+Condit2b folds
+Mr Shelbi folds
+catstalents raises 0.04€ to 0.06€
+Der_VeRRukti raises 0.11€ to 0.17€
+catstalents calls 0.11€
+*** FLOP *** [Tc 4d Js]
+catstalents checks
+Der_VeRRukti bets 0.14€
+catstalents calls 0.14€
+*** TURN *** [Tc 4d Js][7d]
+catstalents bets 0.41€
+Der_VeRRukti folds
+catstalents collected 0.99€ from pot
+*** SUMMARY ***
+Total pot 0.99€ | Rake 0.04€
+Board: [Tc 4d Js 7d]
+Seat 1: catstalents (small blind) won 0.99€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175490-1549488034 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:20:34 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: sabre_laser (1.55€)
+Seat 2: PTITEGATERIE (2.11€)
+Seat 3: ESalazar (2.22€)
+Seat 4: ma-poule75 (1.95€)
+Seat 5: Lara1908 (2.06€)
+Seat 6: Le Z deLUNEL (4€)
+*** ANTE/BLINDS ***
+sabre_laser posts small blind 0.01€
+PTITEGATERIE posts big blind 0.02€
+Dealt to sabre_laser [Kh Ts]
+*** PRE-FLOP *** 
+ESalazar folds
+ma-poule75 calls 0.02€
+Lara1908 folds
+Le Z deLUNEL folds
+sabre_laser calls 0.01€
+PTITEGATERIE checks
+*** FLOP *** [9d Kc 9s]
+sabre_laser checks
+PTITEGATERIE checks
+ma-poule75 bets 0.04€
+sabre_laser calls 0.04€
+PTITEGATERIE folds
+*** TURN *** [9d Kc 9s][5h]
+sabre_laser checks
+ma-poule75 checks
+*** RIVER *** [9d Kc 9s 5h][Td]
+sabre_laser bets 0.07€
+ma-poule75 folds
+sabre_laser collected 0.20€ from pot
+*** SUMMARY ***
+Total pot 0.20€ | Rake 0.01€
+Board: [9d Kc 9s 5h Td]
+Seat 1: sabre_laser (small blind) won 0.20€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175612-1549488080 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:21:20 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: MitchATP65 (2€)
+Seat 2: HusKKy (3.17€)
+Seat 3: 44Thorgal666 (2.20€)
+Seat 4: je_call_tou_ (1€)
+Seat 5: sabre_laser (1.62€)
+Seat 6: Lascagado (2.71€)
+*** ANTE/BLINDS ***
+MitchATP65 posts small blind 0.01€
+HusKKy posts big blind 0.02€
+Dealt to sabre_laser [2h Ts]
+*** PRE-FLOP *** 
+44Thorgal666 folds
+je_call_tou_ folds
+sabre_laser folds
+Lascagado raises 0.02€ to 0.04€
+MitchATP65 folds
+HusKKy folds
+Lascagado collected 0.07€ from pot
+*** SUMMARY ***
+Total pot 0.07€ | No rake
+Seat 6: Lascagado (button) won 0.07€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175615-1549488081 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:21:21 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: aRaMinet (2€)
+Seat 2: mars_one (9.14€)
+Seat 3: chat-pitre (2.16€)
+Seat 4: Minouck42 (2.09€)
+Seat 5: je_call_tou_ (1€)
+Seat 6: sabre_laser (1.62€)
+*** ANTE/BLINDS ***
+aRaMinet posts small blind 0.01€
+mars_one posts big blind 0.02€
+Dealt to sabre_laser [Jh Kh]
+*** PRE-FLOP *** 
+chat-pitre folds
+Minouck42 folds
+je_call_tou_ raises 0.03€ to 0.05€
+sabre_laser calls 0.05€
+aRaMinet folds
+mars_one calls 0.03€
+*** FLOP *** [4h Ks 2c]
+mars_one checks
+je_call_tou_ checks
+sabre_laser bets 0.08€
+mars_one raises 0.12€ to 0.20€
+je_call_tou_ folds
+sabre_laser calls 0.12€
+*** TURN *** [4h Ks 2c][Ad]
+mars_one checks
+sabre_laser checks
+*** RIVER *** [4h Ks 2c Ad][9c]
+mars_one bets 0.10€
+sabre_laser calls 0.10€
+*** SHOW DOWN ***
+sabre_laser shows [Jh Kh] (One pair : Kings)
+mars_one shows [Qd Kd] (One pair : Kings)
+mars_one collected 0.72€ from pot
+*** SUMMARY ***
+Total pot 0.72€ | Rake 0.04€
+Board: [4h Ks 2c Ad 9c]
+Seat 2: mars_one (big blind) showed [Qd Kd] and won 0.72€ with One pair : Kings
+Seat 6: sabre_laser (button) showed [Jh Kh] and lost with One pair : Kings
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175608-1549488078 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:21:18 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Rondador (0.78€)
+Seat 2: MAdd420 (2€)
+Seat 3: sabre_laser (1.62€)
+Seat 4: Mr Shelbi (3.54€)
+Seat 5: Stiky67 (4.61€)
+Seat 6: A-Run (4.66€)
+*** ANTE/BLINDS ***
+Rondador posts small blind 0.01€
+MAdd420 posts big blind 0.02€
+Dealt to sabre_laser [8c 4c]
+*** PRE-FLOP *** 
+sabre_laser folds
+Mr Shelbi folds
+Stiky67 raises 0.02€ to 0.04€
+A-Run folds
+Rondador folds
+MAdd420 calls 0.02€
+*** FLOP *** [2h 4s 7h]
+MAdd420 checks
+Stiky67 checks
+*** TURN *** [2h 4s 7h][Tc]
+MAdd420 checks
+Stiky67 checks
+*** RIVER *** [2h 4s 7h Tc][7d]
+MAdd420 checks
+Stiky67 checks
+*** SHOW DOWN ***
+MAdd420 shows [5s As] (One pair : 7)
+Stiky67 shows [6s 6d] (Two pairs : 7 and 6)
+Stiky67 collected 0.08€ from pot
+*** SUMMARY ***
+Total pot 0.08€ | Rake 0.01€
+Board: [2h 4s 7h Tc 7d]
+Seat 2: MAdd420 (big blind) showed [5s As] and lost with One pair : 7
+Seat 5: Stiky67 showed [6s 6d] and won 0.08€ with Two pairs : 7 and 6
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175726-1549488123 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:22:03 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: AfterWork64 (2.09€)
+Seat 2: Lara1908 (2.14€)
+Seat 3: B-boyghis (1.42€)
+Seat 4: Open Sesame (4.21€)
+Seat 5: gumers (4.63€)
+Seat 6: sabre_laser (1.27€)
+*** ANTE/BLINDS ***
+AfterWork64 posts small blind 0.01€
+Lara1908 posts big blind 0.02€
+Dealt to sabre_laser [Jh 5d]
+*** PRE-FLOP *** 
+B-boyghis folds
+Open Sesame folds
+gumers folds
+sabre_laser folds
+AfterWork64 folds
+Lara1908 collected 0.03€ from pot
+*** SUMMARY ***
+Total pot 0.03€ | No rake
+Seat 2: Lara1908 (big blind) won 0.03€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175728-1549488123 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:22:03 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: JteBroke (3.83€)
+Seat 2: sabre_laser (1.27€)
+Seat 3: Set1SansC (2.51€)
+Seat 4: Gilgameshlil (2.06€)
+Seat 5: Adriserg (2.38€)
+Seat 6: Fr33Run19 (2.21€)
+*** ANTE/BLINDS ***
+JteBroke posts small blind 0.01€
+sabre_laser posts big blind 0.02€
+Dealt to sabre_laser [Qh 8c]
+*** PRE-FLOP *** 
+Set1SansC folds
+Gilgameshlil folds
+Adriserg raises 0.04€ to 0.06€
+Fr33Run19 folds
+JteBroke calls 0.05€
+sabre_laser folds
+*** FLOP *** [5d Qd 5c]
+JteBroke checks
+Adriserg checks
+*** TURN *** [5d Qd 5c][As]
+JteBroke bets 0.14€
+Adriserg folds
+JteBroke collected 0.27€ from pot
+*** SUMMARY ***
+Total pot 0.27€ | Rake 0.01€
+Board: [5d Qd 5c As]
+Seat 1: JteBroke (small blind) won 0.27€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175762-1549488136 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:22:16 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: sabre_laser (1.25€)
+Seat 2: LuckyBurns (2€)
+Seat 3: chat-pitre (3.87€)
+Seat 4: Pulsar4 (2.04€)
+Seat 5: LeFlow29 (2€)
+Seat 6: Moux187 (4.76€)
+*** ANTE/BLINDS ***
+sabre_laser posts small blind 0.01€
+LuckyBurns posts big blind 0.02€
+Dealt to sabre_laser [Qc Kd]
+*** PRE-FLOP *** 
+chat-pitre folds
+Pulsar4 folds
+LeFlow29 folds
+Moux187 folds
+sabre_laser calls 0.01€
+LuckyBurns raises 0.04€ to 0.06€
+sabre_laser calls 0.04€
+*** FLOP *** [Qd Tc 4d]
+sabre_laser bets 0.12€
+LuckyBurns folds
+sabre_laser collected 0.23€ from pot
+*** SUMMARY ***
+Total pot 0.23€ | Rake 0.01€
+Board: [Qd Tc 4d]
+Seat 1: sabre_laser (small blind) won 0.23€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175924-1549488196 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:23:16 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: PAYENS (3.66€)
+Seat 2: Fr33Run19 (5.30€)
+Seat 3: gatsby_22 (4.41€)
+Seat 4: sabre_laser (1.30€)
+Seat 5: mfaithfull (3.15€)
+Seat 6: Rondador (0.77€)
+*** ANTE/BLINDS ***
+PAYENS posts small blind 0.01€
+Fr33Run19 posts big blind 0.02€
+Dealt to sabre_laser [4s 6d]
+*** PRE-FLOP *** 
+gatsby_22 folds
+sabre_laser folds
+mfaithfull folds
+Rondador folds
+PAYENS folds
+Fr33Run19 collected 0.03€ from pot
+*** SUMMARY ***
+Total pot 0.03€ | No rake
+Seat 2: Fr33Run19 (big blind) won 0.03€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175930-1549488198 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:23:18 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: MasonJercier (1.28€)
+Seat 2: Minouck42 (2.32€)
+Seat 3: Yoshi-Flyer (2.17€)
+Seat 4: aRaMinet (2.03€)
+Seat 5: sabre_laser (1.30€)
+Seat 6: U2999 (1.99€)
+*** ANTE/BLINDS ***
+MasonJercier posts small blind 0.01€
+Minouck42 posts big blind 0.02€
+Dealt to sabre_laser [8d Kc]
+*** PRE-FLOP *** 
+Yoshi-Flyer folds
+aRaMinet raises 0.04€ to 0.06€
+sabre_laser folds
+U2999 folds
+MasonJercier folds
+Minouck42 calls 0.04€
+*** FLOP *** [4h 3d 8h]
+Minouck42 checks
+aRaMinet bets 0.08€
+Minouck42 folds
+aRaMinet collected 0.20€ from pot
+*** SUMMARY ***
+Total pot 0.20€ | Rake 0.01€
+Board: [4h 3d 8h]
+Seat 4: aRaMinet won 0.20€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175915-1549488192 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:23:12 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: curlito (5.47€)
+Seat 2: Mr.Dg (0.80€)
+Seat 3: sabre_laser (1.30€)
+Seat 4: ghosgaslou (5.29€)
+Seat 5: Atarax150mg (2.27€)
+Seat 6: Gilgameshlil (2€)
+*** ANTE/BLINDS ***
+curlito posts small blind 0.01€
+Mr.Dg posts big blind 0.02€
+Dealt to sabre_laser [4s 7h]
+*** PRE-FLOP *** 
+sabre_laser folds
+ghosgaslou folds
+Atarax150mg folds
+Gilgameshlil folds
+curlito raises 0.05€ to 0.07€
+Mr.Dg calls 0.05€
+*** FLOP *** [3h 4d 2d]
+curlito checks
+Mr.Dg bets 0.07€
+curlito folds
+Mr.Dg collected 0.20€ from pot
+*** SUMMARY ***
+Total pot 0.20€ | Rake 0.01€
+Board: [3h 4d 2d]
+Seat 2: Mr.Dg (big blind) won 0.20€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175933-1549488199 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:23:19 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: ghosgaslou (5.28€)
+Seat 2: sabre_laser (1.30€)
+Seat 3: BlueAvocado (1.84€)
+Seat 4: Lascagado (2.62€)
+Seat 5: PAYENS (3.65€)
+Seat 6: Mr Shelbi (2.04€)
+*** ANTE/BLINDS ***
+ghosgaslou posts small blind 0.01€
+sabre_laser posts big blind 0.02€
+Dealt to sabre_laser [Qc 4d]
+*** PRE-FLOP *** 
+BlueAvocado folds
+Lascagado raises 0.02€ to 0.04€
+PAYENS calls 0.04€
+Mr Shelbi folds
+ghosgaslou folds
+sabre_laser folds
+*** FLOP *** [6d 2s Kh]
+Lascagado bets 0.08€
+PAYENS folds
+Lascagado collected 0.18€ from pot
+*** SUMMARY ***
+Total pot 0.18€ | Rake 0.01€
+Board: [6d 2s Kh]
+Seat 4: Lascagado won 0.18€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176002-1549488221 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:23:41 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: sabre_laser (1.28€)
+Seat 2: Pulsar4 (3.05€)
+Seat 3: JteBroke (2.83€)
+Seat 4: Enricall (1.60€)
+Seat 5: krizoo125 (1.11€)
+Seat 6: MAdd420 (2.34€)
+*** ANTE/BLINDS ***
+sabre_laser posts small blind 0.01€
+Pulsar4 posts big blind 0.02€
+Dealt to sabre_laser [9h Qd]
+*** PRE-FLOP *** 
+JteBroke raises 0.03€ to 0.05€
+Enricall folds
+krizoo125 folds
+MAdd420 calls 0.05€
+sabre_laser folds
+Pulsar4 raises 0.19€ to 0.24€
+JteBroke calls 0.19€
+MAdd420 folds
+*** FLOP *** [Jc 6s Ks]
+Pulsar4 bets 0.18€
+JteBroke calls 0.18€
+*** TURN *** [Jc 6s Ks][Ts]
+Pulsar4 bets 0.30€
+JteBroke calls 0.30€
+*** RIVER *** [Jc 6s Ks Ts][4s]
+Pulsar4 checks
+JteBroke checks
+*** SHOW DOWN ***
+Pulsar4 shows [Ah Kd] (One pair : Kings)
+JteBroke shows [Jh Js] (Flush King high)
+JteBroke collected 1.41€ from pot
+*** SUMMARY ***
+Total pot 1.41€ | Rake 0.09€
+Board: [Jc 6s Ks Ts 4s]
+Seat 2: Pulsar4 (big blind) showed [Ah Kd] and lost with One pair : Kings
+Seat 3: JteBroke showed [Jh Js] and won 1.41€ with Flush King high
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176027-1549488230 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:23:50 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Moux187 (4.81€)
+Seat 2: -zimette- (5.25€)
+Seat 3: sabre_laser (1.27€)
+Seat 4: Gilgameshlil (2€)
+Seat 5: enricque (1.08€)
+Seat 6: marstep (0.88€)
+*** ANTE/BLINDS ***
+Moux187 posts small blind 0.01€
+-zimette- posts big blind 0.02€
+Dealt to sabre_laser [Ts As]
+*** PRE-FLOP *** 
+sabre_laser raises 0.02€ to 0.04€
+Gilgameshlil folds
+enricque folds
+marstep folds
+Moux187 folds
+-zimette- calls 0.02€
+*** FLOP *** [6d 4c 3d]
+-zimette- checks
+sabre_laser bets 0.09€
+-zimette- folds
+sabre_laser collected 0.17€ from pot
+*** SUMMARY ***
+Total pot 0.17€ | Rake 0.01€
+Board: [6d 4c 3d]
+Seat 3: sabre_laser won 0.17€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4175927-1549488197 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:23:17 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Oliway31 (2.06€)
+Seat 2: crazygueks (2.74€)
+Seat 3: Adriserg (2.53€)
+Seat 4: BetoBarrio (2.07€)
+Seat 5: sabre_laser (1.30€)
+Seat 6: skankun (2€)
+*** ANTE/BLINDS ***
+Oliway31 posts small blind 0.01€
+crazygueks posts big blind 0.02€
+Dealt to sabre_laser [Tc 4h]
+*** PRE-FLOP *** 
+Adriserg raises 0.02€ to 0.04€
+BetoBarrio folds
+sabre_laser folds
+skankun calls 0.04€
+Oliway31 calls 0.03€
+crazygueks calls 0.02€
+*** FLOP *** [Qd 7c Qs]
+Oliway31 checks
+crazygueks checks
+Adriserg checks
+skankun bets 0.06€
+Oliway31 calls 0.06€
+crazygueks folds
+Adriserg calls 0.06€
+*** TURN *** [Qd 7c Qs][Ts]
+Oliway31 bets 0.02€
+Adriserg raises 0.19€ to 0.21€
+skankun folds
+Oliway31 calls 0.19€
+*** RIVER *** [Qd 7c Qs Ts][2s]
+Oliway31 checks
+Adriserg bets 0.38€
+Oliway31 calls 0.38€
+*** SHOW DOWN ***
+Oliway31 shows [Ac As] (Two pairs : Aces and Queens)
+Adriserg shows [Qh Jc] (Trips of Queens)
+Adriserg collected 1.43€ from pot
+*** SUMMARY ***
+Total pot 1.43€ | Rake 0.09€
+Board: [Qd 7c Qs Ts 2s]
+Seat 1: Oliway31 (small blind) showed [Ac As] and lost with Two pairs : Aces and Queens
+Seat 3: Adriserg showed [Qh Jc] and won 1.43€ with Trips of Queens
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176182-1549488281 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:24:41 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: tchen29 (0.90€)
+Seat 2: BetoBarrio (2.29€)
+Seat 3: Leonessa- (2€)
+Seat 4: sabre_laser (1.31€)
+Seat 5: LuckyBurns (2.13€)
+Seat 6: Rondador (0.83€)
+*** ANTE/BLINDS ***
+tchen29 posts small blind 0.01€
+BetoBarrio posts big blind 0.02€
+Dealt to sabre_laser [2s Ah]
+*** PRE-FLOP *** 
+Leonessa- folds
+sabre_laser folds
+LuckyBurns raises 0.04€ to 0.06€
+Rondador folds
+tchen29 folds
+BetoBarrio folds
+LuckyBurns collected 0.09€ from pot
+*** SUMMARY ***
+Total pot 0.09€ | No rake
+Seat 5: LuckyBurns won 0.09€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176225-1549488295 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:24:55 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: SR.Varianza (6.58€)
+Seat 2: ProfessorSat (2.85€)
+Seat 3: B2O45 (4.54€)
+Seat 4: Ninirush (1.98€)
+Seat 5: ngolocantine (2€)
+Seat 6: sabre_laser (1.31€)
+*** ANTE/BLINDS ***
+SR.Varianza posts small blind 0.01€
+ProfessorSat posts big blind 0.02€
+Dealt to sabre_laser [9d 3c]
+*** PRE-FLOP *** 
+B2O45 folds
+Ninirush folds
+ngolocantine folds
+sabre_laser folds
+SR.Varianza calls 0.01€
+ProfessorSat checks
+*** FLOP *** [8d 5d Ks]
+SR.Varianza checks
+ProfessorSat checks
+*** TURN *** [8d 5d Ks][3d]
+SR.Varianza checks
+ProfessorSat checks
+*** RIVER *** [8d 5d Ks 3d][Qs]
+SR.Varianza checks
+ProfessorSat checks
+*** SHOW DOWN ***
+ProfessorSat shows [2c Td] (High card : King)
+SR.Varianza shows [Ac 3h] (One pair : 3)
+SR.Varianza collected 0.04€ from pot
+*** SUMMARY ***
+Total pot 0.04€ | No rake
+Board: [8d 5d Ks 3d Qs]
+Seat 1: SR.Varianza (small blind) showed [Ac 3h] and won 0.04€ with One pair : 3
+Seat 2: ProfessorSat (big blind) showed [2c Td] and lost with High card : King
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176229-1549488296 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:24:56 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: sabre_laser (1.31€)
+Seat 2: HusKKy (4.11€)
+Seat 3: pearljam29 (6.32€)
+Seat 4: Edumanos (1.90€)
+Seat 5: BlueAvocado (1.64€)
+Seat 6: CORDEVIGO (2.95€)
+*** ANTE/BLINDS ***
+sabre_laser posts small blind 0.01€
+HusKKy posts big blind 0.02€
+Dealt to sabre_laser [9d 6d]
+*** PRE-FLOP *** 
+pearljam29 folds
+Edumanos folds
+BlueAvocado folds
+CORDEVIGO raises 0.04€ to 0.06€
+sabre_laser folds
+HusKKy calls 0.04€
+*** FLOP *** [Js 9s Qd]
+HusKKy checks
+CORDEVIGO bets 0.07€
+HusKKy folds
+CORDEVIGO collected 0.19€ from pot
+*** SUMMARY ***
+Total pot 0.19€ | Rake 0.01€
+Board: [Js 9s Qd]
+Seat 6: CORDEVIGO (button) won 0.19€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176220-1549488293 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:24:53 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Omnipouet (2.29€)
+Seat 2: mfaithfull (2€)
+Seat 3: Set1SansC (2.50€)
+Seat 4: ngolocantine (2€)
+Seat 5: ma-poule75 (2.53€)
+Seat 6: sabre_laser (1.31€)
+*** ANTE/BLINDS ***
+Omnipouet posts small blind 0.01€
+mfaithfull posts big blind 0.02€
+Dealt to sabre_laser [6c 8s]
+*** PRE-FLOP *** 
+Set1SansC folds
+ngolocantine folds
+ma-poule75 calls 0.02€
+sabre_laser folds
+Omnipouet calls 0.01€
+mfaithfull checks
+*** FLOP *** [9d Ad Jh]
+Omnipouet checks
+mfaithfull checks
+ma-poule75 bets 0.06€
+Omnipouet folds
+mfaithfull folds
+ma-poule75 collected 0.12€ from pot
+*** SUMMARY ***
+Total pot 0.12€ | No rake
+Board: [9d Ad Jh]
+Seat 5: ma-poule75 won 0.12€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176236-1549488298 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:24:58 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Ninirush (1.98€)
+Seat 2: sabre_laser (1.30€)
+Seat 3: marco 82 (6.50€)
+Seat 4: Fr33Run19 (5.23€)
+Seat 5: Counif56 (1.24€)
+Seat 6: Benaoud (1.78€)
+*** ANTE/BLINDS ***
+Ninirush posts small blind 0.01€
+sabre_laser posts big blind 0.02€
+Dealt to sabre_laser [6s Th]
+*** PRE-FLOP *** 
+marco 82 folds
+Fr33Run19 folds
+Counif56 folds
+Benaoud calls 0.02€
+Ninirush folds
+sabre_laser checks
+*** FLOP *** [4c 8h 2h]
+sabre_laser checks
+Benaoud checks
+*** TURN *** [4c 8h 2h][2s]
+sabre_laser checks
+Benaoud checks
+*** RIVER *** [4c 8h 2h 2s][Kh]
+sabre_laser bets 0.05€
+Benaoud folds
+sabre_laser collected 0.10€ from pot
+*** SUMMARY ***
+Total pot 0.10€ | No rake
+Board: [4c 8h 2h 2s Kh]
+Seat 2: sabre_laser (big blind) won 0.10€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176383-1549488350 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:25:50 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: MasonJercier (2.25€)
+Seat 2: MitchATP65 (4.34€)
+Seat 3: BetoBarrio (2.02€)
+Seat 4: sabre_laser (1.33€)
+Seat 5: captainmario (1.34€)
+Seat 6: marco 82 (7.59€)
+*** ANTE/BLINDS ***
+MasonJercier posts small blind 0.01€
+MitchATP65 posts big blind 0.02€
+Dealt to sabre_laser [6s 5s]
+*** PRE-FLOP *** 
+BetoBarrio folds
+sabre_laser calls 0.02€
+captainmario folds
+marco 82 folds
+MasonJercier folds
+MitchATP65 checks
+*** FLOP *** [Qc Td Ad]
+MitchATP65 checks
+sabre_laser checks
+*** TURN *** [Qc Td Ad][4h]
+MitchATP65 bets 0.03€
+sabre_laser folds
+MitchATP65 collected 0.08€ from pot
+*** SUMMARY ***
+Total pot 0.08€ | No rake
+Board: [Qc Td Ad 4h]
+Seat 2: MitchATP65 (big blind) won 0.08€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176380-1549488349 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:25:49 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: _stoack_ (3.95€)
+Seat 2: JteBroke (4.30€)
+Seat 3: sabre_laser (1.33€)
+Seat 4: kamanohahai (0.67€)
+Seat 5: Omnipouet (2.27€)
+Seat 6: Edumanos (1.82€)
+*** ANTE/BLINDS ***
+_stoack_ posts small blind 0.01€
+JteBroke posts big blind 0.02€
+Dealt to sabre_laser [Jh 3s]
+*** PRE-FLOP *** 
+sabre_laser folds
+kamanohahai raises 0.05€ to 0.07€
+Omnipouet folds
+Edumanos calls 0.07€
+_stoack_ folds
+JteBroke folds
+*** FLOP *** [2s 2c Ks]
+kamanohahai bets 0.07€
+Edumanos calls 0.07€
+*** TURN *** [2s 2c Ks][8h]
+kamanohahai bets 0.10€
+Edumanos calls 0.10€
+*** RIVER *** [2s 2c Ks 8h][8d]
+kamanohahai checks
+Edumanos checks
+*** SHOW DOWN ***
+kamanohahai shows [Qh Ad] (Two pairs : 8 and 2)
+Edumanos shows [6s 6h] (Two pairs : 8 and 6)
+Edumanos collected 0.48€ from pot
+*** SUMMARY ***
+Total pot 0.48€ | Rake 0.03€
+Board: [2s 2c Ks 8h 8d]
+Seat 4: kamanohahai showed [Qh Ad] and lost with Two pairs : 8 and 2
+Seat 6: Edumanos (button) showed [6s 6h] and won 0.48€ with Two pairs : 8 and 6
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176461-1549488377 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:26:17 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Alexvienne (1.86€)
+Seat 2: boris77 (2.71€)
+Seat 3: BlueAvocado (1.67€)
+Seat 4: mars_one (9.31€)
+Seat 5: sabre_laser (1.31€)
+Seat 6: gatsby_22 (4.05€)
+*** ANTE/BLINDS ***
+Alexvienne posts small blind 0.01€
+boris77 posts big blind 0.02€
+Dealt to sabre_laser [As 5s]
+*** PRE-FLOP *** 
+BlueAvocado folds
+mars_one folds
+sabre_laser raises 0.02€ to 0.04€
+gatsby_22 folds
+Alexvienne folds
+boris77 folds
+sabre_laser collected 0.07€ from pot
+*** SUMMARY ***
+Total pot 0.07€ | No rake
+Seat 5: sabre_laser won 0.07€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176544-1549488406 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:26:46 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: boris77 (2.80€)
+Seat 2: JG813 (2€)
+Seat 3: MaRZaS (3.97€)
+Seat 4: d0six (3.78€)
+Seat 5: SR.Varianza (2.33€)
+Seat 6: sabre_laser (1.34€)
+*** ANTE/BLINDS ***
+boris77 posts small blind 0.01€
+JG813 posts big blind 0.02€
+Dealt to sabre_laser [5c Qd]
+*** PRE-FLOP *** 
+MaRZaS folds
+d0six folds
+SR.Varianza folds
+sabre_laser folds
+boris77 folds
+JG813 collected 0.03€ from pot
+*** SUMMARY ***
+Total pot 0.03€ | No rake
+Seat 2: JG813 (big blind) won 0.03€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176648-1549488442 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:27:22 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Pulsar4 (3.82€)
+Seat 2: sabre_laser (1.34€)
+Seat 3: gumers (1.66€)
+Seat 4: MasonJercier (1.28€)
+Seat 5: elmitch1 (2.08€)
+Seat 6: Leonessa- (2.02€)
+*** ANTE/BLINDS ***
+Pulsar4 posts small blind 0.01€
+sabre_laser posts big blind 0.02€
+Dealt to sabre_laser [6c Tc]
+*** PRE-FLOP *** 
+gumers folds
+MasonJercier folds
+elmitch1 folds
+Leonessa- folds
+Pulsar4 raises 0.04€ to 0.06€
+sabre_laser folds
+Pulsar4 collected 0.08€ from pot
+*** SUMMARY ***
+Total pot 0.08€ | No rake
+Seat 1: Pulsar4 (small blind) won 0.08€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176700-1549488459 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:27:39 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: sabre_laser (1.32€)
+Seat 2: Der_VeRRukti (3.23€)
+Seat 3: Symbium (3.44€)
+Seat 4: JG813 (1.93€)
+Seat 5: anibalon III (5.76€)
+Seat 6: Enricall (1.02€)
+*** ANTE/BLINDS ***
+sabre_laser posts small blind 0.01€
+Der_VeRRukti posts big blind 0.02€
+Dealt to sabre_laser [7d Kh]
+*** PRE-FLOP *** 
+Symbium folds
+JG813 folds
+anibalon III folds
+Enricall raises 0.08€ to 0.10€
+sabre_laser folds
+Der_VeRRukti folds
+Enricall collected 0.13€ from pot
+*** SUMMARY ***
+Total pot 0.13€ | No rake
+Seat 6: Enricall (button) won 0.13€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176706-1549488460 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:27:40 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: OctopolR (3.32€)
+Seat 2: mars_one (9.44€)
+Seat 3: skankun (2€)
+Seat 4: aRaMinet (2€)
+Seat 5: sabre_laser (1.31€)
+Seat 6: Go Fist (8.52€)
+*** ANTE/BLINDS ***
+OctopolR posts small blind 0.01€
+mars_one posts big blind 0.02€
+Dealt to sabre_laser [2d 3d]
+*** PRE-FLOP *** 
+skankun raises 0.04€ to 0.06€
+aRaMinet folds
+sabre_laser folds
+Go Fist folds
+OctopolR folds
+mars_one folds
+skankun collected 0.09€ from pot
+*** SUMMARY ***
+Total pot 0.09€ | No rake
+Seat 3: skankun won 0.09€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176609-1549488429 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:27:09 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: ma-poule75 (2.40€)
+Seat 2: Akeeba (2€)
+Seat 3: sabre_laser (1.34€)
+Seat 4: Gilgameshlil (2€)
+Seat 5: akira1307 (5.25€)
+Seat 6: LuckyBurns (2€)
+*** ANTE/BLINDS ***
+ma-poule75 posts small blind 0.01€
+Akeeba posts big blind 0.02€
+Dealt to sabre_laser [8s Qh]
+*** PRE-FLOP *** 
+sabre_laser folds
+Gilgameshlil folds
+akira1307 folds
+LuckyBurns folds
+ma-poule75 calls 0.01€
+Akeeba checks
+*** FLOP *** [3d 5h Ah]
+ma-poule75 checks
+Akeeba checks
+*** TURN *** [3d 5h Ah][Td]
+ma-poule75 checks
+Akeeba checks
+*** RIVER *** [3d 5h Ah Td][Jc]
+ma-poule75 checks
+Akeeba checks
+*** SHOW DOWN ***
+Akeeba shows [6d 9c] (High card : Ace)
+ma-poule75 shows [9d 8c] (High card : Ace)
+ma-poule75 collected 0.04€ from pot
+*** SUMMARY ***
+Total pot 0.04€ | No rake
+Board: [3d 5h Ah Td Jc]
+Seat 1: ma-poule75 (small blind) showed [9d 8c] and won 0.04€ with High card : Ace
+Seat 2: Akeeba (big blind) showed [6d 9c] and lost with High card : Ace
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176710-1549488461 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:27:41 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: SprintRun08 (2.08€)
+Seat 2: JG813 (1.93€)
+Seat 3: -zimette- (2.27€)
+Seat 4: sabre_laser (1.31€)
+Seat 5: LuckyBurns (2.13€)
+Seat 6: POKSAVARY (2.63€)
+*** ANTE/BLINDS ***
+SprintRun08 posts small blind 0.01€
+JG813 posts big blind 0.02€
+Dealt to sabre_laser [Kd Ks]
+*** PRE-FLOP *** 
+-zimette- folds
+sabre_laser raises 0.02€ to 0.04€
+LuckyBurns folds
+POKSAVARY folds
+SprintRun08 calls 0.03€
+JG813 folds
+*** FLOP *** [Ts 2s 3s]
+SprintRun08 checks
+sabre_laser bets 0.08€
+SprintRun08 calls 0.08€
+*** TURN *** [Ts 2s 3s][4c]
+SprintRun08 checks
+sabre_laser bets 0.17€
+SprintRun08 calls 0.17€
+*** RIVER *** [Ts 2s 3s 4c][8s]
+SprintRun08 checks
+sabre_laser bets 0.30€
+SprintRun08 calls 0.30€
+*** SHOW DOWN ***
+SprintRun08 shows [Qd 7s] (Flush Ten high)
+sabre_laser shows [Kd Ks] (Flush King high)
+sabre_laser collected 1.13€ from pot
+*** SUMMARY ***
+Total pot 1.13€ | Rake 0.07€
+Board: [Ts 2s 3s 4c 8s]
+Seat 1: SprintRun08 (small blind) showed [Qd 7s] and lost with Flush Ten high
+Seat 4: sabre_laser showed [Kd Ks] and won 1.13€ with Flush King high
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176874-1549488506 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:28:26 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: ezcreditcard (1.96€)
+Seat 2: sabre_laser (1.85€)
+Seat 3: Omnipouet (2€)
+Seat 4: chat-pitre (3.64€)
+Seat 5: OctopolR (3.26€)
+Seat 6: miguelpujant (2.03€)
+*** ANTE/BLINDS ***
+ezcreditcard posts small blind 0.01€
+sabre_laser posts big blind 0.02€
+Dealt to sabre_laser [Jh 6d]
+*** PRE-FLOP *** 
+Omnipouet folds
+chat-pitre raises 0.04€ to 0.06€
+OctopolR folds
+miguelpujant folds
+ezcreditcard folds
+sabre_laser folds
+chat-pitre collected 0.09€ from pot
+*** SUMMARY ***
+Total pot 0.09€ | No rake
+Seat 4: chat-pitre won 0.09€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176926-1549488521 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:28:41 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: J94NO (2.21€)
+Seat 2: Omnipouet (2.35€)
+Seat 3: sabre_laser (1.83€)
+Seat 4: titopedro (0.64€)
+Seat 5: Atarax150mg (2.67€)
+Seat 6: MAdd420 (2.10€)
+*** ANTE/BLINDS ***
+J94NO posts small blind 0.01€
+Omnipouet posts big blind 0.02€
+Dealt to sabre_laser [4d Kd]
+*** PRE-FLOP *** 
+sabre_laser folds
+titopedro folds
+Atarax150mg folds
+MAdd420 folds
+J94NO raises 0.04€ to 0.06€
+Omnipouet folds
+J94NO collected 0.08€ from pot
+*** SUMMARY ***
+Total pot 0.08€ | No rake
+Seat 1: J94NO (small blind) won 0.08€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176869-1549488505 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:28:25 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: skankun (2.03€)
+Seat 2: MaRZaS (3.91€)
+Seat 3: SprintRun08 (1.49€)
+Seat 4: sabre_laser (1.85€)
+Seat 5: MitchATP65 (3.80€)
+Seat 6: 060708 (2.15€)
+*** ANTE/BLINDS ***
+skankun posts small blind 0.01€
+MaRZaS posts big blind 0.02€
+Dealt to sabre_laser [7s 2d]
+*** PRE-FLOP *** 
+SprintRun08 calls 0.02€
+sabre_laser folds
+MitchATP65 folds
+060708 folds
+skankun folds
+MaRZaS checks
+*** FLOP *** [3s 9s 5s]
+MaRZaS bets 0.04€
+SprintRun08 calls 0.04€
+*** TURN *** [3s 9s 5s][Js]
+MaRZaS checks
+SprintRun08 checks
+*** RIVER *** [3s 9s 5s Js][Jh]
+MaRZaS checks
+SprintRun08 bets 0.13€
+MaRZaS folds
+SprintRun08 collected 0.25€ from pot
+*** SUMMARY ***
+Total pot 0.25€ | Rake 0.01€
+Board: [3s 9s 5s Js Jh]
+Seat 3: SprintRun08 won 0.25€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177066-1549488562 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:29:22 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: aRaMinet (2.63€)
+Seat 2: Atarax150mg (2.83€)
+Seat 3: boris77 (2.83€)
+Seat 4: ROYSTAR (2.32€)
+Seat 5: LeFlow29 (2€)
+Seat 6: sabre_laser (1.82€)
+*** ANTE/BLINDS ***
+aRaMinet posts small blind 0.01€
+Atarax150mg posts big blind 0.02€
+Dealt to sabre_laser [5d 8s]
+*** PRE-FLOP *** 
+boris77 folds
+ROYSTAR folds
+LeFlow29 folds
+sabre_laser folds
+aRaMinet raises 0.04€ to 0.06€
+Atarax150mg folds
+aRaMinet collected 0.08€ from pot
+*** SUMMARY ***
+Total pot 0.08€ | No rake
+Seat 1: aRaMinet (small blind) won 0.08€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4176933-1549488523 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:28:43 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: BlueAvocado (1.46€)
+Seat 2: Pulsar4 (2.34€)
+Seat 3: d0six (2.24€)
+Seat 4: miguelpujant (2.04€)
+Seat 5: sabre_laser (1.83€)
+Seat 6: JteBroke (2.33€)
+*** ANTE/BLINDS ***
+BlueAvocado posts small blind 0.01€
+Pulsar4 posts big blind 0.02€
+Dealt to sabre_laser [Ah 7s]
+*** PRE-FLOP *** 
+d0six raises 0.04€ to 0.06€
+miguelpujant folds
+sabre_laser folds
+JteBroke calls 0.06€
+BlueAvocado folds
+Pulsar4 calls 0.04€
+*** FLOP *** [3s Qs 4s]
+Pulsar4 checks
+d0six checks
+JteBroke checks
+*** TURN *** [3s Qs 4s][5h]
+Pulsar4 bets 0.06€
+d0six calls 0.06€
+JteBroke folds
+*** RIVER *** [3s Qs 4s 5h][8d]
+Pulsar4 bets 0.10€
+d0six calls 0.10€
+*** SHOW DOWN ***
+d0six shows [Qc Kd] (One pair : Queens)
+Pulsar4 shows [4d 4c] (Trips of 4)
+Pulsar4 collected 0.48€ from pot
+*** SUMMARY ***
+Total pot 0.48€ | Rake 0.03€
+Board: [3s Qs 4s 5h 8d]
+Seat 2: Pulsar4 (big blind) showed [4d 4c] and won 0.48€ with Trips of 4
+Seat 3: d0six showed [Qc Kd] and lost with One pair : Queens
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177072-1549488563 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:29:23 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: sabre_laser (1.82€)
+Seat 2: boris77 (2.83€)
+Seat 3: Fr33Run19 (7.03€)
+Seat 4: MitchATP65 (3.04€)
+Seat 5: 4-Knox (5.82€)
+Seat 6: tAAkeuchi (1.86€)
+*** ANTE/BLINDS ***
+sabre_laser posts small blind 0.01€
+boris77 posts big blind 0.02€
+Dealt to sabre_laser [7s Jc]
+*** PRE-FLOP *** 
+Fr33Run19 folds
+MitchATP65 raises 0.04€ to 0.06€
+4-Knox folds
+tAAkeuchi folds
+sabre_laser folds
+boris77 folds
+MitchATP65 collected 0.09€ from pot
+*** SUMMARY ***
+Total pot 0.09€ | No rake
+Seat 4: MitchATP65 won 0.09€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177076-1549488564 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:29:24 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Gilgameshlil (2€)
+Seat 2: 44Thorgal666 (3.49€)
+Seat 3: Delph40320 (1.97€)
+Seat 4: pat.lolo (2.04€)
+Seat 5: sabre_laser (1.81€)
+Seat 6: HusKKy (3.50€)
+*** ANTE/BLINDS ***
+Gilgameshlil posts small blind 0.01€
+44Thorgal666 posts big blind 0.02€
+Dealt to sabre_laser [5s 9d]
+*** PRE-FLOP *** 
+Delph40320 folds
+pat.lolo raises 0.02€ to 0.04€
+sabre_laser folds
+HusKKy folds
+Gilgameshlil folds
+44Thorgal666 calls 0.02€
+*** FLOP *** [4c Qc 6c]
+44Thorgal666 checks
+pat.lolo checks
+*** TURN *** [4c Qc 6c][6h]
+44Thorgal666 checks
+pat.lolo bets 0.05€
+44Thorgal666 calls 0.05€
+*** RIVER *** [4c Qc 6c 6h][9c]
+44Thorgal666 checks
+pat.lolo checks
+*** SHOW DOWN ***
+pat.lolo shows [Kd Ad] (One pair : 6)
+44Thorgal666 shows [Kh Ac] (Flush Ace high)
+44Thorgal666 collected 0.18€ from pot
+*** SUMMARY ***
+Total pot 0.18€ | Rake 0.01€
+Board: [4c Qc 6c 6h 9c]
+Seat 2: 44Thorgal666 (big blind) showed [Kh Ac] and won 0.18€ with Flush Ace high
+Seat 4: pat.lolo showed [Kd Ad] and lost with One pair : 6
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177080-1549488565 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:29:25 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: marco 82 (3.51€)
+Seat 2: sabre_laser (1.81€)
+Seat 3: skankun (2.29€)
+Seat 4: HusKKy (3.50€)
+Seat 5: hamelionstyl (1.99€)
+Seat 6: titopedro (0.64€)
+*** ANTE/BLINDS ***
+marco 82 posts small blind 0.01€
+sabre_laser posts big blind 0.02€
+Dealt to sabre_laser [Qs 5c]
+*** PRE-FLOP *** 
+skankun folds
+HusKKy folds
+hamelionstyl folds
+titopedro folds
+marco 82 raises 0.04€ to 0.06€
+sabre_laser folds
+marco 82 collected 0.08€ from pot
+*** SUMMARY ***
+Total pot 0.08€ | No rake
+Seat 1: marco 82 (small blind) won 0.08€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177199-1549488596 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:29:56 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: akira1307 (2€)
+Seat 2: A.Bandini (2.04€)
+Seat 3: Flipy368 (2.13€)
+Seat 4: sabre_laser (1.79€)
+Seat 5: pkdust (2.33€)
+Seat 6: gatsby_22 (3.56€)
+*** ANTE/BLINDS ***
+akira1307 posts small blind 0.01€
+A.Bandini posts big blind 0.02€
+Dealt to sabre_laser [Qh Th]
+*** PRE-FLOP *** 
+Flipy368 folds
+sabre_laser folds
+pkdust raises 0.04€ to 0.06€
+gatsby_22 folds
+akira1307 folds
+A.Bandini folds
+pkdust collected 0.09€ from pot
+*** SUMMARY ***
+Total pot 0.09€ | No rake
+Seat 5: pkdust won 0.09€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177181-1549488592 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:29:52 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Mr Shelbi (2€)
+Seat 2: A-Run (4.33€)
+Seat 3: sabre_laser (1.79€)
+Seat 4: anibalon III (5.76€)
+Seat 5: Le Z deLUNEL (4.04€)
+Seat 6: _stoack_ (4.03€)
+*** ANTE/BLINDS ***
+Mr Shelbi posts small blind 0.01€
+A-Run posts big blind 0.02€
+Dealt to sabre_laser [Qc Kd]
+*** PRE-FLOP *** 
+sabre_laser folds
+anibalon III folds
+Le Z deLUNEL folds
+_stoack_ folds
+Mr Shelbi folds
+A-Run collected 0.03€ from pot
+*** SUMMARY ***
+Total pot 0.03€ | No rake
+Seat 2: A-Run (big blind) won 0.03€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177203-1549488597 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:29:57 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: _Sale-Bet_ (3.25€)
+Seat 2: BlueAvocado (1.56€)
+Seat 3: MasonJercier (1.43€)
+Seat 4: gumers (1.71€)
+Seat 5: Pulsar4 (2.60€)
+Seat 6: sabre_laser (1.79€)
+*** ANTE/BLINDS ***
+_Sale-Bet_ posts small blind 0.01€
+BlueAvocado posts big blind 0.02€
+Dealt to sabre_laser [2c As]
+*** PRE-FLOP *** 
+MasonJercier folds
+gumers folds
+Pulsar4 folds
+sabre_laser raises 0.02€ to 0.04€
+_Sale-Bet_ folds
+BlueAvocado folds
+sabre_laser collected 0.07€ from pot
+*** SUMMARY ***
+Total pot 0.07€ | No rake
+Seat 6: sabre_laser (button) won 0.07€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177005-1549488545 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:29:05 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: sabre_laser (1.83€)
+Seat 2: Set1SansC (2.50€)
+Seat 3: Titibiz (2.24€)
+Seat 4: gumers (1.71€)
+Seat 5: Open Sesame (2.04€)
+Seat 6: Skitmo (2.06€)
+*** ANTE/BLINDS ***
+sabre_laser posts small blind 0.01€
+Set1SansC posts big blind 0.02€
+Dealt to sabre_laser [Ad 8s]
+*** PRE-FLOP *** 
+Titibiz calls 0.02€
+gumers folds
+Open Sesame raises 0.08€ to 0.10€
+Skitmo folds
+sabre_laser folds
+Set1SansC folds
+Titibiz calls 0.08€
+*** FLOP *** [2h 2c 5c]
+Titibiz checks
+Open Sesame checks
+*** TURN *** [2h 2c 5c][As]
+Titibiz checks
+Open Sesame bets 0.15€
+Titibiz folds
+Open Sesame collected 0.37€ from pot
+*** SUMMARY ***
+Total pot 0.37€ | Rake 0.01€
+Board: [2h 2c 5c As]
+Seat 5: Open Sesame won 0.37€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177272-1549488617 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:30:17 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Omnipouet (2.35€)
+Seat 2: Aleko-Goghy (2.03€)
+Seat 3: gatsby_22 (4.93€)
+Seat 4: LeFlow29 (3.25€)
+Seat 5: sabre_laser (1.82€)
+Seat 6: Titibiz (2.14€)
+*** ANTE/BLINDS ***
+Omnipouet posts small blind 0.01€
+Aleko-Goghy posts big blind 0.02€
+Dealt to sabre_laser [3h Kd]
+*** PRE-FLOP *** 
+gatsby_22 folds
+LeFlow29 folds
+sabre_laser folds
+Titibiz calls 0.02€
+Omnipouet folds
+Aleko-Goghy checks
+*** FLOP *** [Ah 5c 7s]
+Aleko-Goghy checks
+Titibiz bets 0.03€
+Aleko-Goghy folds
+Titibiz collected 0.08€ from pot
+*** SUMMARY ***
+Total pot 0.08€ | No rake
+Board: [Ah 5c 7s]
+Seat 6: Titibiz (button) won 0.08€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177276-1549488619 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:30:19 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: sabre_laser (1.82€)
+Seat 2: B2O45 (0.71€)
+Seat 3: A-Run (2.18€)
+Seat 4: Fracaseb62 (1.45€)
+Seat 5: Gilgameshlil (2€)
+Seat 6: Mr Shelbi (2€)
+*** ANTE/BLINDS ***
+sabre_laser posts small blind 0.01€
+B2O45 posts big blind 0.02€
+Dealt to sabre_laser [Qd Kd]
+*** PRE-FLOP *** 
+A-Run folds
+Fracaseb62 folds
+Gilgameshlil folds
+Mr Shelbi raises 0.03€ to 0.05€
+sabre_laser calls 0.04€
+B2O45 raises 0.66€ to 0.71€ and is all-in
+Mr Shelbi calls 0.66€
+sabre_laser folds
+*** FLOP *** [3h Jh 4h]
+*** TURN *** [3h Jh 4h][Qh]
+*** RIVER *** [3h Jh 4h Qh][3c]
+*** SHOW DOWN ***
+B2O45 shows [As Kc] (One pair : 3)
+Mr Shelbi shows [8h 8c] (Flush Queen high)
+Mr Shelbi collected 1.39€ from pot
+*** SUMMARY ***
+Total pot 1.39€ | Rake 0.08€
+Board: [3h Jh 4h Qh 3c]
+Seat 2: B2O45 (big blind) showed [As Kc] and lost with One pair : 3
+Seat 6: Mr Shelbi (button) showed [8h 8c] and won 1.39€ with Flush Queen high
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177414-1549488659 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:30:59 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: TROY-Z (3.97€)
+Seat 2: gdh.wd (1.93€)
+Seat 3: sabre_laser (1.75€)
+Seat 4: JteBroke (4.23€)
+Seat 5: Titibiz (2.14€)
+Seat 6: OctopolR (4.77€)
+*** ANTE/BLINDS ***
+TROY-Z posts small blind 0.01€
+gdh.wd posts big blind 0.02€
+Dealt to sabre_laser [3s Tc]
+*** PRE-FLOP *** 
+sabre_laser folds
+JteBroke folds
+Titibiz folds
+OctopolR folds
+TROY-Z folds
+gdh.wd collected 0.03€ from pot
+*** SUMMARY ***
+Total pot 0.03€ | No rake
+Seat 2: gdh.wd (big blind) won 0.03€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177365-1549488644 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:30:44 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: marco 82 (6.89€)
+Seat 2: sabre_laser (1.77€)
+Seat 3: MasonJercier (1.28€)
+Seat 4: Christo1985 (1.39€)
+Seat 5: Pulsar4 (2.32€)
+Seat 6: Set1SansC (2.65€)
+*** ANTE/BLINDS ***
+marco 82 posts small blind 0.01€
+sabre_laser posts big blind 0.02€
+Dealt to sabre_laser [Tc As]
+*** PRE-FLOP *** 
+MasonJercier folds
+Christo1985 calls 0.02€
+Pulsar4 raises 0.06€ to 0.08€
+Set1SansC folds
+marco 82 folds
+sabre_laser folds
+Christo1985 calls 0.06€
+*** FLOP *** [Qd Jd 4c]
+Christo1985 checks
+Pulsar4 bets 0.06€
+Christo1985 folds
+Pulsar4 collected 0.24€ from pot
+*** SUMMARY ***
+Total pot 0.24€ | Rake 0.01€
+Board: [Qd Jd 4c]
+Seat 5: Pulsar4 won 0.24€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177399-1549488655 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:30:55 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: A-Run (2.16€)
+Seat 2: M.Buttlicker (4.20€)
+Seat 3: skankun (2€)
+Seat 4: sabre_laser (1.75€)
+Seat 5: anibalon III (3€)
+Seat 6: giosoy (2€)
+*** ANTE/BLINDS ***
+A-Run posts small blind 0.01€
+M.Buttlicker posts big blind 0.02€
+Dealt to sabre_laser [Qh 6s]
+*** PRE-FLOP *** 
+skankun raises 0.04€ to 0.06€
+sabre_laser folds
+anibalon III folds
+giosoy folds
+A-Run folds
+M.Buttlicker folds
+skankun collected 0.09€ from pot
+*** SUMMARY ***
+Total pot 0.09€ | No rake
+Seat 3: skankun won 0.09€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177444-1549488667 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:31:07 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: sabre_laser (1.73€)
+Seat 2: 4-Knox (3.29€)
+Seat 3: Le Z deLUNEL (4.03€)
+Seat 4: Aleko-Goghy (2€)
+Seat 5: MasonJercier (1.28€)
+Seat 6: Mr Shelbi (3.52€)
+*** ANTE/BLINDS ***
+sabre_laser posts small blind 0.01€
+4-Knox posts big blind 0.02€
+Dealt to sabre_laser [9h 3d]
+*** PRE-FLOP *** 
+Le Z deLUNEL folds
+Aleko-Goghy raises 0.07€ to 0.09€
+MasonJercier folds
+Mr Shelbi folds
+sabre_laser folds
+4-Knox folds
+Aleko-Goghy collected 0.12€ from pot
+*** SUMMARY ***
+Total pot 0.12€ | No rake
+Seat 4: Aleko-Goghy won 0.12€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177451-1549488669 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:31:09 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: ROYSTAR (2.14€)
+Seat 2: ciatik (2€)
+Seat 3: Sanspermis37 (1.38€)
+Seat 4: Go Fist (2.44€)
+Seat 5: sabre_laser (1.72€)
+Seat 6: MasonJercier (1.28€)
+*** ANTE/BLINDS ***
+ROYSTAR posts small blind 0.01€
+ciatik posts big blind 0.02€
+Dealt to sabre_laser [2c Ks]
+*** PRE-FLOP *** 
+Sanspermis37 folds
+Go Fist folds
+sabre_laser folds
+MasonJercier raises 0.03€ to 0.05€
+ROYSTAR folds
+ciatik calls 0.03€
+*** FLOP *** [5d Ac Kd]
+ciatik checks
+MasonJercier checks
+*** TURN *** [5d Ac Kd][3h]
+ciatik bets 0.06€
+MasonJercier folds
+ciatik collected 0.16€ from pot
+*** SUMMARY ***
+Total pot 0.16€ | Rake 0.01€
+Board: [5d Ac Kd 3h]
+Seat 2: ciatik (big blind) won 0.16€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177455-1549488670 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:31:10 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: JG813 (3.51€)
+Seat 2: ROYSTAR (2.13€)
+Seat 3: emmagis5792 (7.37€)
+Seat 4: d0six (2.15€)
+Seat 5: NELLIO39 (2.28€)
+Seat 6: sabre_laser (1.72€)
+*** ANTE/BLINDS ***
+JG813 posts small blind 0.01€
+ROYSTAR posts big blind 0.02€
+Dealt to sabre_laser [Jd Js]
+*** PRE-FLOP *** 
+emmagis5792 folds
+d0six folds
+NELLIO39 folds
+sabre_laser raises 0.02€ to 0.04€
+JG813 folds
+ROYSTAR folds
+sabre_laser collected 0.07€ from pot
+*** SUMMARY ***
+Total pot 0.07€ | No rake
+Seat 6: sabre_laser (button) won 0.07€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177448-1549488668 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:31:08 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: PTITEGATERIE (6.69€)
+Seat 2: 4ritz (2.55€)
+Seat 3: Jordy7529 (3.77€)
+Seat 4: MA-DA-RA (0.88€)
+Seat 5: Go Fist (2.44€)
+Seat 6: sabre_laser (1.72€)
+*** ANTE/BLINDS ***
+PTITEGATERIE posts small blind 0.01€
+4ritz posts big blind 0.02€
+Dealt to sabre_laser [3s 2s]
+*** PRE-FLOP *** 
+Jordy7529 folds
+MA-DA-RA folds
+Go Fist folds
+sabre_laser folds
+PTITEGATERIE folds
+4ritz collected 0.03€ from pot
+*** SUMMARY ***
+Total pot 0.03€ | No rake
+Seat 2: 4ritz (big blind) won 0.03€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177531-1549488690 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:31:30 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Moux187 (5.11€)
+Seat 2: Pulsar4 (3.78€)
+Seat 3: kamanohahai (0.90€)
+Seat 4: Degu96 (9.72€)
+Seat 5: Der_VeRRukti (2.24€)
+Seat 6: sabre_laser (1.75€)
+*** ANTE/BLINDS ***
+Moux187 posts small blind 0.01€
+Pulsar4 posts big blind 0.02€
+Dealt to sabre_laser [5h As]
+*** PRE-FLOP *** 
+kamanohahai raises 0.05€ to 0.07€
+Degu96 folds
+Der_VeRRukti folds
+sabre_laser folds
+Moux187 folds
+Pulsar4 folds
+kamanohahai collected 0.10€ from pot
+*** SUMMARY ***
+Total pot 0.10€ | No rake
+Seat 3: kamanohahai won 0.10€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177541-1549488692 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:31:32 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: JG813 (1.79€)
+Seat 2: GarcilasoAA (2.03€)
+Seat 3: sabre_laser (1.75€)
+Seat 4: gumers (3.09€)
+Seat 5: Le Z deLUNEL (4.02€)
+Seat 6: 4-Knox (3.27€)
+*** ANTE/BLINDS ***
+JG813 posts small blind 0.01€
+GarcilasoAA posts big blind 0.02€
+Dealt to sabre_laser [4h 4c]
+*** PRE-FLOP *** 
+sabre_laser folds
+gumers folds
+Le Z deLUNEL folds
+4-Knox folds
+JG813 folds
+GarcilasoAA collected 0.03€ from pot
+*** SUMMARY ***
+Total pot 0.03€ | No rake
+Seat 2: GarcilasoAA (big blind) won 0.03€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177409-1549488658 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:30:58 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Fr33Run19 (4.87€)
+Seat 2: 44Thorgal666 (2.81€)
+Seat 3: gumers (3.09€)
+Seat 4: sabre_laser (1.75€)
+Seat 5: HusKKy (2.09€)
+Seat 6: marco 82 (6.88€)
+*** ANTE/BLINDS ***
+Fr33Run19 posts small blind 0.01€
+44Thorgal666 posts big blind 0.02€
+Dealt to sabre_laser [Qc 9c]
+*** PRE-FLOP *** 
+gumers folds
+sabre_laser folds
+HusKKy folds
+marco 82 folds
+Fr33Run19 raises 0.03€ to 0.05€
+44Thorgal666 folds
+Fr33Run19 collected 0.07€ from pot
+*** SUMMARY ***
+Total pot 0.07€ | No rake
+Seat 1: Fr33Run19 (small blind) won 0.07€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177418-1549488660 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:31:00 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Go Fist (8.47€)
+Seat 2: sabre_laser (1.75€)
+Seat 3: -zimette- (4.88€)
+Seat 4: pkdust (2.36€)
+Seat 5: OctopolR (4.77€)
+Seat 6: GrandGuiGui (3.49€)
+*** ANTE/BLINDS ***
+Go Fist posts small blind 0.01€
+sabre_laser posts big blind 0.02€
+Dealt to sabre_laser [Ac 5s]
+*** PRE-FLOP *** 
+-zimette- folds
+pkdust raises 0.04€ to 0.06€
+OctopolR folds
+GrandGuiGui calls 0.06€
+Go Fist folds
+sabre_laser folds
+*** FLOP *** [9s 6c Ah]
+pkdust checks
+GrandGuiGui checks
+*** TURN *** [9s 6c Ah][As]
+pkdust bets 0.08€
+GrandGuiGui folds
+pkdust collected 0.22€ from pot
+*** SUMMARY ***
+Total pot 0.22€ | Rake 0.01€
+Board: [9s 6c Ah As]
+Seat 4: pkdust won 0.22€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177405-1549488657 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:30:57 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: athjavi (5.46€)
+Seat 2: BetoBarrio (2€)
+Seat 3: J94NO (2.41€)
+Seat 4: Akeeba (4.17€)
+Seat 5: sabre_laser (1.75€)
+Seat 6: wilbar (1.85€)
+*** ANTE/BLINDS ***
+athjavi posts small blind 0.01€
+BetoBarrio posts big blind 0.02€
+Dealt to sabre_laser [4s 6c]
+*** PRE-FLOP *** 
+J94NO folds
+Akeeba folds
+sabre_laser folds
+wilbar raises 0.04€ to 0.06€
+athjavi calls 0.05€
+BetoBarrio folds
+*** FLOP *** [5h As 2h]
+athjavi checks
+wilbar checks
+*** TURN *** [5h As 2h][Kc]
+athjavi checks
+wilbar checks
+*** RIVER *** [5h As 2h Kc][5s]
+athjavi checks
+wilbar bets 0.07€
+athjavi folds
+wilbar collected 0.20€ from pot
+*** SUMMARY ***
+Total pot 0.20€ | Rake 0.01€
+Board: [5h As 2h Kc 5s]
+Seat 6: wilbar (button) won 0.20€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177402-1549488656 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:30:56 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Set1SansC (2.63€)
+Seat 2: d0six (3.75€)
+Seat 3: sabre_laser (1.75€)
+Seat 4: MaRZaS (4.18€)
+Seat 5: ladelbar (2.47€)
+Seat 6: davidae32 (2.02€)
+*** ANTE/BLINDS ***
+Set1SansC posts small blind 0.01€
+d0six posts big blind 0.02€
+Dealt to sabre_laser [6d 5s]
+*** PRE-FLOP *** 
+sabre_laser folds
+MaRZaS raises 0.04€ to 0.06€
+ladelbar calls 0.06€
+davidae32 folds
+Set1SansC folds
+d0six folds
+*** FLOP *** [8d Jh 4h]
+MaRZaS bets 0.10€
+ladelbar calls 0.10€
+*** TURN *** [8d Jh 4h][5h]
+MaRZaS bets 0.23€
+ladelbar calls 0.23€
+*** RIVER *** [8d Jh 4h 5h][7d]
+MaRZaS checks
+ladelbar bets 0.41€
+MaRZaS folds
+ladelbar collected 1.17€ from pot
+*** SUMMARY ***
+Total pot 1.17€ | Rake 0.05€
+Board: [8d Jh 4h 5h 7d]
+Seat 5: ladelbar won 1.17€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177545-1549488693 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:31:33 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: Go Fist (8.44€)
+Seat 2: sabre_laser (1.75€)
+Seat 3: LeFlow29 (2€)
+Seat 4: Phenix017 (2.61€)
+Seat 5: mfaithfull (2.14€)
+Seat 6: BetoBarrio (2.03€)
+*** ANTE/BLINDS ***
+Go Fist posts small blind 0.01€
+sabre_laser posts big blind 0.02€
+Dealt to sabre_laser [7d Qh]
+*** PRE-FLOP *** 
+LeFlow29 folds
+Phenix017 folds
+mfaithfull raises 0.03€ to 0.05€
+BetoBarrio folds
+Go Fist folds
+sabre_laser folds
+mfaithfull collected 0.08€ from pot
+*** SUMMARY ***
+Total pot 0.08€ | No rake
+Seat 5: mfaithfull won 0.08€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177697-1549488740 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:32:20 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: sabre_laser (1.73€)
+Seat 2: Gilgameshlil (2.14€)
+Seat 3: Adriserg (2.26€)
+Seat 4: 4ritz (2.55€)
+Seat 5: davidae32 (1.99€)
+Seat 6: d0six (3.66€)
+*** ANTE/BLINDS ***
+sabre_laser posts small blind 0.01€
+Gilgameshlil posts big blind 0.02€
+Dealt to sabre_laser [9c 3d]
+*** PRE-FLOP *** 
+Adriserg folds
+4ritz folds
+davidae32 folds
+d0six raises 0.04€ to 0.06€
+sabre_laser folds
+Gilgameshlil folds
+d0six collected 0.09€ from pot
+*** SUMMARY ***
+Total pot 0.09€ | No rake
+Seat 6: d0six (button) won 0.09€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177705-1549488742 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:32:22 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: MitchATP65 (3.04€)
+Seat 2: Mr Shelbi (3.48€)
+Seat 3: MasonJercier (1.28€)
+Seat 4: ProfessorSat (2.78€)
+Seat 5: sabre_laser (1.72€)
+Seat 6: Enricall (1.60€)
+*** ANTE/BLINDS ***
+MitchATP65 posts small blind 0.01€
+Mr Shelbi posts big blind 0.02€
+Dealt to sabre_laser [Ac 4s]
+*** PRE-FLOP *** 
+MasonJercier folds
+ProfessorSat folds
+sabre_laser folds
+Enricall raises 0.06€ to 0.08€
+MitchATP65 folds
+Mr Shelbi folds
+Enricall collected 0.11€ from pot
+*** SUMMARY ***
+Total pot 0.11€ | No rake
+Seat 6: Enricall (button) won 0.11€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177712-1549488744 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:32:24 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: POKSAVARY (2.52€)
+Seat 2: Phenix017 (2.66€)
+Seat 3: sabre_laser (1.72€)
+Seat 4: MasonJercier (1.28€)
+Seat 5: assemaxou (3.45€)
+Seat 6: pkdust (1.70€)
+*** ANTE/BLINDS ***
+POKSAVARY posts small blind 0.01€
+Phenix017 posts big blind 0.02€
+Dealt to sabre_laser [5s 3d]
+*** PRE-FLOP *** 
+sabre_laser folds
+MasonJercier folds
+assemaxou calls 0.02€
+pkdust folds
+POKSAVARY folds
+Phenix017 checks
+*** FLOP *** [3s Jh As]
+Phenix017 checks
+assemaxou checks
+*** TURN *** [3s Jh As][4s]
+Phenix017 checks
+assemaxou checks
+*** RIVER *** [3s Jh As 4s][7c]
+Phenix017 bets 0.03€
+assemaxou folds
+Phenix017 collected 0.08€ from pot
+*** SUMMARY ***
+Total pot 0.08€ | No rake
+Board: [3s Jh As 4s 7c]
+Seat 2: Phenix017 (big blind) won 0.08€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177701-1549488741 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:32:21 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: ladelbar (2.84€)
+Seat 2: prth (3.88€)
+Seat 3: Aleko-Goghy (2€)
+Seat 4: sabre_laser (1.72€)
+Seat 5: chat-pitre (2.52€)
+Seat 6: ProfessorSat (2.78€)
+*** ANTE/BLINDS ***
+ladelbar posts small blind 0.01€
+prth posts big blind 0.02€
+Dealt to sabre_laser [3s 6s]
+*** PRE-FLOP *** 
+Aleko-Goghy raises 0.03€ to 0.05€
+sabre_laser folds
+chat-pitre folds
+ProfessorSat folds
+ladelbar folds
+prth calls 0.03€
+*** FLOP *** [9d 9h Th]
+prth checks
+Aleko-Goghy checks
+*** TURN *** [9d 9h Th][5h]
+prth checks
+Aleko-Goghy checks
+*** RIVER *** [9d 9h Th 5h][Jc]
+prth bets 0.06€
+Aleko-Goghy folds
+prth collected 0.16€ from pot
+*** SUMMARY ***
+Total pot 0.16€ | Rake 0.01€
+Board: [9d 9h Th 5h Jc]
+Seat 2: prth (big blind) won 0.16€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177715-1549488745 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:32:25 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: kamanohahai (0.53€)
+Seat 2: sabre_laser (1.72€)
+Seat 3: Akeeba (2.17€)
+Seat 4: gumers (2.03€)
+Seat 5: ProfessorSat (2.78€)
+Seat 6: GarcilasoAA (2.03€)
+*** ANTE/BLINDS ***
+kamanohahai posts small blind 0.01€
+sabre_laser posts big blind 0.02€
+Dealt to sabre_laser [Qh 7h]
+*** PRE-FLOP *** 
+Akeeba folds
+gumers folds
+ProfessorSat folds
+GarcilasoAA raises 0.03€ to 0.05€
+kamanohahai folds
+sabre_laser calls 0.03€
+*** FLOP *** [7s Qd 7d]
+sabre_laser checks
+GarcilasoAA checks
+*** TURN *** [7s Qd 7d][2h]
+sabre_laser checks
+GarcilasoAA checks
+*** RIVER *** [7s Qd 7d 2h][As]
+sabre_laser bets 0.11€
+GarcilasoAA folds
+sabre_laser collected 0.21€ from pot
+*** SUMMARY ***
+Total pot 0.21€ | Rake 0.01€
+Board: [7s Qd 7d 2h As]
+Seat 2: sabre_laser (big blind) won 0.21€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177862-1549488788 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:33:08 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: sabre_laser (1.77€)
+Seat 2: Breaking-bet (2€)
+Seat 3: Omnipouet (2.27€)
+Seat 4: Set1SansC (2.31€)
+Seat 5: 4-Knox (6.11€)
+Seat 6: miguelpujant (2.03€)
+*** ANTE/BLINDS ***
+sabre_laser posts small blind 0.01€
+Breaking-bet posts big blind 0.02€
+Dealt to sabre_laser [6c Jh]
+*** PRE-FLOP *** 
+Omnipouet folds
+Set1SansC folds
+4-Knox folds
+miguelpujant folds
+sabre_laser folds
+Breaking-bet collected 0.03€ from pot
+*** SUMMARY ***
+Total pot 0.03€ | No rake
+Seat 2: Breaking-bet (big blind) won 0.03€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4177867-1549488789 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:33:09 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: curlito (4.14€)
+Seat 2: pasglop-glop (0.52€)
+Seat 3: _Sale-Bet_ (3.13€)
+Seat 4: sabre_laser (1.76€)
+Seat 5: Mr Shelbi (2.48€)
+Seat 6: Set1SansC (2.31€)
+*** ANTE/BLINDS ***
+curlito posts small blind 0.01€
+pasglop-glop posts big blind 0.02€
+Dealt to sabre_laser [8s 8c]
+*** PRE-FLOP *** 
+_Sale-Bet_ folds
+sabre_laser calls 0.02€
+Mr Shelbi folds
+Set1SansC folds
+curlito calls 0.01€
+pasglop-glop checks
+*** FLOP *** [5d 6c Th]
+curlito checks
+pasglop-glop checks
+sabre_laser bets 0.06€
+curlito folds
+pasglop-glop folds
+sabre_laser collected 0.12€ from pot
+*** SUMMARY ***
+Total pot 0.12€ | No rake
+Board: [5d 6c Th]
+Seat 4: sabre_laser won 0.12€
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4178015-1549488830 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:33:50 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: aRaMinet (4.71€)
+Seat 2: PTITEGATERIE (6.70€)
+Seat 3: ProfessorSat (2.79€)
+Seat 4: Alexvienne (1.56€)
+Seat 5: chat-pitre (2.37€)
+Seat 6: sabre_laser (1.80€)
+*** ANTE/BLINDS ***
+aRaMinet posts small blind 0.01€
+PTITEGATERIE posts big blind 0.02€
+Dealt to sabre_laser [Js Jh]
+*** PRE-FLOP *** 
+ProfessorSat folds
+Alexvienne raises 0.02€ to 0.04€
+chat-pitre folds
+sabre_laser raises 0.12€ to 0.16€
+aRaMinet folds
+PTITEGATERIE folds
+Alexvienne raises 1.40€ to 1.56€ and is all-in
+sabre_laser calls 1.40€
+*** FLOP *** [5c 2h Qh]
+*** TURN *** [5c 2h Qh][6h]
+*** RIVER *** [5c 2h Qh 6h][7h]
+*** SHOW DOWN ***
+Alexvienne shows [As Qs] (One pair : Queens)
+sabre_laser shows [Js Jh] (Flush Queen high)
+sabre_laser collected 2.97€ from pot
+*** SUMMARY ***
+Total pot 2.97€ | Rake 0.18€
+Board: [5c 2h Qh 6h 7h]
+Seat 4: Alexvienne showed [As Qs] and lost with One pair : Queens
+Seat 6: sabre_laser (button) showed [Js Jh] and won 2.97€ with Flush Queen high
+
+
+Winamax Poker - Go Fast "Colorado" - HandId: #12266668-4178008-1549488828 - Holdem no limit (0.01€/0.02€) - 2019/02/06 21:33:48 UTC
+Table: 'Colorado' 6-max (real money) Seat #6 is the button
+Seat 1: ghosgaslou (4.98€)
+Seat 2: HusKKy (3.64€)
+Seat 3: gatsby_22 (4.02€)
+Seat 4: sabre_laser (1.80€)
+Seat 5: Enricall (1.66€)
+Seat 6: Assuna (2.12€)
+*** ANTE/BLINDS ***
+ghosgaslou posts small blind 0.01€
+HusKKy posts big blind 0.02€
+Dealt to sabre_laser [Jh 6c]
+*** PRE-FLOP *** 
+gatsby_22 folds
+sabre_laser folds
+Enricall raises 0.08€ to 0.10€
+Assuna calls 0.10€
+ghosgaslou folds
+HusKKy folds
+*** FLOP *** [Ah Kh Kc]
+Enricall checks
+Assuna checks
+*** TURN *** [Ah Kh Kc][7d]
+Enricall checks
+Assuna checks
+*** RIVER *** [Ah Kh Kc 7d][4h]
+Enricall bets 0.12€
+Assuna folds
+Enricall collected 0.34€ from pot
+*** SUMMARY ***
+Total pot 0.34€ | Rake 0.01€
+Board: [Ah Kh Kc 7d 4h]
+Seat 5: Enricall won 0.34€
+
+
