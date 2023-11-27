@@ -104,7 +104,7 @@ void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self) {
 }
 
 [[nodiscard]] std::unique_ptr<Fl_Box> toCardBox(Card card) {
-  auto imageFilename { cards::getImageFile(card) };
+  auto imageFilename { cardImages::getImageFile(card) };
   auto image { loadImage(imageFilename) };
   auto box { std::make_unique<Fl_Box>(0, 0, image->w(), image->h()) };
   box->image(image.release());
@@ -161,10 +161,15 @@ void drawPlayButtonBar(const Point& wh) {
 void drawCards(const Point& wh, const Hand& hand, std::string_view hero) {
   const auto& seatPlayers { hand.getSeats() };
 
-  for (size_t seatIndex : {0u, 1u, 2u, 3u, 4u, 5u, 6u, 7u, 8u, 9u}) {
-    if (const auto & player { seatPlayers.get(seatIndex) }; !player.empty()) {
+  for (Seat seat : {
+         Seat::seatOne, Seat::seatTwo, Seat::seatThree, Seat::seatFour, Seat::seatFive, Seat::seatSix,
+         Seat::seatSeven,
+         Seat::seatEight, Seat::seatNine, Seat::seatTen
+       }) {
+    if (const auto & entry { seatPlayers.find(seat) }; entry != seatPlayers.end()) {
+      const auto& player { entry->second };
       const auto [card1, card2] { getCards(player, hand, hero) };
-      const auto [card1X, card1Y] { getCardsPosition(wh, tableSeat::fromArrayIndex(seatIndex), hand.getMaxSeats()) };
+      const auto [card1X, card1Y] { getCardsPosition(wh, seat, hand.getMaxSeats()) };
       auto box1 = toCardBox(card1).release();
       box1->position(card1X, card1Y);
       auto box2 = toCardBox(card2).release();

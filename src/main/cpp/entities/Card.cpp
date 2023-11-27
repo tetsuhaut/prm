@@ -66,77 +66,77 @@ export enum class /*[[nodiscard]]*/ Card : short {
 // Note : must use frozen::string when it is a map key.
 // frozen::string can be created from std::string_view.
 
-export namespace cards {
-[[nodiscard]] std::string_view toString(Card c);
-[[nodiscard]] Card toCard(std::string_view strCard);
-[[nodiscard]] std::string_view getImageFile(Card card);
+export [[nodiscard]] std::string_view toString(Card c);
+export [[nodiscard]] Card toCard(std::string_view strCard);
+export namespace cardImages {
+std::string_view getImageFile(Card card);
 } // namespace cardImages
 
 module : private;
 
-std::string_view cards::getImageFile(Card card) {
+constexpr auto CARD_TO_IMAGE =
+frozen::make_unordered_map<Card, std::string_view>( {
+  {Card::aceClub,      IMAGES_DIR "aceClub.gif"},
+  {Card::twoClub,      IMAGES_DIR "twoClub.gif"},
+  {Card::threeClub,    IMAGES_DIR "threeClub.gif"},
+  {Card::fourClub,     IMAGES_DIR "fourClub.gif"},
+  {Card::fiveClub,     IMAGES_DIR "fiveClub.gif"},
+  {Card::sixClub,      IMAGES_DIR "sixClub.gif"},
+  {Card::sevenClub,    IMAGES_DIR "sevenClub.gif"},
+  {Card::eightClub,    IMAGES_DIR "eightClub.gif"},
+  {Card::nineClub,     IMAGES_DIR "nineClub.gif"},
+  {Card::tenClub,      IMAGES_DIR "tenClub.gif"},
+  {Card::jackClub,     IMAGES_DIR "jackClub.gif"},
+  {Card::queenClub,    IMAGES_DIR "queenClub.gif"},
+  {Card::kingClub,     IMAGES_DIR "kingClub.gif"},
+  {Card::aceHeart,     IMAGES_DIR "aceDiamond.gif"},
+  {Card::twoHeart,     IMAGES_DIR "twoDiamond.gif"},
+  {Card::threeHeart,   IMAGES_DIR "threeDiamond.gif"},
+  {Card::fourHeart,    IMAGES_DIR "fourDiamond.gif"},
+  {Card::fiveHeart,    IMAGES_DIR "fiveDiamond.gif"},
+  {Card::sixHeart,     IMAGES_DIR "sixDiamond.gif"},
+  {Card::sevenHeart,   IMAGES_DIR "sevenDiamond.gif"},
+  {Card::eightHeart,   IMAGES_DIR "eightDiamond.gif"},
+  {Card::nineHeart,    IMAGES_DIR "nineDiamond.gif"},
+  {Card::tenHeart,     IMAGES_DIR "tenDiamond.gif"},
+  {Card::jackHeart,    IMAGES_DIR "jackDiamond.gif"},
+  {Card::queenHeart,   IMAGES_DIR "queenDiamond.gif"},
+  {Card::kingHeart,    IMAGES_DIR "kingDiamond.gif"},
+  {Card::aceDiamond,   IMAGES_DIR "aceHeart.gif"},
+  {Card::twoDiamond,   IMAGES_DIR "twoHeart.gif"},
+  {Card::threeDiamond, IMAGES_DIR "threeHeart.gif"},
+  {Card::fourDiamond,  IMAGES_DIR "fourHeart.gif"},
+  {Card::fiveDiamond,  IMAGES_DIR "fiveHeart.gif"},
+  {Card::sixDiamond,   IMAGES_DIR "sixHeart.gif"},
+  {Card::sevenDiamond, IMAGES_DIR "sevenHeart.gif"},
+  {Card::eightDiamond, IMAGES_DIR "eightHeart.gif"},
+  {Card::nineDiamond,  IMAGES_DIR "nineHeart.gif"},
+  {Card::tenDiamond,   IMAGES_DIR "tenHeart.gif"},
+  {Card::jackDiamond,  IMAGES_DIR "jackHeart.gif"},
+  {Card::queenDiamond, IMAGES_DIR "queenHeart.gif"},
+  {Card::kingDiamond,  IMAGES_DIR "kingHeart.gif"},
+  {Card::aceSpade,     IMAGES_DIR "aceSpade.gif"},
+  {Card::twoSpade,     IMAGES_DIR "twoSpade.gif"},
+  {Card::threeSpade,   IMAGES_DIR "threeSpade.gif"},
+  {Card::fourSpade,    IMAGES_DIR "fourSpade.gif"},
+  {Card::fiveSpade,    IMAGES_DIR "fiveSpade.gif"},
+  {Card::sixSpade,     IMAGES_DIR "sixSpade.gif"},
+  {Card::sevenSpade,   IMAGES_DIR "sevenSpade.gif"},
+  {Card::eightSpade,   IMAGES_DIR "eightSpade.gif"},
+  {Card::nineSpade,    IMAGES_DIR "nineSpade.gif"},
+  {Card::tenSpade,     IMAGES_DIR "tenSpade.gif"},
+  {Card::jackSpade,    IMAGES_DIR "jackSpade.gif"},
+  {Card::queenSpade,   IMAGES_DIR "queenSpade.gif"},
+  {Card::kingSpade,    IMAGES_DIR "kingSpade.gif"},
+  {Card::back,         IMAGES_DIR "back.gif"},
+});
+
+std::string_view cardImages::getImageFile(Card card) {
   assert(card != Card::none);
-  static constexpr auto CARD_TO_IMAGE {
-    frozen::make_unordered_map<Card, std::string_view>({
-      {Card::aceClub,      IMAGES_DIR "aceClub.gif"},
-      {Card::twoClub,      IMAGES_DIR "twoClub.gif"},
-      {Card::threeClub,    IMAGES_DIR "threeClub.gif"},
-      {Card::fourClub,     IMAGES_DIR "fourClub.gif"},
-      {Card::fiveClub,     IMAGES_DIR "fiveClub.gif"},
-      {Card::sixClub,      IMAGES_DIR "sixClub.gif"},
-      {Card::sevenClub,    IMAGES_DIR "sevenClub.gif"},
-      {Card::eightClub,    IMAGES_DIR "eightClub.gif"},
-      {Card::nineClub,     IMAGES_DIR "nineClub.gif"},
-      {Card::tenClub,      IMAGES_DIR "tenClub.gif"},
-      {Card::jackClub,     IMAGES_DIR "jackClub.gif"},
-      {Card::queenClub,    IMAGES_DIR "queenClub.gif"},
-      {Card::kingClub,     IMAGES_DIR "kingClub.gif"},
-      {Card::aceHeart,     IMAGES_DIR "aceDiamond.gif"},
-      {Card::twoHeart,     IMAGES_DIR "twoDiamond.gif"},
-      {Card::threeHeart,   IMAGES_DIR "threeDiamond.gif"},
-      {Card::fourHeart,    IMAGES_DIR "fourDiamond.gif"},
-      {Card::fiveHeart,    IMAGES_DIR "fiveDiamond.gif"},
-      {Card::sixHeart,     IMAGES_DIR "sixDiamond.gif"},
-      {Card::sevenHeart,   IMAGES_DIR "sevenDiamond.gif"},
-      {Card::eightHeart,   IMAGES_DIR "eightDiamond.gif"},
-      {Card::nineHeart,    IMAGES_DIR "nineDiamond.gif"},
-      {Card::tenHeart,     IMAGES_DIR "tenDiamond.gif"},
-      {Card::jackHeart,    IMAGES_DIR "jackDiamond.gif"},
-      {Card::queenHeart,   IMAGES_DIR "queenDiamond.gif"},
-      {Card::kingHeart,    IMAGES_DIR "kingDiamond.gif"},
-      {Card::aceDiamond,   IMAGES_DIR "aceHeart.gif"},
-      {Card::twoDiamond,   IMAGES_DIR "twoHeart.gif"},
-      {Card::threeDiamond, IMAGES_DIR "threeHeart.gif"},
-      {Card::fourDiamond,  IMAGES_DIR "fourHeart.gif"},
-      {Card::fiveDiamond,  IMAGES_DIR "fiveHeart.gif"},
-      {Card::sixDiamond,   IMAGES_DIR "sixHeart.gif"},
-      {Card::sevenDiamond, IMAGES_DIR "sevenHeart.gif"},
-      {Card::eightDiamond, IMAGES_DIR "eightHeart.gif"},
-      {Card::nineDiamond,  IMAGES_DIR "nineHeart.gif"},
-      {Card::tenDiamond,   IMAGES_DIR "tenHeart.gif"},
-      {Card::jackDiamond,  IMAGES_DIR "jackHeart.gif"},
-      {Card::queenDiamond, IMAGES_DIR "queenHeart.gif"},
-      {Card::kingDiamond,  IMAGES_DIR "kingHeart.gif"},
-      {Card::aceSpade,     IMAGES_DIR "aceSpade.gif"},
-      {Card::twoSpade,     IMAGES_DIR "twoSpade.gif"},
-      {Card::threeSpade,   IMAGES_DIR "threeSpade.gif"},
-      {Card::fourSpade,    IMAGES_DIR "fourSpade.gif"},
-      {Card::fiveSpade,    IMAGES_DIR "fiveSpade.gif"},
-      {Card::sixSpade,     IMAGES_DIR "sixSpade.gif"},
-      {Card::sevenSpade,   IMAGES_DIR "sevenSpade.gif"},
-      {Card::eightSpade,   IMAGES_DIR "eightSpade.gif"},
-      {Card::nineSpade,    IMAGES_DIR "nineSpade.gif"},
-      {Card::tenSpade,     IMAGES_DIR "tenSpade.gif"},
-      {Card::jackSpade,    IMAGES_DIR "jackSpade.gif"},
-      {Card::queenSpade,   IMAGES_DIR "queenSpade.gif"},
-      {Card::kingSpade,    IMAGES_DIR "kingSpade.gif"},
-      {Card::back,         IMAGES_DIR "back.gif"},
-      })
-  };
   return CARD_TO_IMAGE.find(card)->second;
 }
 
-std::string_view cards::toString(Card c) {
+std::string_view toString(Card c) {
   static constexpr auto ENUM_TO_STRING {
     frozen::make_unordered_map<Card, std::string_view>({
       { Card::none, "none" }, { Card::twoSpade, "2s" }, { Card::threeSpade, "3s" },
@@ -170,7 +170,7 @@ std::string_view cards::toString(Card c) {
   return ENUM_TO_STRING.find(c)->second;
 }
 
-Card cards::toCard(std::string_view strCard) {
+Card toCard(std::string_view strCard) {
   static constexpr auto STRING_TO_ENUM {
     frozen::make_unordered_map<frozen::string, Card>({
       { "none", Card::none }, { "2s", Card::twoSpade }, { "3s", Card::threeSpade },
