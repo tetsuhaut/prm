@@ -32,7 +32,6 @@ import entities.Game;
 import entities.Player;
 import entities.Site;
 import history.WinamaxGameHistory;
-//import language.limits;
 import language.strings;
 import system.filesystem;
 
