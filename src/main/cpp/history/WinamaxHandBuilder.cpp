@@ -424,8 +424,7 @@ std::unique_ptr<Hand> WinamaxHandBuilder::buildTournamentHand(TextFile& tf, Play
   return getHand<GameType::tournament>(tf, pc, level, date, handId);
 }
 
-std::pair<std::unique_ptr<Hand>, std::unique_ptr<GameData>>
-    WinamaxHandBuilder::buildCashgameHandAndGameData(
+std::pair<std::unique_ptr<Hand>, std::unique_ptr<GameData>> WinamaxHandBuilder::buildCashgameHandAndGameData(
       TextFile& tf,
 PlayerCache& pc) {
   std::cout << std::format("Building Cashgame and game data from history file {}.\n",
@@ -435,8 +434,7 @@ PlayerCache& pc) {
   return { std::move(pHand), std::make_unique<GameData>(GameData::Args{.nbMaxSeats = pHand->getMaxSeats(), .smallBlind = smallBlind, .bigBlind = bigBlind, .buyIn = 0, .startDate = pHand->getStartDate() }) };
 }
 
-std::pair<std::unique_ptr<Hand>, std::unique_ptr<GameData>>
-    WinamaxHandBuilder::buildTournamentHandAndGameData(
+std::pair<std::unique_ptr<Hand>, std::unique_ptr<GameData>> WinamaxHandBuilder::buildTournamentHandAndGameData(
       TextFile& tf,
 PlayerCache& pc) {
   std::cout << std::format("Building Tournament and game data from history file {}.\n",

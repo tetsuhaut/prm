@@ -82,8 +82,10 @@ void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self) {
   return ret;
 }
 
-[[nodiscard]] std::unique_ptr<Fl_GIF_Image> loadImage(std::string_view imageName) {
-  auto image { std::make_unique<Fl_GIF_Image>(imageName.data()) };
+[[nodiscard]] std::unique_ptr<Fl_GIF_Image> loadImage(std::string_view imageName,
+    std::tuple<unsigned char*, unsigned int> imageData) {
+  auto [data, size] {imageData};
+  auto image { std::make_unique<Fl_GIF_Image>(imageName.data(), data, size)};
 
   switch (image->fail()) {
     case Fl_Image::ERR_NO_IMAGE:
@@ -104,8 +106,7 @@ void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self) {
 }
 
 [[nodiscard]] std::unique_ptr<Fl_Box> toCardBox(Card card) {
-  auto imageFilename { cardImages::getImageFile(card) };
-  auto image { loadImage(imageFilename) };
+  auto image { loadImage(toString(card), cardImages::getImage(card))};
   auto box { std::make_unique<Fl_Box>(0, 0, image->w(), image->h()) };
   box->image(image.release());
   return box;
