@@ -68,6 +68,9 @@ target_compile_definitions(prm PUBLIC IMAGES_DIR="${EXECUTABLE_OUTPUT_PATH}/reso
 # library configurations
 ################################################################################
 
+# be ready to download
+include(FetchContent)
+
 ################################################################################
 # will use the FLTK libraries, so configure the project for it
 # need to have FLTK_DIR as an environment variable pointing to the dir where
@@ -80,9 +83,19 @@ set(FLTK_SKIP_FORMS true)
 set(FLTK_SKIP_FLUID true)
 set(FLTK_SKIP_IMAGES false) # use the fltk_images library
 set(FLTK_SKIP_OPENGL true)
-find_package(FLTK REQUIRED) # dunno how to provide version
-target_include_directories(prm PRIVATE ${FLTK_INCLUDE_DIRS})
-target_link_libraries(prm PRIVATE ${FLTK_LIBRARIES})
+set(FLTK_BUILD_TEST OFF CACHE BOOL " " FORCE)
+MESSAGE("Looking for FLTK.")
+find_package(FLTK) # dunno how to provide version
+if (NOT ${FLTK_FOUND})
+  MESSAGE(STATUS "Getting FLTK")
+  FetchContent_Declare(FLTK
+    GIT_REPOSITORY https://github.com/fltk/fltk
+    GIT_TAG release-1.3.9)
+  FetchContent_MakeAvailable(FLTK)
+else (NOT ${FLTK_FOUND})
+  target_include_directories(prm PRIVATE ${FLTK_INCLUDE_DIRS})
+  target_link_libraries(prm PRIVATE ${FLTK_LIBRARIES})
+endif (NOT ${FLTK_FOUND})
 
 ################################################################################
 # will use the frozen library https://github.com/serge-sans-paille/frozen, so
@@ -90,8 +103,16 @@ target_link_libraries(prm PRIVATE ${FLTK_LIBRARIES})
 # need to have frozen_DIR as an environment variable pointing to the dir where
 # the library has been installed
 ################################################################################
-find_package(frozen 1.1.0 REQUIRED)
-target_link_libraries(prm PRIVATE frozen::frozen-headers)
+find_package(frozen 1.1.1)
+if (NOT ${frozen_FOUND})
+  MESSAGE(STATUS "Getting frozen")
+  FetchContent_Declare(frozen
+    GIT_REPOSITORY https://github.com/serge-sans-paille/frozen
+    GIT_TAG 1.1.1)
+  FetchContent_MakeAvailable(frozen)
+else (NOT ${frozen_FOUND})
+  target_link_libraries(prm PRIVATE frozen::frozen-headers)
+endif (NOT ${frozen_FOUND})
 
 ################################################################################
 # will use the GSL library https://github.com/Microsoft/GSL, so configure the
@@ -99,8 +120,16 @@ target_link_libraries(prm PRIVATE frozen::frozen-headers)
 # need to have Microsoft.GSL_DIR as an environment variable pointing to the dir
 # where the library has been installed
 ################################################################################
-find_package(Microsoft.GSL CONFIG REQUIRED)
-target_link_libraries(prm PRIVATE Microsoft.GSL::GSL)
+find_package(Microsoft.GSL CONFIG)
+if (NOT ${Microsoft.GSL_FOUND})
+  MESSAGE(STATUS "Getting Microsoft.GSL")
+  FetchContent_Declare(Microsoft.GSL
+    GIT_REPOSITORY https://github.com/Microsoft/GSL
+    GIT_TAG  v4.0.0 )
+  FetchContent_MakeAvailable(Microsoft.GSL)
+else (NOT ${Microsoft.GSL_FOUND})
+  target_link_libraries(prm PRIVATE Microsoft.GSL::GSL)
+endif (NOT ${Microsoft.GSL_FOUND})
 
 ################################################################################
 # will use the stlab library https://github.com/stlab/libraries, so configure
@@ -109,8 +138,16 @@ target_link_libraries(prm PRIVATE Microsoft.GSL::GSL)
 # the library has been installed
 # 
 ################################################################################
-find_package(stlab 1.7.1 REQUIRED)
-target_link_libraries(prm PRIVATE stlab::stlab)
+#find_package(stlab 1.7.1)
+#if (NOT ${stlab_FOUND})
+#  MESSAGE(STATUS "Getting stlab")
+#  FetchContent_Declare(stlab
+#    GIT_REPOSITORY https://github.com/stlab/libraries
+#    GIT_TAG  v1.7.1 )
+#  FetchContent_MakeAvailable(stlab)
+#else (NOT ${stlab_FOUND})
+#  target_link_libraries(prm PRIVATE stlab::stlab)
+#endif (NOT ${stlab_FOUND})
 
 ################################################################################
 # compiler configurations

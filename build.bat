@@ -21,7 +21,9 @@ IF NOT EXIST %SCRIPTS_DIR%\timecmd.bat ECHO the script 'timecmd.bat' could not b
 IF EXIST %BUILD_DIR% (RMDIR /Q /S %BUILD_DIR%)
 MKDIR %BUILD_DIR%
 PUSHD %BUILD_DIR%
+@ECHO ON
 cmake -G %CMAKE_GENERATOR% %~dp0
+@ECHO OFF
 POPD
 ECHO ^pushd %CD% ^&^& ^format ^&^& ^popd > %BUILD_DIR%\format.bat
 ECHO ^color ^&^& ^cls ^&^& ^%BIN_DIR%\unitTests.exe %%* > %BUILD_DIR%\test.bat
