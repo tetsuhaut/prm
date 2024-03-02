@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.26)
+cmake_minimum_required(VERSION 3.28)
 
 # project name, version and language
 project("Poker Reviewer Modulaire" VERSION 0.0.1 LANGUAGES CXX)
@@ -11,11 +11,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED 23)
 
 # no language extension to be as portable as possible
 set(CMAKE_CXX_EXTENSIONS OFF)
-
-# experimental use of C++ 20 modules
-# need to update at each new CMake version
-# see https://github.com/Kitware/CMake/blob/v<current cmake version>/Help/dev/experimental.rst
-set(CMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API "aa1f7df0-828a-4fcd-9afc-2dc80491aca7")
 
 # uncomment in case we want to know where CMake is looking for packages
 #set(CMAKE_FIND_DEBUG_MODE 1)
@@ -55,7 +50,7 @@ target_sources(prm
 )
 target_sources(prm
   PUBLIC
-    FILE_SET all_my_modules TYPE CXX_MODULES FILES
+    FILE_SET CXX_MODULES FILES
     ${sourceFiles}
 )
 
@@ -103,13 +98,14 @@ endif (NOT ${FLTK_FOUND})
 # need to have frozen_DIR as an environment variable pointing to the dir where
 # the library has been installed
 ################################################################################
-find_package(frozen 1.1.1)
+find_package(frozen 1.1.0)
 if (NOT ${frozen_FOUND})
   MESSAGE(STATUS "Getting frozen")
   FetchContent_Declare(frozen
     GIT_REPOSITORY https://github.com/serge-sans-paille/frozen
-    GIT_TAG 1.1.1)
+    GIT_TAG 1.1.1) # yep, the CMake version is different from the tag
   FetchContent_MakeAvailable(frozen)
+  list(APPEND CMAKE_MODULE_PATH ${frozen_BUILD_DIR}/contrib)
 else (NOT ${frozen_FOUND})
   target_link_libraries(prm PRIVATE frozen::frozen-headers)
 endif (NOT ${frozen_FOUND})
@@ -138,16 +134,16 @@ endif (NOT ${Microsoft.GSL_FOUND})
 # the library has been installed
 # 
 ################################################################################
-#find_package(stlab 1.7.1)
-#if (NOT ${stlab_FOUND})
-#  MESSAGE(STATUS "Getting stlab")
-#  FetchContent_Declare(stlab
-#    GIT_REPOSITORY https://github.com/stlab/libraries
-#    GIT_TAG  v1.7.1 )
-#  FetchContent_MakeAvailable(stlab)
-#else (NOT ${stlab_FOUND})
-#  target_link_libraries(prm PRIVATE stlab::stlab)
-#endif (NOT ${stlab_FOUND})
+find_package(stlab 1.7.1)
+if (NOT ${stlab_FOUND})
+  MESSAGE(STATUS "Getting stlab")
+  FetchContent_Declare(stlab
+    GIT_REPOSITORY https://github.com/stlab/libraries
+    GIT_TAG  v1.7.1 )
+  FetchContent_MakeAvailable(stlab)
+else (NOT ${stlab_FOUND})
+  target_link_libraries(prm PRIVATE stlab::stlab)
+endif (NOT ${stlab_FOUND})
 
 ################################################################################
 # compiler configurations
