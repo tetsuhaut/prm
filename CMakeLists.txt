@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.26)
+cmake_minimum_required(VERSION 3.28)
 
 # project name, version and language
 project("Poker Reviewer Modulaire" VERSION 0.0.1 LANGUAGES CXX)
@@ -11,11 +11,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED 23)
 
 # no language extension to be as portable as possible
 set(CMAKE_CXX_EXTENSIONS OFF)
-
-# experimental use of C++ 20 modules
-# need to update at each new CMake version
-# see https://github.com/Kitware/CMake/blob/v<current cmake version>/Help/dev/experimental.rst
-set(CMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API "aa1f7df0-828a-4fcd-9afc-2dc80491aca7")
 
 # uncomment in case we want to know where CMake is looking for packages
 #set(CMAKE_FIND_DEBUG_MODE 1)
@@ -55,7 +50,7 @@ target_sources(prm
 )
 target_sources(prm
   PUBLIC
-    FILE_SET all_my_modules TYPE CXX_MODULES FILES
+    FILE_SET CXX_MODULES FILES
     ${sourceFiles}
 )
 
