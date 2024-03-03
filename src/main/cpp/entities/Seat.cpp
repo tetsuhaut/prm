@@ -1,11 +1,11 @@
 module;
 
-#include <frozen/string.h>
-#include <frozen/unordered_map.h>
 #include <cassert>
 #include <string_view>
 
 export module entities.Seat;
+
+import language.Map;
 
 export enum class /*[[nodiscard]]*/ Seat : short {
   seatOne, seatTwo, seatThree, seatFour, seatFive, seatSix, seatSeven,
@@ -46,69 +46,54 @@ export namespace tableSeat {
 
 module : private;
 
-// Note : must use frozen::string when it is a map key.
-// frozen::string can be created from std::string_view.
-
 /*[[nodiscard]]*/ Seat tableSeat::fromString(std::string_view seatStr) {
   assert("1" == seatStr or "2" == seatStr or "3" == seatStr or "4" == seatStr or "5" == seatStr
          or "6" == seatStr or "7" == seatStr or "8" == seatStr or "9" == seatStr or "10" == seatStr);
-  static constexpr auto STRING_TO_ENUM {
-    frozen::make_unordered_map<frozen::string, Seat>({
-      {"1", Seat::seatOne}, {"2", Seat::seatTwo}, {"3", Seat::seatThree}, {"4", Seat::seatFour}, {"5", Seat::seatFive},
-      {"6", Seat::seatSix}, {"7", Seat::seatSeven}, {"8", Seat::seatEight}, {"9", Seat::seatNine}, {"10", Seat::seatTen}
-    })
-  };
-  return STRING_TO_ENUM.find(seatStr)->second;
+  static constexpr auto STRING_TO_ENUM = language::Map<std::string_view, Seat, 10> {{{
+    {"1", Seat::seatOne}, {"2", Seat::seatTwo}, {"3", Seat::seatThree}, {"4", Seat::seatFour}, {"5", Seat::seatFive},
+    {"6", Seat::seatSix}, {"7", Seat::seatSeven}, {"8", Seat::seatEight}, {"9", Seat::seatNine}, {"10", Seat::seatTen}
+  }}};
+  return STRING_TO_ENUM.at(seatStr);
 }
 
 /*[[nodiscard]]*/ Seat tableSeat::fromArrayIndex(std::size_t i) {
   assert(10 > i && "Can't find a seat for that value");
-  static constexpr auto SIZET_TO_ENUM {
-    frozen::make_unordered_map<std::size_t, Seat>({
-      {1, Seat::seatOne}, {2, Seat::seatTwo}, {3, Seat::seatThree}, {4, Seat::seatFour}, {5, Seat::seatFive},
-      {6, Seat::seatSix}, {7, Seat::seatSeven}, {8, Seat::seatEight}, {9, Seat::seatNine}, {10, Seat::seatTen}
-    })
-  };
-  return SIZET_TO_ENUM.find(i + 1)->second;
+  static constexpr auto SIZET_TO_ENUM = language::Map<std::size_t, Seat, 10> {{{
+    {1, Seat::seatOne}, {2, Seat::seatTwo}, {3, Seat::seatThree}, {4, Seat::seatFour}, {5, Seat::seatFive},
+    {6, Seat::seatSix}, {7, Seat::seatSeven}, {8, Seat::seatEight}, {9, Seat::seatNine}, {10, Seat::seatTen}
+  }}};
+  return SIZET_TO_ENUM.at(i + 1);
 }
 
 /*[[nodiscard]]*/ std::size_t tableSeat::toArrayIndex(Seat seat) {
-  static constexpr auto ENUM_TO_SIZET {
-    frozen::make_unordered_map<Seat, std::size_t>({
-      {Seat::seatOne, 1}, {Seat::seatTwo, 2}, {Seat::seatThree, 3}, {Seat::seatFour, 4}, {Seat::seatFive, 5},
-      {Seat::seatSix, 6}, {Seat::seatSeven, 7}, {Seat::seatEight, 8}, {Seat::seatNine, 9}, {Seat::seatTen, 10}
-    })
-  };
-  return ENUM_TO_SIZET.find(seat)->second - 1;
+  static constexpr auto ENUM_TO_SIZET = language::Map<Seat, std::size_t, 10> {{{
+    {Seat::seatOne, 1}, {Seat::seatTwo, 2}, {Seat::seatThree, 3}, {Seat::seatFour, 4}, {Seat::seatFive, 5},
+    {Seat::seatSix, 6}, {Seat::seatSeven, 7}, {Seat::seatEight, 8}, {Seat::seatNine, 9}, {Seat::seatTen, 10}
+  }}};
+  return ENUM_TO_SIZET.at(seat) - 1;
 }
 
 /*[[nodiscard]]*/ std::string_view tableSeat::toString(Seat seat) {
-  static constexpr auto ENUM_TO_STRING {
-    frozen::make_unordered_map<Seat, std::string_view>({
-      {Seat::seatOne, "1"}, {Seat::seatTwo, "2"}, {Seat::seatThree, "3"}, {Seat::seatFour, "4"}, {Seat::seatFive, "5"},
-      {Seat::seatSix, "6"}, {Seat::seatSeven, "7"}, {Seat::seatEight, "8"}, {Seat::seatNine, "9"}, {Seat::seatTen, "10"}
-    })
-  };
-  return ENUM_TO_STRING.find(seat)->second;
+  static constexpr auto ENUM_TO_STRING = language::Map<Seat, std::string_view, 10> {{{
+    {Seat::seatOne, "1"}, {Seat::seatTwo, "2"}, {Seat::seatThree, "3"}, {Seat::seatFour, "4"}, {Seat::seatFive, "5"},
+    {Seat::seatSix, "6"}, {Seat::seatSeven, "7"}, {Seat::seatEight, "8"}, {Seat::seatNine, "9"}, {Seat::seatTen, "10"}
+  }}};
+  return ENUM_TO_STRING.at(seat);
 }
 
 /*[[nodiscard]]*/ Seat tableSeat::fromInt(int i) {
   assert(0 < i and 11 > i);
-  static constexpr auto INT_TO_ENUM {
-    frozen::make_unordered_map<int, Seat>({
-      {1, Seat::seatOne}, {2, Seat::seatTwo}, {3, Seat::seatThree}, {4, Seat::seatFour}, {5, Seat::seatFive},
-      {6, Seat::seatSix}, {7, Seat::seatSeven}, {8, Seat::seatEight}, {9, Seat::seatNine}, {10, Seat::seatTen}
-    })
-  };
-  return INT_TO_ENUM.find(i)->second;
+  static constexpr auto INT_TO_ENUM = language::Map<int, Seat, 10> { {{
+    {1, Seat::seatOne}, {2, Seat::seatTwo}, {3, Seat::seatThree}, {4, Seat::seatFour}, {5, Seat::seatFive},
+    {6, Seat::seatSix}, {7, Seat::seatSeven}, {8, Seat::seatEight}, {9, Seat::seatNine}, {10, Seat::seatTen}
+  }} };
+  return INT_TO_ENUM.at(i);
 }
 
 /*[[nodiscard]]*/ int tableSeat::toInt(Seat seat) {
-  static constexpr auto ENUM_TO_INT {
-    frozen::make_unordered_map<Seat, int>({
-      {Seat::seatOne, 1}, {Seat::seatTwo, 2}, {Seat::seatThree, 3}, {Seat::seatFour, 4}, {Seat::seatFive, 5},
-      {Seat::seatSix, 6}, {Seat::seatSeven, 7}, {Seat::seatEight, 8}, {Seat::seatNine, 9}, {Seat::seatTen, 10}
-    })
-  };
-  return ENUM_TO_INT.find(seat)->second;
+  static constexpr auto ENUM_TO_INT = language::Map<Seat, int, 10> { {{
+    {Seat::seatOne, 1}, {Seat::seatTwo, 2}, {Seat::seatThree, 3}, {Seat::seatFour, 4}, {Seat::seatFive, 5},
+    {Seat::seatSix, 6}, {Seat::seatSeven, 7}, {Seat::seatEight, 8}, {Seat::seatNine, 9}, {Seat::seatTen, 10}
+  }}};
+  return ENUM_TO_INT.at(seat);
 }

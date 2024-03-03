@@ -1,17 +1,19 @@
 module;
 
-#include <frozen/string.h>
-#include <frozen/unordered_map.h>
 #include <algorithm>
 #include <cassert>
+#include <iterator> // std::back_inserter
 #include <memory>
+#include <string>
 #include <vector>
 
 export module entities.Game;
 
 import entities.Hand;
 import entities.Seat;
+import language.Map;
 import system.Time;
+
 /**
  * Game variants that phud understands.
  */
@@ -162,10 +164,6 @@ public:
   [[nodiscard]] constexpr double getBigBlind() const noexcept { return m_bigBlind; }
 }; // class CashGame
 
-
-// Note : must use frozen::string when it is a map key.
-// frozen::string can be created from std::string_view.
-
 export [[nodiscard]] std::string_view toString(Variant variant);
 export [[nodiscard]] std::string_view toString(Limit limitType);
 
@@ -184,21 +182,17 @@ std::vector<const Hand*> Game::viewHands(std::string_view player) const {
 }
 
 std::string_view toString(Variant variant) {
-  static constexpr auto VARIANT_TO_STRING {
-    frozen::make_unordered_map<Variant, std::string_view>({
-      { Variant::holdem, "holdem" }, { Variant::omaha, "omaha" },
-      { Variant::omaha5, "omaha5" }, { Variant::none, "none" }
-    })
-  };
-  return VARIANT_TO_STRING.find(variant)->second;
+  static constexpr auto VARIANT_TO_STRING = language::Map<Variant, std::string_view, 4> { {{
+    { Variant::holdem, "holdem" }, { Variant::omaha, "omaha" },
+    { Variant::omaha5, "omaha5" }, { Variant::none, "none" }
+  }}};
+  return VARIANT_TO_STRING.at(variant);
 }
 
 std::string_view toString(Limit limitType) {
-  static constexpr auto LIMIT_TO_STRING {
-    frozen::make_unordered_map<Limit, std::string_view>({
-      { Limit::noLimit, "no-limit" }, { Limit::potLimit, "pot-limit" },
-      { Limit::none, "none" }
-    })
-  };
-  return LIMIT_TO_STRING.find(limitType)->second;
+  static constexpr auto LIMIT_TO_STRING = language::Map<Limit, std::string_view, 3> { {{
+    { Limit::noLimit, "no-limit" }, { Limit::potLimit, "pot-limit" },
+    { Limit::none, "none" }
+  }}};
+  return LIMIT_TO_STRING.at(limitType);
 }

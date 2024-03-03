@@ -25,9 +25,9 @@ module;
 #  pragma GCC diagnostic pop
 #endif  // _MSC_VER
 
-#include <frozen/unordered_map.h>
-#include <cassert>
+#include <cassert> // assert
 #include <format>
+#include <functional> // std::function
 #include <memory> // std::make_unique
 #include <utility> // std::pair
 #include <string_view>
@@ -40,6 +40,7 @@ import entities.Game; // Game, CashGame, Tournament
 import entities.Hand;
 import entities.Seat; // tableSeat::*
 import gui.Preferences;
+import language.Map;
 
 export class [[nodiscard]] ReviewerWindow final {
   friend void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self);
@@ -119,23 +120,21 @@ static constexpr auto ZERO { std::make_pair<double, double>(-1, -1) };
 
 // TODO: mauvaises positions pour 3
 /* The position of seats, if the window size is 1 x 1 */
-static constexpr auto NB_SEATS_TO_COEFF {
-  frozen::make_unordered_map<Seat, std::array<std::pair<double, double>, 10>>({
-    { Seat::seatTwo,  { std::make_pair<double, double>(0.5, 0),        std::make_pair<double, double>(0.5, 1.0),      ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO } },
-    { Seat::seatThree,  { std::make_pair<double, double>(0.3333, 0.3333), std::make_pair<double, double>(0.6666, 0.3333), std::make_pair<double, double>(0.5, 1),      ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO } },
-    { Seat::seatFour,  { std::make_pair<double, double>(0.25, 0.25),    std::make_pair<double, double>(0.75, 0.25),    std::make_pair<double, double>(0.75, 0.75),  std::make_pair<double, double>(0.25, 0.75),  ZERO, ZERO, ZERO, ZERO, ZERO, ZERO } },
-    { Seat::seatFive,  { std::make_pair<double, double>(0.25, 0.25),    std::make_pair<double, double>(0.75, 0.25),    std::make_pair<double, double>(0.75, 0.75),  std::make_pair<double, double>(0.5, 1),      std::make_pair<double, double>(0.25, 0.75), ZERO, ZERO, ZERO, ZERO, ZERO } },
-    { Seat::seatSix,  { std::make_pair<double, double>(0.25, 0.25),    std::make_pair<double, double>(0.5, 0),        std::make_pair<double, double>(0.75, 0.25),  std::make_pair<double, double>(0.75, 0.75),  std::make_pair<double, double>(0.5, 1),     std::make_pair<double, double>(0.25, 0.75), ZERO, ZERO, ZERO, ZERO } },
-    { Seat::seatSeven,  { std::make_pair<double, double>(0, 0.5),        std::make_pair<double, double>(0.25, 0.25),    std::make_pair<double, double>(0.5, 0),      std::make_pair<double, double>(0.75, 0.25),  std::make_pair<double, double>(1, 0.5),     std::make_pair<double, double>(0.75, 0.75), std::make_pair<double, double>(0.25, 0.75), ZERO, ZERO, ZERO } },
-    { Seat::seatEight,  { std::make_pair<double, double>(0, 0.5),        std::make_pair<double, double>(0.25, 0.25),    std::make_pair<double, double>(0.5, 0),      std::make_pair<double, double>(0.75, 0.25),  std::make_pair<double, double>(1, 0.5),     std::make_pair<double, double>(0.75, 0.75), std::make_pair<double, double>(0.5, 1), std::make_pair<double, double>(0.25, 0.75), ZERO, ZERO } },
-    { Seat::seatNine,  { std::make_pair<double, double>(0.125, 0.35),   std::make_pair<double, double>(0.35, 0.125),   std::make_pair<double, double>(0.625, 0.125), std::make_pair<double, double>(0.85, 0.35),  std::make_pair<double, double>(0.85, 0.635), std::make_pair<double, double>(0.625, 0.85), std::make_pair<double, double>(0.5, 1), std::make_pair<double, double>(0.35, 0.85), std::make_pair<double, double>(0.125, 0.635), ZERO } },
-    { Seat::seatTen, { std::make_pair<double, double>(0.125, 0.35),   std::make_pair<double, double>(0.35, 0.125),   std::make_pair<double, double>(0.5, 0),      std::make_pair<double, double>(0.625, 0.125), std::make_pair<double, double>(0.85, 0.35), std::make_pair<double, double>(0.85, 0.635), std::make_pair<double, double>(0.625, 0.85), std::make_pair<double, double>(0.5, 1), std::make_pair<double, double>(0.35, 0.85), std::make_pair<double, double>(0.125, 0.635) } }
-  })
-};
+static constexpr auto NB_SEATS_TO_COEFF = language::Map<Seat, std::array<std::pair<double, double>, 10>, 9> { {{
+  { Seat::seatTwo,  { std::make_pair<double, double>(0.5, 0),        std::make_pair<double, double>(0.5, 1.0),      ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO } },
+  { Seat::seatThree,  { std::make_pair<double, double>(0.3333, 0.3333), std::make_pair<double, double>(0.6666, 0.3333), std::make_pair<double, double>(0.5, 1),      ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO } },
+  { Seat::seatFour,  { std::make_pair<double, double>(0.25, 0.25),    std::make_pair<double, double>(0.75, 0.25),    std::make_pair<double, double>(0.75, 0.75),  std::make_pair<double, double>(0.25, 0.75),  ZERO, ZERO, ZERO, ZERO, ZERO, ZERO } },
+  { Seat::seatFive,  { std::make_pair<double, double>(0.25, 0.25),    std::make_pair<double, double>(0.75, 0.25),    std::make_pair<double, double>(0.75, 0.75),  std::make_pair<double, double>(0.5, 1),      std::make_pair<double, double>(0.25, 0.75), ZERO, ZERO, ZERO, ZERO, ZERO } },
+  { Seat::seatSix,  { std::make_pair<double, double>(0.25, 0.25),    std::make_pair<double, double>(0.5, 0),        std::make_pair<double, double>(0.75, 0.25),  std::make_pair<double, double>(0.75, 0.75),  std::make_pair<double, double>(0.5, 1),     std::make_pair<double, double>(0.25, 0.75), ZERO, ZERO, ZERO, ZERO } },
+  { Seat::seatSeven,  { std::make_pair<double, double>(0, 0.5),        std::make_pair<double, double>(0.25, 0.25),    std::make_pair<double, double>(0.5, 0),      std::make_pair<double, double>(0.75, 0.25),  std::make_pair<double, double>(1, 0.5),     std::make_pair<double, double>(0.75, 0.75), std::make_pair<double, double>(0.25, 0.75), ZERO, ZERO, ZERO } },
+  { Seat::seatEight,  { std::make_pair<double, double>(0, 0.5),        std::make_pair<double, double>(0.25, 0.25),    std::make_pair<double, double>(0.5, 0),      std::make_pair<double, double>(0.75, 0.25),  std::make_pair<double, double>(1, 0.5),     std::make_pair<double, double>(0.75, 0.75), std::make_pair<double, double>(0.5, 1), std::make_pair<double, double>(0.25, 0.75), ZERO, ZERO } },
+  { Seat::seatNine,  { std::make_pair<double, double>(0.125, 0.35),   std::make_pair<double, double>(0.35, 0.125),   std::make_pair<double, double>(0.625, 0.125), std::make_pair<double, double>(0.85, 0.35),  std::make_pair<double, double>(0.85, 0.635), std::make_pair<double, double>(0.625, 0.85), std::make_pair<double, double>(0.5, 1), std::make_pair<double, double>(0.35, 0.85), std::make_pair<double, double>(0.125, 0.635), ZERO } },
+  { Seat::seatTen, { std::make_pair<double, double>(0.125, 0.35),   std::make_pair<double, double>(0.35, 0.125),   std::make_pair<double, double>(0.5, 0),      std::make_pair<double, double>(0.625, 0.125), std::make_pair<double, double>(0.85, 0.35), std::make_pair<double, double>(0.85, 0.635), std::make_pair<double, double>(0.625, 0.85), std::make_pair<double, double>(0.5, 1), std::make_pair<double, double>(0.35, 0.85), std::make_pair<double, double>(0.125, 0.635) } }
+}}};
 
 [[nodiscard]] Point getCardsPosition(const Point& wh, Seat seat, Seat tableMaxSeats) {
-  const auto [w, h] { wh };
-  const auto positions { NB_SEATS_TO_COEFF.find(tableMaxSeats)->second };
+  const auto& [w, h] { wh };
+  const auto positions { NB_SEATS_TO_COEFF.at(tableMaxSeats) };
   const auto [coefX, coefY] { positions.at(tableSeat::toArrayIndex(seat)) };
   assert(coefX != -1 && coefY != -1);
   return { static_cast<int>(coefX* w * 0.85), static_cast<int>(coefY* h * 0.75) };

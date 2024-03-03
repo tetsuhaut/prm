@@ -80,15 +80,6 @@ target_include_directories(prm PRIVATE ${FLTK_INCLUDE_DIRS})
 target_link_libraries(prm PRIVATE ${FLTK_LIBRARIES})
 
 ################################################################################
-# will use the frozen library https://github.com/serge-sans-paille/frozen, so
-# configure the project for it
-# need to have frozen_DIR as an environment variable pointing to the dir where
-# the library has been installed
-################################################################################
-find_package(frozen 1.1.0 REQUIRED)
-target_link_libraries(prm PRIVATE frozen::frozen-headers)
-
-################################################################################
 # will use the GSL library https://github.com/Microsoft/GSL, so configure the
 # project for it.
 # need to have Microsoft.GSL_DIR as an environment variable pointing to the dir
