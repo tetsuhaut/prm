@@ -1,12 +1,14 @@
 module;
 
-#include <frozen/string.h>
-#include <frozen/unordered_map.h>
-#include <cassert>
+#include <array>
+#include <cassert> // assert
+#include <stdexcept> // std::range_error
 #include <string>
 #include <string_view>
 
 export module entities.Action;
+
+import language.Map;
 
 /**
  * The elementary move a player can do during the game.
@@ -71,28 +73,20 @@ export [[nodiscard]] std::string_view toString(ActionType at);
 export [[nodiscard]] std::string_view toString(Street st);
 
 module : private;
-
-// Note : must use frozen::string for map keys.
-// frozen::string can be created from std::string_view.
-
 // exported methods
 [[nodiscard]] std::string_view toString(ActionType at) {
-  static constexpr auto ACTION_TYPE_TO_STRING {
-    frozen::make_unordered_map<ActionType, std::string_view>({
-      { ActionType::bet, "bet" }, { ActionType::call, "call" },
-      { ActionType::check, "check" }, { ActionType::fold, "fold" },
-      { ActionType::raise, "raise" }, { ActionType::none, "none" }
-    })
-  };
-  return ACTION_TYPE_TO_STRING.find(at)->second;
+  static constexpr auto ACTION_TYPE_TO_STRING = language::Map<ActionType, std::string_view, 6>{{{
+    { ActionType::bet, "bet" }, { ActionType::call, "call" },
+    { ActionType::check, "check" }, { ActionType::fold, "fold" },
+    { ActionType::raise, "raise" }, { ActionType::none, "none" }
+  }}};
+  return ACTION_TYPE_TO_STRING.at(at);
 }
 
 [[nodiscard]] std::string_view toString(Street st) {
-  static constexpr auto STREET_TO_STRING {
-    frozen::make_unordered_map<Street, std::string_view>({
-      { Street::preflop, "preflop" }, { Street::flop, "flop" },
-      { Street::turn, "turn" }, { Street::river, "river" }
-    })
-  };
-  return STREET_TO_STRING.find(st)->second;
+  static constexpr auto STREET_TO_STRING = language::Map<Street, std::string_view, 4> {{{
+    { Street::preflop, "preflop" }, { Street::flop, "flop" },
+    { Street::turn, "turn" }, { Street::river, "river" }
+  }}};
+  return STREET_TO_STRING.at(st);
 }

@@ -93,24 +93,6 @@ else (NOT ${FLTK_FOUND})
 endif (NOT ${FLTK_FOUND})
 
 ################################################################################
-# will use the frozen library https://github.com/serge-sans-paille/frozen, so
-# configure the project for it
-# need to have frozen_DIR as an environment variable pointing to the dir where
-# the library has been installed
-################################################################################
-find_package(frozen 1.1.0)
-if (NOT ${frozen_FOUND})
-  MESSAGE(STATUS "Getting frozen")
-  FetchContent_Declare(frozen
-    GIT_REPOSITORY https://github.com/serge-sans-paille/frozen
-    GIT_TAG 1.1.1) # yep, the CMake version is different from the tag
-  FetchContent_MakeAvailable(frozen)
-  list(APPEND CMAKE_MODULE_PATH ${frozen_BUILD_DIR}/contrib)
-else (NOT ${frozen_FOUND})
-  target_link_libraries(prm PRIVATE frozen::frozen-headers)
-endif (NOT ${frozen_FOUND})
-
-################################################################################
 # will use the GSL library https://github.com/Microsoft/GSL, so configure the
 # project for it.
 # need to have Microsoft.GSL_DIR as an environment variable pointing to the dir

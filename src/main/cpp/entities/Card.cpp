@@ -1,11 +1,12 @@
 module;
 
-#include <frozen/string.h>
-#include <frozen/unordered_map.h>
 #include <array>
+#include <cassert> // assert
 #include <string_view>
 
 export module entities.Card;
+
+import language.Map;
 
 export enum class /*[[nodiscard]]*/ Card : short {
   none = 0,
@@ -63,9 +64,6 @@ export enum class /*[[nodiscard]]*/ Card : short {
   aceClub = 52,
   back = 53
 };
-
-// Note : must use frozen::string when it is a map key.
-// frozen::string can be created from std::string_view.
 
 export [[nodiscard]] std::string_view toString(Card c);
 export [[nodiscard]] Card toCard(std::string_view strCard);
@@ -31469,133 +31467,127 @@ constexpr unsigned char src_main_resources_images_back_gif[] = {
 };
 constexpr unsigned int src_main_resources_images_back_gif_len = 3047;
 
-constexpr auto CARD_TO_IMAGE =
-frozen::make_unordered_map<Card, std::tuple<unsigned char*, unsigned int>>( {
-  {Card::twoClub,      {(unsigned char*) src_main_resources_images_twoClub_gif,  src_main_resources_images_twoClub_gif_len}},
-  {Card::aceClub,      {(unsigned char*) src_main_resources_images_aceClub_gif,  src_main_resources_images_aceClub_gif_len}},
-  {Card::threeClub,    {(unsigned char*) src_main_resources_images_threeClub_gif, src_main_resources_images_threeClub_gif_len}},
-  {Card::fourClub,     {(unsigned char*) src_main_resources_images_fourClub_gif, src_main_resources_images_fourClub_gif_len}},
-  {Card::fiveClub,     {(unsigned char*) src_main_resources_images_fiveClub_gif, src_main_resources_images_fiveClub_gif_len}},
-  {Card::sixClub,      {(unsigned char*) src_main_resources_images_sixClub_gif, src_main_resources_images_sixClub_gif_len}},
-  {Card::sevenClub,    {(unsigned char*) src_main_resources_images_sevenClub_gif, src_main_resources_images_sevenClub_gif_len}},
-  {Card::eightClub,    {(unsigned char*) src_main_resources_images_eightClub_gif, src_main_resources_images_eightClub_gif_len}},
-  {Card::nineClub,     {(unsigned char*) src_main_resources_images_nineClub_gif, src_main_resources_images_nineClub_gif_len}},
-  {Card::tenClub,      {(unsigned char*) src_main_resources_images_tenClub_gif, src_main_resources_images_tenClub_gif_len}},
-  {Card::jackClub,     {(unsigned char*) src_main_resources_images_jackClub_gif, src_main_resources_images_jackClub_gif_len}},
-  {Card::queenClub,    {(unsigned char*) src_main_resources_images_queenClub_gif, src_main_resources_images_queenClub_gif_len}},
-  {Card::kingClub,     {(unsigned char*) src_main_resources_images_kingClub_gif, src_main_resources_images_kingClub_gif_len}},
-  {Card::aceHeart,     {(unsigned char*) src_main_resources_images_aceDiamond_gif, src_main_resources_images_aceDiamond_gif_len}},
-  {Card::twoHeart,     {(unsigned char*) src_main_resources_images_twoDiamond_gif, src_main_resources_images_twoDiamond_gif_len}},
-  {Card::threeHeart,   {(unsigned char*) src_main_resources_images_threeDiamond_gif, src_main_resources_images_threeDiamond_gif_len}},
-  {Card::fourHeart,    {(unsigned char*) src_main_resources_images_fourDiamond_gif, src_main_resources_images_fourDiamond_gif_len}},
-  {Card::fiveHeart,    {(unsigned char*) src_main_resources_images_fiveDiamond_gif, src_main_resources_images_fiveDiamond_gif_len}},
-  {Card::sixHeart,     {(unsigned char*) src_main_resources_images_sixDiamond_gif, src_main_resources_images_sixDiamond_gif_len}},
-  {Card::sevenHeart,   {(unsigned char*) src_main_resources_images_sevenDiamond_gif, src_main_resources_images_sevenDiamond_gif_len}},
-  {Card::eightHeart,   {(unsigned char*) src_main_resources_images_eightDiamond_gif, src_main_resources_images_eightDiamond_gif_len}},
-  {Card::nineHeart,    {(unsigned char*) src_main_resources_images_nineDiamond_gif, src_main_resources_images_nineDiamond_gif_len}},
-  {Card::tenHeart,     {(unsigned char*) src_main_resources_images_tenDiamond_gif, src_main_resources_images_tenDiamond_gif_len}},
-  {Card::jackHeart,    {(unsigned char*) src_main_resources_images_jackDiamond_gif, src_main_resources_images_jackDiamond_gif_len}},
-  {Card::queenHeart,   {(unsigned char*) src_main_resources_images_queenDiamond_gif, src_main_resources_images_queenDiamond_gif_len}},
-  {Card::kingHeart,    {(unsigned char*) src_main_resources_images_kingDiamond_gif, src_main_resources_images_kingDiamond_gif_len}},
-  {Card::aceDiamond,   {(unsigned char*) src_main_resources_images_aceHeart_gif, src_main_resources_images_aceHeart_gif_len}},
-  {Card::twoDiamond,   {(unsigned char*) src_main_resources_images_twoHeart_gif, src_main_resources_images_twoHeart_gif_len}},
-  {Card::threeDiamond, {(unsigned char*) src_main_resources_images_threeHeart_gif, src_main_resources_images_threeHeart_gif_len}},
-  {Card::fourDiamond,  {(unsigned char*) src_main_resources_images_fourHeart_gif, src_main_resources_images_fourHeart_gif_len}},
-  {Card::fiveDiamond,  {(unsigned char*) src_main_resources_images_fiveHeart_gif, src_main_resources_images_fiveHeart_gif_len}},
-  {Card::sixDiamond,   {(unsigned char*) src_main_resources_images_sixHeart_gif, src_main_resources_images_sixHeart_gif_len}},
-  {Card::sevenDiamond, {(unsigned char*) src_main_resources_images_sevenHeart_gif, src_main_resources_images_sevenHeart_gif_len}},
-  {Card::eightDiamond, {(unsigned char*) src_main_resources_images_eightHeart_gif, src_main_resources_images_eightHeart_gif_len}},
-  {Card::nineDiamond,  {(unsigned char*) src_main_resources_images_nineHeart_gif, src_main_resources_images_nineHeart_gif_len}},
-  {Card::tenDiamond,   {(unsigned char*) src_main_resources_images_tenHeart_gif, src_main_resources_images_tenHeart_gif_len}},
-  {Card::jackDiamond,  {(unsigned char*) src_main_resources_images_jackHeart_gif, src_main_resources_images_jackHeart_gif_len}},
-  {Card::queenDiamond, {(unsigned char*) src_main_resources_images_queenHeart_gif, src_main_resources_images_queenHeart_gif_len}},
-  {Card::kingDiamond,  {(unsigned char*) src_main_resources_images_kingHeart_gif, src_main_resources_images_kingHeart_gif_len}},
-  {Card::aceSpade,     {(unsigned char*) src_main_resources_images_aceSpade_gif, src_main_resources_images_aceSpade_gif_len}},
-  {Card::twoSpade,     {(unsigned char*) src_main_resources_images_twoSpade_gif, src_main_resources_images_twoSpade_gif_len}},
-  {Card::threeSpade,   {(unsigned char*) src_main_resources_images_threeSpade_gif, src_main_resources_images_threeSpade_gif_len}},
-  {Card::fourSpade,    {(unsigned char*) src_main_resources_images_fourSpade_gif, src_main_resources_images_fourSpade_gif_len}},
-  {Card::fiveSpade,    {(unsigned char*) src_main_resources_images_fiveSpade_gif, src_main_resources_images_fiveSpade_gif_len}},
-  {Card::sixSpade,     {(unsigned char*) src_main_resources_images_sixSpade_gif, src_main_resources_images_sixSpade_gif_len}},
-  {Card::sevenSpade,   {(unsigned char*) src_main_resources_images_sevenSpade_gif, src_main_resources_images_sevenSpade_gif_len}},
-  {Card::eightSpade,   {(unsigned char*) src_main_resources_images_eightSpade_gif, src_main_resources_images_eightSpade_gif_len}},
-  {Card::nineSpade,    {(unsigned char*) src_main_resources_images_nineSpade_gif, src_main_resources_images_nineSpade_gif_len}},
-  {Card::tenSpade,     {(unsigned char*) src_main_resources_images_tenSpade_gif, src_main_resources_images_tenSpade_gif_len}},
-  {Card::jackSpade,    {(unsigned char*) src_main_resources_images_jackSpade_gif, src_main_resources_images_jackSpade_gif_len}},
-  {Card::queenSpade,   {(unsigned char*) src_main_resources_images_queenSpade_gif, src_main_resources_images_queenSpade_gif_len}},
-  {Card::kingSpade,    {(unsigned char*) src_main_resources_images_kingSpade_gif, src_main_resources_images_kingSpade_gif_len}},
-  {Card::back,         {(unsigned char*) src_main_resources_images_back_gif, src_main_resources_images_back_gif_len}},
-});
-
 std::tuple<unsigned char*, unsigned int> cardImages::getImage(Card card) {
   assert(card != Card::none);
-  return CARD_TO_IMAGE.find(card)->second;
+  static constexpr auto CARD_TO_IMAGE = language::Map<Card, std::tuple<unsigned char*, unsigned int>, 53> { {{
+    {Card::twoClub,      {(unsigned char*)src_main_resources_images_twoClub_gif,  src_main_resources_images_twoClub_gif_len}},
+    {Card::aceClub,      {(unsigned char*)src_main_resources_images_aceClub_gif,  src_main_resources_images_aceClub_gif_len}},
+    {Card::threeClub,    {(unsigned char*)src_main_resources_images_threeClub_gif, src_main_resources_images_threeClub_gif_len}},
+    {Card::fourClub,     {(unsigned char*)src_main_resources_images_fourClub_gif, src_main_resources_images_fourClub_gif_len}},
+    {Card::fiveClub,     {(unsigned char*)src_main_resources_images_fiveClub_gif, src_main_resources_images_fiveClub_gif_len}},
+    {Card::sixClub,      {(unsigned char*)src_main_resources_images_sixClub_gif, src_main_resources_images_sixClub_gif_len}},
+    {Card::sevenClub,    {(unsigned char*)src_main_resources_images_sevenClub_gif, src_main_resources_images_sevenClub_gif_len}},
+    {Card::eightClub,    {(unsigned char*)src_main_resources_images_eightClub_gif, src_main_resources_images_eightClub_gif_len}},
+    {Card::nineClub,     {(unsigned char*)src_main_resources_images_nineClub_gif, src_main_resources_images_nineClub_gif_len}},
+    {Card::tenClub,      {(unsigned char*)src_main_resources_images_tenClub_gif, src_main_resources_images_tenClub_gif_len}},
+    {Card::jackClub,     {(unsigned char*)src_main_resources_images_jackClub_gif, src_main_resources_images_jackClub_gif_len}},
+    {Card::queenClub,    {(unsigned char*)src_main_resources_images_queenClub_gif, src_main_resources_images_queenClub_gif_len}},
+    {Card::kingClub,     {(unsigned char*)src_main_resources_images_kingClub_gif, src_main_resources_images_kingClub_gif_len}},
+    {Card::aceHeart,     {(unsigned char*)src_main_resources_images_aceDiamond_gif, src_main_resources_images_aceDiamond_gif_len}},
+    {Card::twoHeart,     {(unsigned char*)src_main_resources_images_twoDiamond_gif, src_main_resources_images_twoDiamond_gif_len}},
+    {Card::threeHeart,   {(unsigned char*)src_main_resources_images_threeDiamond_gif, src_main_resources_images_threeDiamond_gif_len}},
+    {Card::fourHeart,    {(unsigned char*)src_main_resources_images_fourDiamond_gif, src_main_resources_images_fourDiamond_gif_len}},
+    {Card::fiveHeart,    {(unsigned char*)src_main_resources_images_fiveDiamond_gif, src_main_resources_images_fiveDiamond_gif_len}},
+    {Card::sixHeart,     {(unsigned char*)src_main_resources_images_sixDiamond_gif, src_main_resources_images_sixDiamond_gif_len}},
+    {Card::sevenHeart,   {(unsigned char*)src_main_resources_images_sevenDiamond_gif, src_main_resources_images_sevenDiamond_gif_len}},
+    {Card::eightHeart,   {(unsigned char*)src_main_resources_images_eightDiamond_gif, src_main_resources_images_eightDiamond_gif_len}},
+    {Card::nineHeart,    {(unsigned char*)src_main_resources_images_nineDiamond_gif, src_main_resources_images_nineDiamond_gif_len}},
+    {Card::tenHeart,     {(unsigned char*)src_main_resources_images_tenDiamond_gif, src_main_resources_images_tenDiamond_gif_len}},
+    {Card::jackHeart,    {(unsigned char*)src_main_resources_images_jackDiamond_gif, src_main_resources_images_jackDiamond_gif_len}},
+    {Card::queenHeart,   {(unsigned char*)src_main_resources_images_queenDiamond_gif, src_main_resources_images_queenDiamond_gif_len}},
+    {Card::kingHeart,    {(unsigned char*)src_main_resources_images_kingDiamond_gif, src_main_resources_images_kingDiamond_gif_len}},
+    {Card::aceDiamond,   {(unsigned char*)src_main_resources_images_aceHeart_gif, src_main_resources_images_aceHeart_gif_len}},
+    {Card::twoDiamond,   {(unsigned char*)src_main_resources_images_twoHeart_gif, src_main_resources_images_twoHeart_gif_len}},
+    {Card::threeDiamond, {(unsigned char*)src_main_resources_images_threeHeart_gif, src_main_resources_images_threeHeart_gif_len}},
+    {Card::fourDiamond,  {(unsigned char*)src_main_resources_images_fourHeart_gif, src_main_resources_images_fourHeart_gif_len}},
+    {Card::fiveDiamond,  {(unsigned char*)src_main_resources_images_fiveHeart_gif, src_main_resources_images_fiveHeart_gif_len}},
+    {Card::sixDiamond,   {(unsigned char*)src_main_resources_images_sixHeart_gif, src_main_resources_images_sixHeart_gif_len}},
+    {Card::sevenDiamond, {(unsigned char*)src_main_resources_images_sevenHeart_gif, src_main_resources_images_sevenHeart_gif_len}},
+    {Card::eightDiamond, {(unsigned char*)src_main_resources_images_eightHeart_gif, src_main_resources_images_eightHeart_gif_len}},
+    {Card::nineDiamond,  {(unsigned char*)src_main_resources_images_nineHeart_gif, src_main_resources_images_nineHeart_gif_len}},
+    {Card::tenDiamond,   {(unsigned char*)src_main_resources_images_tenHeart_gif, src_main_resources_images_tenHeart_gif_len}},
+    {Card::jackDiamond,  {(unsigned char*)src_main_resources_images_jackHeart_gif, src_main_resources_images_jackHeart_gif_len}},
+    {Card::queenDiamond, {(unsigned char*)src_main_resources_images_queenHeart_gif, src_main_resources_images_queenHeart_gif_len}},
+    {Card::kingDiamond,  {(unsigned char*)src_main_resources_images_kingHeart_gif, src_main_resources_images_kingHeart_gif_len}},
+    {Card::aceSpade,     {(unsigned char*)src_main_resources_images_aceSpade_gif, src_main_resources_images_aceSpade_gif_len}},
+    {Card::twoSpade,     {(unsigned char*)src_main_resources_images_twoSpade_gif, src_main_resources_images_twoSpade_gif_len}},
+    {Card::threeSpade,   {(unsigned char*)src_main_resources_images_threeSpade_gif, src_main_resources_images_threeSpade_gif_len}},
+    {Card::fourSpade,    {(unsigned char*)src_main_resources_images_fourSpade_gif, src_main_resources_images_fourSpade_gif_len}},
+    {Card::fiveSpade,    {(unsigned char*)src_main_resources_images_fiveSpade_gif, src_main_resources_images_fiveSpade_gif_len}},
+    {Card::sixSpade,     {(unsigned char*)src_main_resources_images_sixSpade_gif, src_main_resources_images_sixSpade_gif_len}},
+    {Card::sevenSpade,   {(unsigned char*)src_main_resources_images_sevenSpade_gif, src_main_resources_images_sevenSpade_gif_len}},
+    {Card::eightSpade,   {(unsigned char*)src_main_resources_images_eightSpade_gif, src_main_resources_images_eightSpade_gif_len}},
+    {Card::nineSpade,    {(unsigned char*)src_main_resources_images_nineSpade_gif, src_main_resources_images_nineSpade_gif_len}},
+    {Card::tenSpade,     {(unsigned char*)src_main_resources_images_tenSpade_gif, src_main_resources_images_tenSpade_gif_len}},
+    {Card::jackSpade,    {(unsigned char*)src_main_resources_images_jackSpade_gif, src_main_resources_images_jackSpade_gif_len}},
+    {Card::queenSpade,   {(unsigned char*)src_main_resources_images_queenSpade_gif, src_main_resources_images_queenSpade_gif_len}},
+    {Card::kingSpade,    {(unsigned char*)src_main_resources_images_kingSpade_gif, src_main_resources_images_kingSpade_gif_len}},
+    {Card::back,         {(unsigned char*)src_main_resources_images_back_gif, src_main_resources_images_back_gif_len}},
+  }}};
+  return CARD_TO_IMAGE.at(card);
 }
 
 std::string_view toString(Card c) {
-  static constexpr auto ENUM_TO_STRING {
-    frozen::make_unordered_map<Card, std::string_view>({
-      { Card::none, "none" }, { Card::twoSpade, "2s" }, { Card::threeSpade, "3s" },
-      { Card::fourSpade, "4s" }, { Card::fiveSpade, "5s" },
-      { Card::sixSpade, "6s" }, { Card::sevenSpade, "7s" },
-      { Card::eightSpade, "8s" }, { Card::nineSpade, "9s" },
-      { Card::tenSpade, "Ts" }, { Card::jackSpade, "Js" },
-      { Card::queenSpade, "Qs" }, { Card::kingSpade, "Ks" },
-      { Card::aceSpade, "As" }, { Card::twoHeart, "2h" },
-      { Card::threeHeart, "3h" }, { Card::fourHeart, "4h" },
-      { Card::fiveHeart, "5h" }, { Card::sixHeart, "6h" },
-      { Card::sevenHeart, "7h" }, { Card::eightHeart, "8h" },
-      { Card::nineHeart, "9h" }, { Card::tenHeart, "Th" },
-      { Card::jackHeart, "Jh" }, { Card::queenHeart, "Qh" },
-      { Card::kingHeart, "Kh" }, { Card::aceHeart, "Ah" },
-      { Card::twoDiamond, "2d" }, { Card::threeDiamond, "3d" },
-      { Card::fourDiamond, "4d" }, { Card::fiveDiamond, "5d" },
-      { Card::sixDiamond, "6d" }, { Card::sevenDiamond, "7d" },
-      { Card::eightDiamond, "8d" }, { Card::nineDiamond, "9d" },
-      { Card::tenDiamond, "Td" }, { Card::jackDiamond, "Jd" },
-      { Card::queenDiamond, "Qd" }, { Card::kingDiamond, "Kd" },
-      { Card::aceDiamond, "Ad" }, { Card::twoClub, "2c" },
-      { Card::threeClub, "3c" }, { Card::fourClub, "4c" },
-      { Card::fiveClub, "5c" }, { Card::sixClub, "6c" },
-      { Card::sevenClub, "7c" }, { Card::eightClub, "8c" },
-      { Card::nineClub, "9c" }, { Card::tenClub, "Tc" },
-      { Card::jackClub, "Jc" }, { Card::queenClub, "Qc" },
-      { Card::kingClub, "Kc" }, { Card::aceClub, "Ac" },
-    })
-  };
-  return ENUM_TO_STRING.find(c)->second;
+  static constexpr auto ENUM_TO_STRING = language::Map<Card, std::string_view, 53>{{{
+    { Card::none, "none" }, { Card::twoSpade, "2s" }, { Card::threeSpade, "3s" },
+    { Card::fourSpade, "4s" }, { Card::fiveSpade, "5s" },
+    { Card::sixSpade, "6s" }, { Card::sevenSpade, "7s" },
+    { Card::eightSpade, "8s" }, { Card::nineSpade, "9s" },
+    { Card::tenSpade, "Ts" }, { Card::jackSpade, "Js" },
+    { Card::queenSpade, "Qs" }, { Card::kingSpade, "Ks" },
+    { Card::aceSpade, "As" }, { Card::twoHeart, "2h" },
+    { Card::threeHeart, "3h" }, { Card::fourHeart, "4h" },
+    { Card::fiveHeart, "5h" }, { Card::sixHeart, "6h" },
+    { Card::sevenHeart, "7h" }, { Card::eightHeart, "8h" },
+    { Card::nineHeart, "9h" }, { Card::tenHeart, "Th" },
+    { Card::jackHeart, "Jh" }, { Card::queenHeart, "Qh" },
+    { Card::kingHeart, "Kh" }, { Card::aceHeart, "Ah" },
+    { Card::twoDiamond, "2d" }, { Card::threeDiamond, "3d" },
+    { Card::fourDiamond, "4d" }, { Card::fiveDiamond, "5d" },
+    { Card::sixDiamond, "6d" }, { Card::sevenDiamond, "7d" },
+    { Card::eightDiamond, "8d" }, { Card::nineDiamond, "9d" },
+    { Card::tenDiamond, "Td" }, { Card::jackDiamond, "Jd" },
+    { Card::queenDiamond, "Qd" }, { Card::kingDiamond, "Kd" },
+    { Card::aceDiamond, "Ad" }, { Card::twoClub, "2c" },
+    { Card::threeClub, "3c" }, { Card::fourClub, "4c" },
+    { Card::fiveClub, "5c" }, { Card::sixClub, "6c" },
+    { Card::sevenClub, "7c" }, { Card::eightClub, "8c" },
+    { Card::nineClub, "9c" }, { Card::tenClub, "Tc" },
+    { Card::jackClub, "Jc" }, { Card::queenClub, "Qc" },
+    { Card::kingClub, "Kc" }, { Card::aceClub, "Ac" },
+  }}};
+  return ENUM_TO_STRING.at(c);
 }
 
 Card toCard(std::string_view strCard) {
-  static constexpr auto STRING_TO_ENUM {
-    frozen::make_unordered_map<frozen::string, Card>({
-      { "none", Card::none }, { "2s", Card::twoSpade }, { "3s", Card::threeSpade },
-      { "4s", Card::fourSpade }, { "5s", Card::fiveSpade },
-      { "6s", Card::sixSpade }, { "7s", Card::sevenSpade },
-      { "8s", Card::eightSpade }, { "9s", Card::nineSpade },
-      { "Ts", Card::tenSpade }, { "Js", Card::jackSpade },
-      { "Qs", Card::queenSpade }, { "Ks", Card::kingSpade },
-      { "As", Card::aceSpade }, { "2h", Card::twoHeart },
-      { "3h", Card::threeHeart }, { "4h", Card::fourHeart },
-      { "5h", Card::fiveHeart }, { "6h", Card::sixHeart },
-      { "7h", Card::sevenHeart }, { "8h", Card::eightHeart },
-      { "9h", Card::nineHeart }, { "Th", Card::tenHeart },
-      { "Jh", Card::jackHeart }, { "Qh", Card::queenHeart },
-      { "Kh", Card::kingHeart }, { "Ah", Card::aceHeart },
-      { "2d", Card::twoDiamond }, { "3d", Card::threeDiamond },
-      { "4d", Card::fourDiamond }, { "5d", Card::fiveDiamond },
-      { "6d", Card::sixDiamond }, { "7d", Card::sevenDiamond },
-      { "8d", Card::eightDiamond }, { "9d", Card::nineDiamond },
-      { "Td", Card::tenDiamond }, { "Jd", Card::jackDiamond },
-      { "Qd", Card::queenDiamond }, { "Kd", Card::kingDiamond },
-      { "Ad", Card::aceDiamond }, { "2c", Card::twoClub },
-      { "3c", Card::threeClub }, { "4c", Card::fourClub },
-      { "5c", Card::fiveClub }, { "6c", Card::sixClub },
-      { "7c", Card::sevenClub }, { "8c", Card::eightClub },
-      { "9c", Card::nineClub }, { "Tc", Card::tenClub },
-      { "Jc", Card::jackClub }, { "Qc", Card::queenClub },
-      { "Kc", Card::kingClub }, { "Ac", Card::aceClub }
-    })
-  };
-  return STRING_TO_ENUM.find(strCard)->second;
+  static constexpr auto STRING_TO_ENUM = language::Map<std::string_view, Card, 53> { {{
+    { "none", Card::none }, { "2s", Card::twoSpade }, { "3s", Card::threeSpade },
+    { "4s", Card::fourSpade }, { "5s", Card::fiveSpade },
+    { "6s", Card::sixSpade }, { "7s", Card::sevenSpade },
+    { "8s", Card::eightSpade }, { "9s", Card::nineSpade },
+    { "Ts", Card::tenSpade }, { "Js", Card::jackSpade },
+    { "Qs", Card::queenSpade }, { "Ks", Card::kingSpade },
+    { "As", Card::aceSpade }, { "2h", Card::twoHeart },
+    { "3h", Card::threeHeart }, { "4h", Card::fourHeart },
+    { "5h", Card::fiveHeart }, { "6h", Card::sixHeart },
+    { "7h", Card::sevenHeart }, { "8h", Card::eightHeart },
+    { "9h", Card::nineHeart }, { "Th", Card::tenHeart },
+    { "Jh", Card::jackHeart }, { "Qh", Card::queenHeart },
+    { "Kh", Card::kingHeart }, { "Ah", Card::aceHeart },
+    { "2d", Card::twoDiamond }, { "3d", Card::threeDiamond },
+    { "4d", Card::fourDiamond }, { "5d", Card::fiveDiamond },
+    { "6d", Card::sixDiamond }, { "7d", Card::sevenDiamond },
+    { "8d", Card::eightDiamond }, { "9d", Card::nineDiamond },
+    { "Td", Card::tenDiamond }, { "Jd", Card::jackDiamond },
+    { "Qd", Card::queenDiamond }, { "Kd", Card::kingDiamond },
+    { "Ad", Card::aceDiamond }, { "2c", Card::twoClub },
+    { "3c", Card::threeClub }, { "4c", Card::fourClub },
+    { "5c", Card::fiveClub }, { "6c", Card::sixClub },
+    { "7c", Card::sevenClub }, { "8c", Card::eightClub },
+    { "9c", Card::nineClub }, { "Tc", Card::tenClub },
+    { "Jc", Card::jackClub }, { "Qc", Card::queenClub },
+    { "Kc", Card::kingClub }, { "Ac", Card::aceClub }
+  }}};
+  return STRING_TO_ENUM.at(strCard);
 }
 
