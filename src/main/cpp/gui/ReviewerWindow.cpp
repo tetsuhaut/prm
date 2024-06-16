@@ -149,7 +149,7 @@ static constexpr auto NB_SEATS_TO_COEFF = language::Map<Seat, std::array<std::pa
   return std::make_pair(Card::back, Card::back);
 }
 
-void drawPlayButtonBar(const Point& wh) {
+void drawPlayButtonBar(const Point& /*wh*/) {
   // TODO
 }
 

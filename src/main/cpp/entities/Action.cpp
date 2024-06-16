@@ -75,7 +75,7 @@ export [[nodiscard]] std::string_view toString(Street st);
 module : private;
 // exported methods
 [[nodiscard]] std::string_view toString(ActionType at) {
-  static constexpr auto ACTION_TYPE_TO_STRING = language::Map<ActionType, std::string_view, 6>{{{
+  static constexpr auto ACTION_TYPE_TO_STRING = language::Map<ActionType, std::string_view, 6> {{{
     { ActionType::bet, "bet" }, { ActionType::call, "call" },
     { ActionType::check, "check" }, { ActionType::fold, "fold" },
     { ActionType::raise, "raise" }, { ActionType::none, "none" }

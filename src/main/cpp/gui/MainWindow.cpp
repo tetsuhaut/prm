@@ -30,14 +30,16 @@ module;
 
 #include <algorithm> // std::ranges
 #include <array> // std::array
+#include <cctype> // std::isdigit
 #include <cassert>
 #include <cerrno>
 #include <cstring> // std::strerror_s
-#include <filesystem> // std::path
-#include <format> // std::format
+#include <filesystem> // std::filesystem::path
 #include <memory> // std::make_unique
+#include <print> // std::format, std::print
 #include <string> // std::string
 #include <utility> // std::pair
+#include <vector>
 
 export module gui.MainWindow;
 
@@ -52,39 +54,63 @@ import history.WinamaxHistory;
 
 export class [[nodiscard]] MainWindow final {
 private:
-  Preferences m_preferences;
-  std::unique_ptr<Fl_Double_Window> m_mainWindow;
-  std::unique_ptr<ReviewerWindow> m_reviewerWindow;
-  std::unique_ptr<Fl_Menu_Bar> m_menuBar;
-  std::unique_ptr<Fl_Text_Display> m_historyFileText;
-  std::unique_ptr<std::filesystem::path> m_gameHistory;
-  // widgets
-  std::unique_ptr<Fl_Tree> m_games;
-  std::unique_ptr<Fl_Button> m_reviewButton;
+  Preferences m_preferences = Preferences();
+  std::unique_ptr<Fl_Double_Window> m_mainWindow = nullptr;
+  std::unique_ptr<ReviewerWindow> m_reviewerWindow = nullptr;
+  std::unique_ptr<Fl_Text_Display> m_historyFilesDirText = nullptr;
+  std::unique_ptr<std::filesystem::path> m_gameHistory = nullptr;
+  std::unique_ptr<Fl_Tree> m_games = nullptr;
+  std::unique_ptr<Fl_Button> m_reviewButton = nullptr;
+  bool handHistoryDirIsUnknown(std::string_view dir);
 
-  void buildReviewButton();
 public:
-  ~MainWindow() = default;
   void exit();
   void toggleGameWindow();
   [[nodiscard]] int run();
-  void chooseHandHistory();
+  void chooseHandHistoryFile();
+  void chooseHandHistoryDirectory();
   void newGameWindow();
+  void addHistoryDirectoryToList(std::string_view dir, const std::vector<std::filesystem::path>& historyFiles);
 }; // export class MainWindow
 
 module : private;
 
-[[nodiscard]] MainWindow* MAIN_WINDOW(void* self) {
-  return static_cast<MainWindow*>(self);
+namespace fs = std::filesystem;
+static MainWindow* pThis { nullptr };
+static std::string_view CHOSE_HAND_HISTORY_DIRECTORY_MSG { "<chose a hand history directory>" };
+
+[[nodiscard]] static constexpr int toInt(std::size_t value) {
+  constexpr int kIntMax { std::numeric_limits<int>::max() };
+  return (value > static_cast<std::size_t>(kIntMax)) ? kIntMax : static_cast<int>(value);
 }
 
-void MainWindow::buildReviewButton() {
-  m_reviewButton = std::make_unique<Fl_Button>(50, 200, dimensions::BUTTON_WIDTH,
-                   dimensions::BUTTON_HEIGHT, "Open the review");
-  m_reviewButton->callback([](Fl_Widget*, void* hidden) {
-    // disabling closing the window on hitting escape won't work here
-    MAIN_WINDOW(hidden)->toggleGameWindow();
-  }, this);
+[[nodiscard]] static constexpr int toInt(auto) = delete; // forbid other types
+
+static void mainWindowCb(Fl_Widget*) {
+  // we dont't want the Esc key to close the program
+  if (FL_SHORTCUT == Fl::event() && FL_Escape == Fl::event_key()) { return; }
+
+  pThis->exit();
+}
+
+/**
+* Called by the button component when the user clicks on the 'choose hand history'
+* button.
+*/
+static void chooseHandHistoryFileCb(Fl_Widget*, void*) {
+  pThis->chooseHandHistoryFile();
+}
+
+static void chooseHandHistoryDirectoryCb(Fl_Widget*, void*) {
+  pThis->chooseHandHistoryDirectory();
+}
+
+static void exitCb(Fl_Widget*, void*) {
+  pThis->exit();
+}
+
+static void reviewButtonCb(Fl_Widget*) {
+  pThis->toggleGameWindow();
 }
 
 void MainWindow::newGameWindow() {
@@ -100,9 +126,9 @@ void MainWindow::newGameWindow() {
 
   assert(1 == cashGames.size());
   const auto [localX, localY, width, height] { m_preferences.getGameWindowXYWH() };
-  assert(nullptr != m_historyFileText->buffer()->text());
+  assert(nullptr != m_historyFilesDirText->buffer()->text());
   m_reviewerWindow = std::make_unique<ReviewerWindow>(m_preferences,
-                     m_historyFileText->buffer()->text(),
+    m_historyFilesDirText->buffer()->text(),
   [this]() { toggleGameWindow(); },
   site->whoIsHero(),
   *cashGames[0]->viewHands()[0]);
@@ -112,11 +138,11 @@ void MainWindow::newGameWindow() {
   * Called by the event loop when the user chosed a valid history file.
   * Starts the import process.
   */
-void newGameWindowAwakeCb(void* mainWindow) {
-  MAIN_WINDOW(mainWindow)->newGameWindow();
+void newGameWindowAwakeCb(void* /* unused */) {
+  pThis->newGameWindow();
 }
 
-bool wasHandlingChosenFileOk(const std::filesystem::path& file, Preferences& preferences,
+bool wasHandlingChosenFileOk(const fs::path& file, Preferences& preferences,
                              Fl_Text_Display& text) {
   preferences.saveHistoryDir(file.parent_path());
 
@@ -130,12 +156,21 @@ bool wasHandlingChosenFileOk(const std::filesystem::path& file, Preferences& pre
   return false;
 }
 
-[[nodiscard]] std::unique_ptr<Fl_Native_File_Chooser> buildDirectoryChooser(
+[[nodiscard]] static std::unique_ptr<Fl_Native_File_Chooser> buildHandHistoryFileChooser(
   Preferences& preferences) {
   auto pHistoryChoser { std::make_unique<Fl_Native_File_Chooser>() };
   pHistoryChoser->filter("*.txt");
-  pHistoryChoser->title("Choisissez un historique de mains");
+  pHistoryChoser->title("Choisissez un fichier d'historique de mains");
   pHistoryChoser->type(Fl_Native_File_Chooser::BROWSE_FILE);
+  pHistoryChoser->directory(preferences.getHandHistoryDir().c_str());
+  return pHistoryChoser;
+}
+
+[[nodiscard]] static std::unique_ptr<Fl_Native_File_Chooser> buildHandHistoryDirectoryChooser(
+  Preferences& preferences) {
+  auto pHistoryChoser { std::make_unique<Fl_Native_File_Chooser>() };
+  pHistoryChoser->title("Choisissez un répertoire d'historiques de mains");
+  pHistoryChoser->type(Fl_Native_File_Chooser::BROWSE_DIRECTORY);
   pHistoryChoser->directory(preferences.getHandHistoryDir().c_str());
   return pHistoryChoser;
 }
@@ -150,14 +185,14 @@ bool wasHandlingChosenFileOk(const std::filesystem::path& file, Preferences& pre
 */
 enum class [[nodiscard]] FileChoiceStatus : short { ok = 0, error = -1, cancel = 1 };
 
-void MainWindow::chooseHandHistory() {
-  auto dirChoser { buildDirectoryChooser(m_preferences) };
+void MainWindow::chooseHandHistoryFile() {
+  auto dirChoser { buildHandHistoryFileChooser(m_preferences) };
 
   switch (FileChoiceStatus(dirChoser->show())) {
     case FileChoiceStatus::ok: {
-      m_gameHistory = std::make_unique<std::filesystem::path>(dirChoser->filename());
+      m_gameHistory = std::make_unique<fs::path>(dirChoser->filename());
 
-      if (wasHandlingChosenFileOk(*m_gameHistory, m_preferences, *m_historyFileText)) {
+      if (wasHandlingChosenFileOk(*m_gameHistory, m_preferences, *m_historyFilesDirText)) {
         m_reviewButton->activate();
       }
     } break;
@@ -172,12 +207,121 @@ void MainWindow::chooseHandHistory() {
   }
 }
 
+[[nodiscard]] static constexpr bool startsLikeAHistoryFile(std::string_view s) {
+  return (s.length() > 11)
+    and std::isdigit(s[0])
+    and std::isdigit(s[1])
+    and std::isdigit(s[2])
+    and std::isdigit(s[3])
+    and std::isdigit(s[4])
+    and std::isdigit(s[5])
+    and std::isdigit(s[6])
+    and std::isdigit(s[7])
+    and '_' == s[8];
+}
+
 /**
-* Called by the button component when the user clicks on the 'choose hand history'
-* button.
+ * @returns true if the given path
+ * - is a directory
+ * - that contains only files
+ * - that contains files beginning by 8 digits and _
+ * - that contains files ending with .txt
 */
-void chooseHandHistoryCb(Fl_Widget*, void* mainWindow) {
-  MAIN_WINDOW(mainWindow)->chooseHandHistory();
+
+[[nodiscard]] static std::vector<fs::path> getHistoryFiles(const fs::path& histoDir) {
+  std::vector<fs::path> ret;  
+
+  if (!fs::is_directory(histoDir)) {
+    return {};
+  }
+ 
+  for (const auto& dirEntry : fs::directory_iterator(histoDir)) {
+    const auto& entryPath { dirEntry.path() };
+    if (dirEntry.is_regular_file()
+      and startsLikeAHistoryFile(entryPath.filename().string())
+      and entryPath.filename().string().starts_with("20") // like the year 2022
+      and entryPath.string().ends_with(".txt")) {
+      ret.push_back(entryPath);
+    }
+  }
+  return ret;
+}
+
+struct Data {
+  std::vector<fs::path> historyFiles;
+  std::string dir;
+};
+
+template<typename T>
+static std::unique_ptr<T> toUniquePtr(void* value) {
+  return std::unique_ptr<T>(static_cast<T*>(value));
+}
+
+static void addHistoryDirectoryToListAwakeCb(void* hiddenData) {
+  auto data { toUniquePtr<Data>(hiddenData) };
+  pThis->addHistoryDirectoryToList(data->dir, data->historyFiles);
+
+}
+
+[[nodiscard]] static std::string toTreeRoot(std::string_view path) {
+  std::string ret;
+  std::ranges::for_each(path, [&](const auto c) {
+    ret += c;
+    // double the anti-slashes
+    if ('\\' == c) { ret += c; }
+  });
+  return ret;
+}
+
+void MainWindow::addHistoryDirectoryToList(std::string_view dir, const std::vector<fs::path>& historyFiles) {
+  if (CHOSE_HAND_HISTORY_DIRECTORY_MSG == m_games->last()->label()) {
+    m_games->remove(m_games->last());
+    m_games->activate();
+  }
+  const auto dirNode { std::format("{}/", dir) };
+  std::ranges::for_each(historyFiles, [&](const auto& file) {
+    m_games->add((toTreeRoot(dirNode + file.filename().string()).c_str()));
+  });
+  // tentative de fermeture du dirNode
+  for (auto node = m_games->first(); node; node = m_games->next(node)) {
+    if (!node->is_root() && 0 != node->children()) {
+      node->close();
+    }
+  }
+  m_games->resize(m_games->x(), m_games->y(), m_games->w(), dimensions::GAME_LIST_HEIGHT * toInt(historyFiles.size()));
+  m_games->redraw();
+}
+
+bool MainWindow::handHistoryDirIsUnknown(std::string_view dir) {
+  for (auto item { m_games->first() }; nullptr != item; item = m_games->next(item)) {
+    if (dir == item->label()) { return false; }
+  }
+  return true;
+}
+
+void MainWindow::chooseHandHistoryDirectory() {
+  auto dirChoser { buildHandHistoryDirectoryChooser(m_preferences) };
+
+  switch (FileChoiceStatus(dirChoser->show())) {
+  case FileChoiceStatus::ok: {
+    if (handHistoryDirIsUnknown(dirChoser->filename())) {
+      if (auto historyFiles = getHistoryFiles(dirChoser->filename()); !historyFiles.empty()) {
+        auto data { std::make_unique<Data>() };
+        data->historyFiles = historyFiles;
+        data->dir = dirChoser->filename();
+        Fl::awake(addHistoryDirectoryToListAwakeCb, data.release());
+      }
+    }
+  } break;
+
+  case FileChoiceStatus::error: [[unlikely]] {
+    fl_alert(dirChoser->errmsg());
+    } break;
+
+  case FileChoiceStatus::cancel: [[fallthrough]];
+
+  default: /* nothing to do */ break;
+  }
 }
 
 /**
@@ -194,17 +338,6 @@ void MainWindow::exit() {
   while (Fl::first_window()) { Fl::first_window()->hide(); }
 }
 
-void exitCb(Fl_Widget*, void* mainWindow) {
-  MAIN_WINDOW(mainWindow)->exit();
-}
-
-void mainWindowCb(Fl_Widget*, void* mainWindow) {
-  // we dont't want the Esc key to close the program
-  if (FL_SHORTCUT == Fl::event() && FL_Escape == Fl::event_key()) { return; }
-
-  MAIN_WINDOW(mainWindow)->exit();
-}
-
 void MainWindow::toggleGameWindow() {
   if (nullptr != m_reviewerWindow) {
     // destroy the existing game window
@@ -215,34 +348,69 @@ void MainWindow::toggleGameWindow() {
     // tell the user the review button will close the game window
     m_reviewButton->label("Close the review");
     // open a new game window and populate it
-    Fl::awake(newGameWindowAwakeCb, this);
+    // we need to use the same flavor of Fl::awake() in the whole program
+    // see https://www.fltk.org/doc-1.4/advanced.html#advanced_multithreading
+    Fl::awake(newGameWindowAwakeCb, nullptr);
   }
 }
 
-void reviewButtonCb(Fl_Widget*, void* mainWindow) {
-  MAIN_WINDOW(mainWindow)->toggleGameWindow();
+[[nodiscard]] static std::unique_ptr<Fl_Button> buildReviewButton() {
+  auto pReviewButton = std::make_unique<Fl_Button>(50, 200, dimensions::BUTTON_WIDTH,
+    dimensions::BUTTON_HEIGHT, "Open the review");
+  pReviewButton->callback(reviewButtonCb);
+  pReviewButton->deactivate();
+  return pReviewButton;
+}
+
+[[nodiscard]] static std::unique_ptr<Fl_Tree> buildEmptyGameList(int x, int y, int width, int height) {
+  auto tree { std::make_unique<Fl_Tree>(x, y, width, height)};
+  tree->root_label("Hand History Directories");
+  tree->add(CHOSE_HAND_HISTORY_DIRECTORY_MSG.data());
+  tree->deactivate();
+  return tree;
+}
+
+[[nodiscard]] static std::unique_ptr<Fl_Text_Display> buildHistoryFileText(int x, int y, int width, int height) {
+  auto pHistoryFileText = std::make_unique<Fl_Text_Display>(x, y, width, height);
+  pHistoryFileText->buffer(new Fl_Text_Buffer());
+  return pHistoryFileText;
+}
+
+[[nodiscard]] static std::unique_ptr<Fl_Menu_Bar> buildMenuBar(int x, int y, int width, int height) {
+  auto pMenuBar = std::make_unique<Fl_Menu_Bar>(x, y, width, height);
+  pMenuBar->add("&File/O&pen hand history file", 0, chooseHandHistoryFileCb);
+  pMenuBar->add("&File/Open hand history directory", 0, chooseHandHistoryDirectoryCb);
+  pMenuBar->add("&File/E&xit", 0, exitCb);
+  return pMenuBar;
 }
 
 // +----> x
-// |
+// | menu
+// | hand history directory
+// | open the review button
 // |
 // v
 // y
+[[nodiscard]] static std::unique_ptr<Fl_Double_Window> buildMainWindow(int localX, int localY, int width, int height) {
+  auto pMainWindow = std::make_unique<Fl_Double_Window>(localX, localY, width, height,
+    "Poker Reviewer Modulaire");
+  pMainWindow->callback(mainWindowCb);
+  return pMainWindow;
+}
+
 [[nodiscard]] int MainWindow::run() {
+  pThis = this;
   const auto [localX, localY, width, height] { m_preferences.getMainWindowXYWH() };
-  m_mainWindow = std::make_unique<Fl_Double_Window>(localX, localY, width, height,
-                 "Poker Reviewer Modulaire");
-  m_mainWindow->callback(mainWindowCb, this);
-  m_menuBar = std::make_unique<Fl_Menu_Bar>(0, 0, width, dimensions::BUTTON_HEIGHT);
-  m_menuBar->add("&File/O&pen hand history", 0, chooseHandHistoryCb, this);
-  m_menuBar->add("&File/E&xit", 0, exitCb, this);
-  m_historyFileText = std::make_unique<Fl_Text_Display>(0, m_menuBar->h(), width, 25);
-  m_historyFileText->buffer(new Fl_Text_Buffer());
-  m_reviewButton = std::make_unique<Fl_Button>(50, 200, dimensions::BUTTON_WIDTH,
-                   dimensions::BUTTON_HEIGHT, "Open the review");
-  m_reviewButton->callback(reviewButtonCb, this);
-  m_reviewButton->deactivate();
+  m_mainWindow = buildMainWindow(localX, localY, width, height);
+  [[maybe_unused]]
+  const auto menuBar = buildMenuBar(dimensions::MENUBAR_X, dimensions::MENUBAR_Y, width, dimensions::MENUBAR_HEIGHT);
+  m_historyFilesDirText = buildHistoryFileText(dimensions::HISTORY_DIRECTORY_TXT_X, dimensions::HISTORY_DIRECTORY_TXT_Y, width-10, dimensions::TXT_HEIGHT);
+  m_games = buildEmptyGameList(dimensions::EMPTY_GAME_LIST_X, dimensions::EMPTY_GAME_LIST_Y, width-10, dimensions::EMPTY_GAME_LIST_HEIGHT);
+  m_reviewButton = buildReviewButton();
   m_mainWindow->end();
+  Fl::lock(); /* "start" the FLTK lock mechanism */
   m_mainWindow->show();
-  return Fl::run();
+  auto ret { Fl::run() };
+  pThis = nullptr;
+  return ret;
 }

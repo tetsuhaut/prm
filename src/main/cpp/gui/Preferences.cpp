@@ -66,25 +66,25 @@ static constexpr std::string_view GAME_WINDOW_HEIGHT = "gamewindowh";
 static constexpr std::string_view HISTORY_DIR = "historyDir";
 
 
-void save(Fl_Preferences& fltkPreferences, std::string_view key, auto&& value) {
+static void save(Fl_Preferences& fltkPreferences, std::string_view key, auto&& value) {
   if (0 == fltkPreferences.set(key.data(), std::forward<decltype(value)>(value))) {
     fl_alert(std::format("Couldn't save '{}' into the preferences repository.", key).c_str());
   }
 }
 
-int getIntWithMin(Fl_Preferences& fltkPreferences, std::string_view key, int minValue) {
+[[nodiscard]] static int getIntWithMin(Fl_Preferences& fltkPreferences, std::string_view key, int minValue) {
   int value;
   fltkPreferences.get(key.data(), value, minValue);
   return (value < minValue) ? minValue : value;
 }
 
-int getIntWithDefault(Fl_Preferences& fltkPreferences, std::string_view key, int defaultValue) {
+[[nodiscard]] static int getIntWithDefault(Fl_Preferences& fltkPreferences, std::string_view key, int defaultValue) {
   int value;
   fltkPreferences.get(key.data(), value, defaultValue);
   return value;
 }
 
-std::string getString(Fl_Preferences& fltkPreferences, std::string_view key) {
+[[nodiscard]] static std::string getString(Fl_Preferences& fltkPreferences, std::string_view key) {
   char value[512];
   fltkPreferences.get(key.data(), &value[0], "", (int)std::size(value) - 1);
   return value;
