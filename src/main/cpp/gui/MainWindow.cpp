@@ -77,7 +77,8 @@ module : private;
 
 namespace fs = std::filesystem;
 static MainWindow* pThis { nullptr };
-static std::string_view CHOSE_HAND_HISTORY_DIRECTORY_MSG { "<chose a hand history directory>" };
+static constexpr std::string_view CHOSE_HAND_HISTORY_DIRECTORY_MSG { "<chose a hand history directory>" };
+static constexpr std::string_view GAMES_LIST_LABEL { "Hand History Directories" };
 
 [[nodiscard]] static constexpr int toInt(std::size_t value) {
   constexpr int kIntMax { std::numeric_limits<int>::max() };
@@ -111,6 +112,20 @@ static void exitCb(Fl_Widget*, void*) {
 
 static void reviewButtonCb(Fl_Widget*) {
   pThis->toggleGameWindow();
+}
+
+static void gameListCb(Fl_Widget* w) {
+  auto* tree = static_cast<Fl_Tree*>(w);
+  auto* item = static_cast<Fl_Tree_Item*>(tree->callback_item());
+  if (!item or 0 != item->children()) { return; }
+  if (FL_TREE_REASON_SELECTED == tree->callback_reason()) {
+      char pathname[256];
+      tree->item_pathname(pathname, sizeof(pathname), item);
+
+      if (std::string(pathname).starts_with(GAMES_LIST_LABEL)) {
+        std::print("on doit ouvrir {}\n", std::string(pathname).substr(GAMES_LIST_LABEL.size() + 1));
+      }
+  }
 }
 
 void MainWindow::newGameWindow() {
@@ -364,8 +379,9 @@ void MainWindow::toggleGameWindow() {
 
 [[nodiscard]] static std::unique_ptr<Fl_Tree> buildEmptyGameList(int x, int y, int width, int height) {
   auto tree { std::make_unique<Fl_Tree>(x, y, width, height)};
-  tree->root_label("Hand History Directories");
+  tree->root_label(GAMES_LIST_LABEL.data());
   tree->add(CHOSE_HAND_HISTORY_DIRECTORY_MSG.data());
+  tree->callback(gameListCb);
   tree->deactivate();
   return tree;
 }
