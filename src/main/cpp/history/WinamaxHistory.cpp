@@ -203,9 +203,9 @@ std::atomic_bool& stop, const auto& incrementCb) {
         try {
           if (!stop) { pSite = WinamaxGameHistory::parseGameHistory(file).release(); }
         } catch (const std::exception& e) {
-          std::cerr << std::format("Exception loading the file {}: {}\n", file.filename().string(), e.what());
+          std::println(std::cerr, "Exception loading the file {}: {}", file.filename().string(), e.what());
         } catch (const char* str) {
-          std::cerr << std::format("Exception loading the file {}: {}\n", file.filename().string(), str);
+          std::println(std::cerr, "Exception loading the file {}: {}", file.filename().string(), str);
         }
 
         if (!stop and incrementCb) { incrementCb(); }
@@ -243,8 +243,7 @@ std::unique_ptr<Site> WinamaxHistory::load(const std::filesystem::path& winamaxH
     m_pImpl->m_tasks.clear();
     return ret;
   } catch (const std::exception& e) {
-    std::cerr << std::format("Exception au chargement de {} : {}\n", winamaxHistoryDir.string(),
-                             e.what());
+    std::println(std::cerr, "Exception au chargement de {} : {}", winamaxHistoryDir.string(), e.what());
     return std::make_unique<Site>(WINAMAX_SITE_NAME);
   }
 }
@@ -275,7 +274,7 @@ std::unique_ptr<Site> WinamaxHistory::reloadFile(const std::filesystem::path& fi
   try {
     ret = WinamaxGameHistory::parseGameHistory(file);
   } catch (const std::exception& e) {
-    std::cerr << std::format("Exception loading the file {}: {}\n", file.string(), e.what());
+    std::println(std::cerr, "Exception loading the file {}: {}", file.string(), e.what());
   }
 
   return ret;

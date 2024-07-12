@@ -3,10 +3,13 @@ module;
 #include <cassert>
 #include <charconv> // std::from_chars
 #include <cstring> // std::size_t
+#include <format>
 #include <gsl/gsl>
 #include <iterator> // std::distance
+#include <numeric> // std::accumulate
 #include <ranges>
 #include <string_view>
+#include <vector>
 
 export module language.strings;
 
@@ -40,6 +43,10 @@ template <typename CHAR, std::size_t SIZE>
 [[nodiscard]] int toInt(std::string_view numberStr);
 
 [[nodiscard]] size_t toSizeT(std::string_view numberStr);
+
+[[nodiscard]] std::vector<std::string> split(std::string_view toBeSplitted, const char delimiter);
+
+[[nodiscard]] std::string join(const std::vector<std::string>& toBeJoined, const char delimiter);
 } // namespace language::strings
 
 module : private;
@@ -149,4 +156,27 @@ static inline TYPE toType(std::string_view s) {
 
 [[nodiscard]] size_t language::strings::toSizeT(std::string_view numberStr) {
   return toType<size_t>(numberStr);
+}
+
+[[nodiscard]] std::vector<std::string> language::strings::split(std::string_view toBeSplitted, const char delimiter) {
+  std::vector<std::string> ret;
+  std::string token;
+  for (auto c : toBeSplitted) {
+    if (delimiter == c) {
+      ret.push_back(token);
+      token.clear();
+    } else {
+      token.push_back(c);
+    }
+  }
+  if (!token.empty()) {
+    ret.push_back(token);
+  }
+  return ret;
+}
+
+
+[[nodiscard]] std::string language::strings::join(const std::vector<std::string>& toBeJoined, const char delimiter) {
+  const auto joiner { [&delimiter](std::string_view a, std::string_view b) { return std::format("{} {} {}", a, delimiter, b); } };
+  return toBeJoined.empty() ? "" : std::accumulate(std::next(toBeJoined.begin()), toBeJoined.end(), toBeJoined[0], joiner);
 }

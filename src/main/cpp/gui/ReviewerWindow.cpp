@@ -28,10 +28,8 @@ module;
 #include <cassert> // assert
 #include <format>
 #include <functional> // std::function
-#include <memory> // std::make_unique
 #include <utility> // std::pair
 #include <string_view>
-
 
 export module gui.ReviewerWindow;
 
@@ -46,7 +44,7 @@ export class [[nodiscard]] ReviewerWindow final {
   friend void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self);
 private:
   Preferences& m_preferences;
-  std::unique_ptr<Fl_Double_Window> m_window;
+  Fl_Double_Window m_window;
   std::function<void()> m_closeNotifier;
 
 public:
@@ -63,11 +61,10 @@ module : private;
   return static_cast<ReviewerWindow*>(self);
 }
 
-std::unique_ptr<Fl_Double_Window> buildWindow(const Preferences& preferences,
-    std::string_view label) {
+Fl_Double_Window buildWindow(const Preferences& preferences,
+  std::string_view label) {
   const auto [localX, localY, width, height] { preferences.getGameWindowXYWH() };
-  return std::make_unique<Fl_Double_Window>(
-           localX, localY, width, height, label.data());
+  return Fl_Double_Window(localX, localY, width, height, label.data());
 }
 
 void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self) {
@@ -83,10 +80,10 @@ void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self) {
   return ret;
 }
 
-[[nodiscard]] std::unique_ptr<Fl_GIF_Image> loadImage(std::string_view imageName,
+[[nodiscard]] Fl_GIF_Image* loadImage(std::string_view imageName,
     std::tuple<unsigned char*, unsigned int> imageData) {
-  auto [data, size] {imageData};
-  auto image { std::make_unique<Fl_GIF_Image>(imageName.data(), data, size)};
+  const auto [data, size] {imageData};
+  auto image { new Fl_GIF_Image(imageName.data(), data, size) };
 
   switch (image->fail()) {
     case Fl_Image::ERR_NO_IMAGE:
@@ -106,10 +103,10 @@ void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self) {
   }
 }
 
-[[nodiscard]] std::unique_ptr<Fl_Box> toCardBox(Card card) {
+[[nodiscard]] Fl_Box* toCardBox(Card card) {
   auto image { loadImage(toString(card), cardImages::getImage(card))};
-  auto box { std::make_unique<Fl_Box>(0, 0, image->w(), image->h()) };
-  box->image(image.release());
+  auto box { new Fl_Box(0, 0, image->w(), image->h()) };
+  box->image(image);
   return box;
 }
 
@@ -170,9 +167,9 @@ void drawCards(const Point& wh, const Hand& hand, std::string_view hero) {
       const auto& player { entry->second };
       const auto [card1, card2] { getCards(player, hand, hero) };
       const auto [card1X, card1Y] { getCardsPosition(wh, seat, hand.getMaxSeats()) };
-      auto box1 = toCardBox(card1).release();
+      auto box1 { toCardBox(card1) };
       box1->position(card1X, card1Y);
-      auto box2 = toCardBox(card2).release();
+      auto box2 { toCardBox(card2) };
       box2->position(box1->x() + box1->w(), box1->y());
     }
   }
@@ -189,16 +186,16 @@ ReviewerWindow::ReviewerWindow(Preferences& p, std::string_view label,
   : m_preferences { p },
     m_window { buildWindow(p, label) },
     m_closeNotifier { closeNotifier } {
-  m_window->callback(reviewerWindowCb, this);
-  const auto wh { std::make_pair(m_window->w(), m_window->h())};
+  m_window.callback(reviewerWindowCb, this);
+  const auto wh { std::make_pair(m_window.w(), m_window.h())};
   drawTable();
   drawCards(wh, hand, hero);
   drawPlayButtonBar(wh);
-  m_window->end();
-  m_window->show();
+  m_window.end();
+  m_window.show();
 }
 
 ReviewerWindow::~ReviewerWindow() {
-  std::array xywh {m_window->x(), m_window->y(), m_window->w(), m_window->h()};
+  std::array xywh {m_window.x(), m_window.y(), m_window.w(), m_window.h()};
   m_preferences.saveSizeAndPosition(xywh, Preferences::PrefName::reviewerWindow);
 }

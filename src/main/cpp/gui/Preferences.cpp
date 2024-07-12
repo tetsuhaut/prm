@@ -2,12 +2,13 @@ module;
 
 #if defined(_MSC_VER) // removal of specific msvc warnings due to FLTK
 #  pragma warning(push)
-#  pragma warning(disable : 4191 4244 4365 4458 4514 4625 4626 4668 4820 5026 5027 )
+#  pragma warning(disable : 4191 4242 4244 4365 4458 4514 4625 4626 4668 4820 5026 5027 5219 )
 #endif  // _MSC_VER
 
 #include <FL/Fl.H> // assert
 #include <FL/fl_ask.H> // fl_alert
 #include <FL/Fl_Preferences.H>
+#include <FL/Fl_Tree.H>
 
 #if defined(_MSC_VER)  // end of specific msvc warnings removal
 #  pragma warning(pop)
@@ -15,14 +16,18 @@ module;
 
 #include <array>
 #include <cassert>
+#include <cctype>
 #include <filesystem>
 #include <format>
 #include <memory> // std::unique_ptr
+#include <print>
 #include <string_view>
 #include <tuple>
 
 
 export module gui.Preferences;
+
+import language.strings;
 
 /**
  * User preferences. This class encapsulates the FLTK user preference management.
@@ -39,11 +44,11 @@ public:
   void saveWindowY(PrefName, int y);
   void saveWindowWidth(PrefName, int width);
   void saveWindowHeight(PrefName, int height);
-  void saveHistoryDir(const std::filesystem::path& dir);
-  std::string getHandHistoryDir() const;
+  std::vector<std::string> getHandHistoryDirList() const;
   [[nodiscard]] std::tuple<int, int, int, int> getMainWindowXYWH() const;
   [[nodiscard]] std::tuple<int, int, int, int> getGameWindowXYWH() const;
   void saveSizeAndPosition(const std::array<int, 4>& xywh, PrefName name);
+  void saveHistoryDirs(Fl_Tree& tree);
   Preferences() = default;
   Preferences(const Preferences&) = delete;
   ~Preferences() = default;
@@ -133,15 +138,33 @@ void Preferences::saveWindowHeight(PrefName p, int height) {
   detail::save(*m_preferences, key, height);
 }
 
-void Preferences::saveHistoryDir(const std::filesystem::path& dir) {
-  using namespace detail;
-  assert(std::filesystem::is_directory(dir));
-  detail::save(*m_preferences, HISTORY_DIR, dir.string().c_str());
+void Preferences::saveSizeAndPosition(const std::array<int, 4>& xywh, Preferences::PrefName name) {
+  const auto& [x, y, w, h] { xywh };
+  saveWindowX(name, x);
+  saveWindowY(name, y);
+  saveWindowWidth(name, w);
+  saveWindowHeight(name, h);
 }
 
-std::string Preferences::getHandHistoryDir() const {
+void Preferences::saveHistoryDirs(Fl_Tree& tree) {
   using namespace detail;
-  return detail::getString(*m_preferences, HISTORY_DIR);
+  auto strList { std::vector<std::string>() };
+  for (auto item = tree.first(); item; item = tree.next(item)) {
+    const auto label { tree.label() ? std::string_view(tree.label()) : std::string_view("") };
+    if ((label.size() > 2) and std::isalpha(label[0]) and (':' == label[1]) and ('\\' == label[2])) {
+      assert(std::filesystem::is_directory(label));
+      strList.emplace_back(label);
+    }
+  }
+  const auto existing { getString(*m_preferences, HISTORY_DIR) };
+  auto toAdd { std::format("{}{}{}", existing, existing.empty() ? "" : ":", language::strings::join(strList, ':'))};
+  detail::save(*m_preferences, HISTORY_DIR, toAdd.c_str());
+}
+
+std::vector<std::string> Preferences::getHandHistoryDirList() const {
+  using namespace detail;
+  const auto dirFlatList { detail::getString(*m_preferences, HISTORY_DIR) };
+  return language::strings::split(dirFlatList, ':');
 }
 
 [[nodiscard]] std::tuple<int, int, int, int> Preferences::getMainWindowXYWH() const {
@@ -154,12 +177,4 @@ std::string Preferences::getHandHistoryDir() const {
   using namespace detail;
   return detail::getGenericWindowXYWH(*m_preferences, GAME_WINDOW_X, GAME_WINDOW_Y, GAME_WINDOW_WIDTH,
                                       GAME_WINDOW_HEIGHT);
-}
-
-void Preferences::saveSizeAndPosition(const std::array<int, 4>& xywh, Preferences::PrefName name) {
-  const auto& [x, y, w, h] { xywh };
-  saveWindowX(name, x);
-  saveWindowY(name, y);
-  saveWindowWidth(name, w);
-  saveWindowHeight(name, h);
 }

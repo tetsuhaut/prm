@@ -54,10 +54,29 @@ target_sources(prm
     ${sourceFiles}
 )
 
+# the unitTests executable source files
+file(GLOB_RECURSE testSourceFiles src/test/cpp/*)
+
+# this program creates an executable file called 'unitTests'
+add_executable(unitTests)
+
+# the unitTests executable is created from main modules and test modules
+target_sources(unitTests
+    PUBLIC
+      FILE_SET CXX_MODULES FILES
+      src/main/cpp/language/strings.cpp
+      ${testSourceFiles}
+)
+
+target_include_directories(unitTests PRIVATE src/main/cpp)
+
 # pass informations to the source code
 target_compile_definitions(prm PUBLIC APP_VERSION="${CMAKE_PROJECT_VERSION}")
 target_compile_definitions(prm PUBLIC APP_NAME_SHORT="Poker Reviewer Modulaire")
 target_compile_definitions(prm PUBLIC IMAGES_DIR="${EXECUTABLE_OUTPUT_PATH}/resources/images/")
+target_compile_definitions(unitTests PUBLIC APP_VERSION="${CMAKE_PROJECT_VERSION}")
+target_compile_definitions(unitTests PUBLIC APP_NAME_SHORT="Poker Reviewer Modulaire")
+target_compile_definitions(unitTests PUBLIC IMAGES_DIR="${EXECUTABLE_OUTPUT_PATH}/resources/images/")
 
 ################################################################################
 # library configurations
@@ -78,6 +97,8 @@ set(FLTK_SKIP_OPENGL true)
 find_package(FLTK REQUIRED) # dunno how to provide version
 target_include_directories(prm PRIVATE ${FLTK_INCLUDE_DIRS})
 target_link_libraries(prm PRIVATE ${FLTK_LIBRARIES})
+target_include_directories(unitTests PRIVATE ${FLTK_INCLUDE_DIRS})
+target_link_libraries(unitTests PRIVATE ${FLTK_LIBRARIES})
 
 ################################################################################
 # will use the GSL library https://github.com/Microsoft/GSL, so configure the
@@ -87,6 +108,7 @@ target_link_libraries(prm PRIVATE ${FLTK_LIBRARIES})
 ################################################################################
 find_package(Microsoft.GSL CONFIG REQUIRED)
 target_link_libraries(prm PRIVATE Microsoft.GSL::GSL)
+target_link_libraries(unitTests PRIVATE Microsoft.GSL::GSL)
 
 ################################################################################
 # will use the stlab library https://github.com/stlab/libraries, so configure
@@ -97,6 +119,27 @@ target_link_libraries(prm PRIVATE Microsoft.GSL::GSL)
 ################################################################################
 find_package(stlab 1.7.1 REQUIRED)
 target_link_libraries(prm PRIVATE stlab::stlab)
+target_link_libraries(unitTests PRIVATE stlab::stlab)
+
+################################################################################
+# will use the Boost libraries, so configure the project for it
+# need to have Boost_DIR as an environment variable pointing to the dir where
+# the library has been installed
+# https://github.com/boostorg/test
+################################################################################
+# disable auto linking
+add_definitions(-DBOOST_ALL_NO_LIB)
+SET(Boost_DEBUG ON)
+
+# use static linking, requires the IDE project to use static runtime
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME ON)
+
+# specify which libraries to link with and corresponding include files
+find_package(Boost 1.80.0 CONFIG COMPONENTS unit_test_framework)
+include_directories(${Boost_INCLUDE_DIRS})
+target_link_libraries(unitTests PRIVATE ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
 
 ################################################################################
 # compiler configurations
@@ -111,6 +154,7 @@ target_link_libraries(prm PRIVATE stlab::stlab)
 if(MSVC)
   # link statically
   set_property(TARGET prm PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+  set_property(TARGET unitTests PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
   # select the prm project when opening Visual Studio
   set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT prm)
   
@@ -118,6 +162,7 @@ if(MSVC)
   # note : /INCREMENTAL is is implied for debug build
   # /fsanitize=address, /fsanitize=undefined, /fsanitize=memory, /fsanitize=thread, /fsanitize=leak, /fsanitize=hwaddress
   #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8 /MP /ZI /Gy /EHsc /Zc:__cplusplus /fsanitize=leak" CACHE STRING "" FORCE)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8 /MP /ZI /Gy /EHsc /Zc:__cplusplus " CACHE STRING "" FORCE)
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /ignore:4099" CACHE STRING "" FORCE)
   # compile with max warning level
   target_compile_options(prm PRIVATE /JMC # debug just my code
@@ -129,6 +174,15 @@ if(MSVC)
                                      /std:c++latest # use the latest C++ version
                                      #/W4 /w35038 /w14640 /w14242 /w14254 /w14263 /w14265 /w14287 /we4289 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928)
                                      /Wall /wd4820 /wd4623 /wd4626 /wd5027 /wd4625 /wd5026 /wd5045 /wd5246)
+  target_compile_options(unitTests PRIVATE /JMC # debug just my code
+                                           /utf-8 # Set source and execution character sets to UTF-8.
+                                           /MP # Builds multiple source files concurrently.
+                                           /Zc:__cplusplus # the __cplusplus macro tells the C++ version is use
+                                           /ZI # Edit and Continue debugging features
+                                           /permissive- # standards-conforming compiler
+                                           /std:c++latest # use the latest C++ version
+                                           #/W4 /w35038 /w14640 /w14242 /w14254 /w14263 /w14265 /w14287 /we4289 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928)
+                                           /Wall /wd4820 /wd4623 /wd4626 /wd5027 /wd4625 /wd5026 /wd5045 /wd5246)
 
 ################################################################################
 # if used with MinGW, link statically, compile with max warnings, do not show

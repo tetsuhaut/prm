@@ -7,6 +7,7 @@ module;
 #include <iostream>
 #include <memory> // uptr, std::is_same_v
 #include <optional>
+#include <print>
 #include <span>
 #include <string_view>
 #include <tuple>
@@ -157,7 +158,7 @@ static constexpr auto DEALT_TO_LENGTH { language::strings::length("Dealt to ") }
 
 [[nodiscard]]  std::array<Card, 5> parseHeroCards(TextFile& tf,
     PlayerCache& cache) {
-  std::cout << std::format("Parsing hero cards for file {}.\n", tf.getFileStem());
+  std::println("Parsing hero cards for file {}.", tf.getFileStem());
 
   if (tf.startsWith("Dealt to ")) {
     const auto& line { tf.getLine() };
@@ -173,7 +174,7 @@ static constexpr auto DEALT_TO_LENGTH { language::strings::length("Dealt to ") }
 }
 
 [[nodiscard]]  std::array<Card, 5> parseBoardCards(TextFile& tf) {
-  std::cout << std::format("Parsing board cards for file {}.\n", tf.getFileStem());
+  std::println("Parsing board cards for file {}.", tf.getFileStem());
   std::array ret { FIVE_NONE_CARDS };
 
   while (!tf.lineIsEmpty()) {
@@ -210,7 +211,7 @@ static constexpr auto SEAT_NB_LENGTH { language::strings::length(" Seat #") };
   TextFile& tf) {
   tf.next();
   const auto& line { tf.getLine() };
-  std::cout << std::format("Parsing table line {}.\n", line);
+  std::println("Parsing table line {}.", line);
   // Table: 'Frankfurt 11' 9-max (real money) Seat #2 is the button
   // Table: 'Expresso(111550795)#0' 3-max (real money) Seat #1 is the button
   // ^Table: '(.*)' (.*)-max .* Seat #(.*) is the button$
@@ -230,7 +231,7 @@ static constexpr auto SEAT_NB_LENGTH { language::strings::length(" Seat #") };
 static constexpr auto POSTS_ANTE_LENGTH { language::strings::length(" posts ante ") };
 
 [[nodiscard]]  long parseAnte(TextFile& tf) {
-  std::cout << std::format("Parsing ante for file {}.\n", tf.getFileStem());
+  std::println("Parsing ante for file {}.", tf.getFileStem());
   // "^(.*) posts m_ante (.*).*$"
   long ret = 0;
 
@@ -352,7 +353,7 @@ std::string_view handId) {
 
 [[nodiscard]]  std::pair<std::vector<std::unique_ptr<Action>>, std::array<std::string, 10>>
 parseActionsAndWinners(TextFile& tf, std::string_view handId) {
-  std::cout << std::format("Parsing actions and winners for file {}.\n", tf.getFileStem());
+  std::println("Parsing actions and winners for file {}.", tf.getFileStem());
   std::vector<std::unique_ptr<Action>> actions;
   Street currentStreet = Street::none;
 
@@ -392,7 +393,7 @@ constexpr static auto WINAMAX_SITE_NAME { "Winamax" };
 template<GameType gameType>
 [[nodiscard]]  std::unique_ptr<Hand> getHand(TextFile& tf, PlayerCache& cache,
     int level, const Time& date, std::string_view handId) {
-  std::cout << std::format("Building hand and maxSeats from history file {}.\n", tf.getFileStem());
+  std::println("Building hand and maxSeats from history file {}.", tf.getFileStem());
   const auto& [nbMaxSeats, tableName, buttonSeat] { getNbMaxSeatsTableNameButtonSeatFromTableLine(tf) };
   const auto& seatPlayers { parseSeats(tf, cache) };
   std::ranges::for_each(seatPlayers, [&cache](const auto & entry) {
@@ -404,7 +405,7 @@ template<GameType gameType>
   const auto& heroCards { parseHeroCards(tf, cache) };
   auto [actions, winners] { parseActionsAndWinners(tf, handId) };
   const auto& boardCards { parseBoardCards(tf) };
-  std::cout << std::format("nb actions={}\n", actions.size());
+  std::println("nb actions={}", actions.size());
   Hand::Params params { .id = handId, .gameType = gameType, .siteName = WINAMAX_SITE_NAME,
                         .tableName = tableName, .buttonSeat = buttonSeat, .maxSeats = nbMaxSeats, .level = level,
                         .ante = ante, .startDate = date, .seatPlayers = seatPlayers, .heroCards = heroCards,
@@ -413,13 +414,13 @@ template<GameType gameType>
 }
 
 std::unique_ptr<Hand> WinamaxHandBuilder::buildCashgameHand(TextFile& tf, PlayerCache& pc) {
-  std::cout << std::format("Building Cashgame from history file {}.\n", tf.getFileStem());
+  std::println("Building Cashgame from history file {}.", tf.getFileStem());
   const auto& [_, date, handId] { parseStartOfWinamaxPokerLine(tf.getLine()) };
   return getHand<GameType::cashGame>(tf, pc, 0, date, handId); // for cashGame, level is zero
 }
 
 std::unique_ptr<Hand> WinamaxHandBuilder::buildTournamentHand(TextFile& tf, PlayerCache& pc) {
-  std::cout << std::format("Building Tournament from history file {}.\n", tf.getFileStem());
+  std::println("Building Tournament from history file {}.", tf.getFileStem());
   const auto& [level, date, handId] { getLevelDateHandIdFromTournamentWinamaxPokerLine(tf.getLine()) };
   return getHand<GameType::tournament>(tf, pc, level, date, handId);
 }
@@ -427,7 +428,7 @@ std::unique_ptr<Hand> WinamaxHandBuilder::buildTournamentHand(TextFile& tf, Play
 std::pair<std::unique_ptr<Hand>, std::unique_ptr<GameData>> WinamaxHandBuilder::buildCashgameHandAndGameData(
       TextFile& tf,
 PlayerCache& pc) {
-  std::cout << std::format("Building Cashgame and game data from history file {}.\n",
+  std::println("Building Cashgame and game data from history file {}.",
                            tf.getFileStem());
   const auto& [smallBlind, bigBlind, date, handId] { getSmallBlindBigBlindDateHandIdFromCashGameWinamaxPokerLine(tf.getLine()) };
   auto pHand { getHand<GameType::cashGame>(tf, pc, 0, date, handId) };
@@ -437,8 +438,7 @@ PlayerCache& pc) {
 std::pair<std::unique_ptr<Hand>, std::unique_ptr<GameData>> WinamaxHandBuilder::buildTournamentHandAndGameData(
       TextFile& tf,
 PlayerCache& pc) {
-  std::cout << std::format("Building Tournament and game data from history file {}.\n",
-                           tf.getFileStem());
+  std::println("Building Tournament and game data from history file {}.", tf.getFileStem());
   const auto& [buyIn, level, date, handId] { getBuyInLevelDateHandIdFromTournamentWinamaxPokerLine(tf.getLine()) };
   auto pHand { getHand<GameType::tournament>(tf, pc, level, date, handId) };
   return { std::move(pHand), std::make_unique<GameData>(GameData::Args{.nbMaxSeats = pHand->getMaxSeats(), .smallBlind = 0, .bigBlind = 0, .buyIn = buyIn, .startDate = pHand->getStartDate()}) };

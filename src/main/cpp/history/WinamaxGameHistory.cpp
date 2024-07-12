@@ -5,6 +5,7 @@ module;
 #include <iostream>
 #include <memory>
 #include <optional>
+#include <print>
 #include <ranges>
 #include <string>
 #include <string_view>
@@ -127,7 +128,7 @@ std::unique_ptr<GAME_TYPE> createGame(const std::filesystem::path& gameHistoryFi
         ret = newGame<GAME_TYPE>(fileStem, *pGameData);
         ret->addHand(std::move(pHand));
       } else {
-        std::cout << "not the 1st hand : adding the new hand to the existing game history.\n";
+        std::println("not the 1st hand : adding the new hand to the existing game history.");
         ret->addHand(WinamaxHandBuilder::buildHand<GAME_TYPE>(tfl, cache));
       }
     }
@@ -142,10 +143,10 @@ template<typename GAME_TYPE>
   PlayerCache cache { WINAMAX_SITE_NAME };
 
   if (auto g { createGame<GAME_TYPE>(gameHistoryFile, cache) }; nullptr != g) {
-    std::cout << std::format("Game created for file {}.\n", gameHistoryFile.filename().string());
+    std::println("Game created for file {}.", gameHistoryFile.filename().string());
     pSite->addGame(std::move(g));
   } else {
-    std::cerr << std::format("Game *not* created for file {}.\n", gameHistoryFile.filename().string());
+    std::println(std::cerr, "Game *not* created for file {}.", gameHistoryFile.filename().string());
   }
 
   auto players { cache.extractPlayers() };
