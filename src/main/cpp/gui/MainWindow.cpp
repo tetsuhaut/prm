@@ -28,19 +28,7 @@ module;
 #  pragma GCC diagnostic pop
 #endif  // _MSC_VER
 
-#include <algorithm> // std::ranges
-#include <array> // std::array
-#include <cctype> // std::isdigit
-#include <cassert>
-#include <cerrno>
-#include <cstring> // std::strerror_s
-#include <filesystem> // std::filesystem::path
-#include <memory> // std::make_unique
-#include <print> // std::format, std::print
-#include <span>
-#include <string> // std::string
-#include <utility> // std::pair
-#include <vector>
+#include <cassert> // assert
 
 export module gui.MainWindow;
 
@@ -52,6 +40,7 @@ import gui.Preferences;
 import gui.ReviewerWindow;
 import history.WinamaxGameHistory;
 import history.WinamaxHistory;
+import std;
 
 export class [[nodiscard]] MainWindow final {
 private:
@@ -82,17 +71,10 @@ static constexpr std::string_view CLOSE_THE_REVIEW_LABEL { "Close the review" };
 
 [[nodiscard]] static constexpr int toInt(std::size_t value) {
   constexpr int kIntMax { std::numeric_limits<int>::max() };
-  return (value > static_cast<std::size_t>(kIntMax)) ? kIntMax : static_cast<int>(value);
+  return std::cmp_greater(value, kIntMax) ? kIntMax : static_cast<int>(value);
 }
 
 [[nodiscard]] static constexpr int toInt(auto) = delete; // forbid other types
-
-static void mainWindowCb(Fl_Widget*) {
-  // we dont't want the Esc key to close the program
-  if (FL_SHORTCUT == Fl::event() && FL_Escape == Fl::event_key()) { return; }
-
-  pThis->exit();
-}
 
 [[nodiscard]] static fs::path getFilenameFromItem(const Fl_Tree& tree, const Fl_Tree_Item& item) {
   char pathname[256];
@@ -125,10 +107,11 @@ static void gameListCb(Fl_Widget* w) {
   return nullptr;
 }
 
-[[nodiscard]] static std::unique_ptr<Fl_Native_File_Chooser> buildHandHistoryDirectoryChooser() {
+[[nodiscard]] static std::unique_ptr<Fl_Native_File_Chooser> buildHandHistoryDirectoryChooser(Preferences& p) {
   auto pHistoryChoser { std::make_unique<Fl_Native_File_Chooser>() };
   pHistoryChoser->title("Choisissez un répertoire d'historiques de mains");
   pHistoryChoser->type(Fl_Native_File_Chooser::BROWSE_DIRECTORY);
+  pHistoryChoser->directory(p.getPreviousHistoryDir().c_str());
   return pHistoryChoser;
 }
 
@@ -215,11 +198,6 @@ enum class [[nodiscard]] FileChoiceStatus : short { ok = 0, error = -1, cancel =
   return ret;
 }
 
-struct Data {
-  std::vector<fs::path> historyFiles;
-  std::string dir;
-};
-
 template<typename T>
 [[nodiscard]] static std::unique_ptr<T> toUniquePtr(void* value) {
   return std::unique_ptr<T>(static_cast<T*>(value));
@@ -236,6 +214,7 @@ template<typename T>
 }
 
 void MainWindow::addHistoryDirectoryToList(std::string_view dir, const std::vector<fs::path>& historyFiles) {
+  m_preferences.savePreviousHistoryDir(dir);
   if (CHOSE_HAND_HISTORY_DIRECTORY_MSG == m_games->last()->label()) {
     m_games->remove(m_games->last());
     m_games->activate();
@@ -246,12 +225,12 @@ void MainWindow::addHistoryDirectoryToList(std::string_view dir, const std::vect
   });
   // tentative de fermeture du dirNode
   for (auto node = m_games->first(); node; node = m_games->next(node)) {
-    if (!node->is_root() && 0 != node->children()) {
+    if (!node->is_root() and 0 != node->children()) {
       node->close();
     }
   }
-  m_games->resize(m_games->x(), m_games->y(), m_games->w(), dimensions::GAME_LIST_HEIGHT * toInt(historyFiles.size()));
-  m_games->redraw();
+  /*m_games->resize(m_games->x(), m_games->y(), m_games->w(), dimensions::GAME_LIST_HEIGHT * toInt(historyFiles.size()));
+  m_games->redraw();*/
 }
 
 bool MainWindow::handHistoryDirIsUnknown(std::string_view dir) {
@@ -261,20 +240,28 @@ bool MainWindow::handHistoryDirIsUnknown(std::string_view dir) {
   return true;
 }
 
+struct Data {
+  MainWindow* pThis { nullptr };
+  std::vector<fs::path> historyFiles;
+  std::string dir;
+};
+
+static void addHistoryDirectoryToListAwakeCb(void* hiddenData) {
+  auto data { toUniquePtr<Data>(hiddenData) };
+  data->pThis->addHistoryDirectoryToList(data->dir, data->historyFiles);
+}
+
 void MainWindow::chooseHandHistoryDirectory() {
-  auto dirChoser { buildHandHistoryDirectoryChooser() };
+  auto dirChoser { buildHandHistoryDirectoryChooser(m_preferences) };
 
   switch (FileChoiceStatus(dirChoser->show())) {
   case FileChoiceStatus::ok: {
     if (handHistoryDirIsUnknown(dirChoser->filename())) {
       if (auto historyFiles = getHistoryFiles(dirChoser->filename()); !historyFiles.empty()) {
         auto data { std::make_unique<Data>() };
+        data->pThis = this;
         data->historyFiles = historyFiles;
         data->dir = dirChoser->filename();
-        const auto addHistoryDirectoryToListAwakeCb = [](void* hiddenData) {
-          auto data { toUniquePtr<Data>(hiddenData) };
-          pThis->addHistoryDirectoryToList(data->dir, data->historyFiles);
-          };
         Fl::awake(addHistoryDirectoryToListAwakeCb, data.release());
       }
     }
@@ -298,7 +285,7 @@ void MainWindow::exit() {
   if (m_mainWindow) {
     std::array xywh {m_mainWindow->x(), m_mainWindow->y(), m_mainWindow->w(), m_mainWindow->h()};
     m_preferences.saveSizeAndPosition(xywh, Preferences::PrefName::mainWindow);
-    m_preferences.saveHistoryDirs(*m_games);
+    m_preferences.saveGameList(*m_games);
   }
 
   /* hide all windows: this will terminate the MainWindow */
@@ -329,23 +316,28 @@ void MainWindow::toggleGameWindow() {
   return pReviewButton;
 }
 
-void populateGames(Fl_Tree& /*tree*/, std::span<const std::string> /*histoDirList*/) {
-  // TODO
-  //data->historyFiles = historyFiles;
+void populateGames(Fl_Tree& /*tree*/, std::span<const std::string> historyFiles) {
+  auto data { std::make_unique<Data>() };
+  //data->pThis = this;
+  std::vector<fs::path> v;
+  std::ranges::for_each(historyFiles, [&v](auto fileStr) {v.push_back(fileStr); });
+  data->historyFiles = v;
   //data->dir = dirChoser->filename();
-  //const auto addHistoryDirectoryToListAwakeCb = [](void* hiddenData) {
-  //  auto data { toUniquePtr<Data>(hiddenData) };
-  //  pThis->addHistoryDirectoryToList(data->dir, data->historyFiles);
-  //  };
-  //Fl::awake(addHistoryDirectoryToListAwakeCb, data.release());
+  Fl::awake(addHistoryDirectoryToListAwakeCb, data.release());
 }
-[[nodiscard]] static std::unique_ptr<Fl_Tree> buildGameList(int x, int y, int width, int height, std::span<const std::string> histoDirList) {
-  auto tree { std::make_unique<Fl_Tree>(x, y, width, height)};
-  tree->root_label(GAMES_LIST_LABEL.data());
-  tree->add(CHOSE_HAND_HISTORY_DIRECTORY_MSG.data());
-  tree->callback(gameListCb);
-  tree->deactivate();
-  populateGames(*tree, histoDirList);
+[[nodiscard]] static std::unique_ptr<Fl_Tree> buildGameList(int x, int y, int width, int height, const Preferences& prefs) {
+  auto tree { std::make_unique<Fl_Tree>(x, y, width, height) };
+  /*if (int historyFilesSize {prefs.getHistoryFilesSize()}; 0 != historyFilesSize) {
+    prefs.loadGameList(*tree);
+    tree->resize(tree->x(), tree->y(), tree->w(), dimensions::GAME_LIST_HEIGHT);
+    tree->redraw();
+  }
+  else*/ {
+    tree->root_label(GAMES_LIST_LABEL.data());
+    tree->add(CHOSE_HAND_HISTORY_DIRECTORY_MSG.data());
+    tree->callback(gameListCb);
+    tree->deactivate();
+  }  
   return tree;
 }
 
@@ -366,7 +358,10 @@ void populateGames(Fl_Tree& /*tree*/, std::span<const std::string> /*histoDirLis
 [[nodiscard]] static std::unique_ptr<Fl_Double_Window> buildMainWindow(int localX, int localY, int width, int height) {
   auto pMainWindow = std::make_unique<Fl_Double_Window>(localX, localY, width, height,
     "Poker Reviewer Modulaire");
-  pMainWindow->callback(mainWindowCb);
+  pMainWindow->callback([](auto) {
+    // we dont't want the Esc key to close the program
+    if (FL_SHORTCUT != Fl::event() or FL_Escape != Fl::event_key()) { pThis->exit(); }
+  });
   return pMainWindow;
 }
 
@@ -376,8 +371,7 @@ void populateGames(Fl_Tree& /*tree*/, std::span<const std::string> /*histoDirLis
   m_mainWindow = buildMainWindow(localX, localY, width, height);
   [[maybe_unused]]
   const auto menuBar = buildMenuBar(dimensions::MENUBAR_X, dimensions::MENUBAR_Y, width, dimensions::MENUBAR_HEIGHT);
-  const auto list { m_preferences.getHandHistoryDirList() };
-  m_games = buildGameList(dimensions::EMPTY_GAME_LIST_X, dimensions::EMPTY_GAME_LIST_Y, width-10, dimensions::EMPTY_GAME_LIST_HEIGHT, list);
+  m_games = buildGameList(dimensions::EMPTY_GAME_LIST_X, dimensions::EMPTY_GAME_LIST_Y, width - 10, dimensions::EMPTY_GAME_LIST_HEIGHT, m_preferences);
   pReviewerButton = buildReviewButton(height);
   m_mainWindow->end();
   Fl::lock(); /* "start" the FLTK lock mechanism */

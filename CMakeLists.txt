@@ -6,7 +6,7 @@ project("Poker Reviewer Modulaire" VERSION 0.0.1 LANGUAGES CXX)
 # the project language is C++ 23
 set(CMAKE_CXX_STANDARD 23)
 
-# if the compiler doesn't know C++ 23, fail
+# the compiler must be C++ 23 compatible
 set(CMAKE_CXX_STANDARD_REQUIRED 23)
 
 # no language extension to be as portable as possible
@@ -43,7 +43,7 @@ file(GLOB_RECURSE sourceFiles
 # this program creates an executable file called 'prm'
 add_executable(prm)
 
-# the main executable is created from main.cpp and modules
+# the 'prm' executable is created from main.cpp and modules
 target_sources(prm
     PUBLIC
     src/main/cpp/main.cpp
@@ -60,7 +60,7 @@ file(GLOB_RECURSE testSourceFiles src/test/cpp/*)
 # this program creates an executable file called 'unitTests'
 add_executable(unitTests)
 
-# the unitTests executable is created from main modules and test modules
+# the 'unitTests' executable is created from main modules and test source file
 target_sources(unitTests
     PUBLIC
       FILE_SET CXX_MODULES FILES
@@ -68,6 +68,7 @@ target_sources(unitTests
       ${testSourceFiles}
 )
 
+# the 'unitTests' source files can include prm headers
 target_include_directories(unitTests PRIVATE src/main/cpp)
 
 # pass informations to the source code

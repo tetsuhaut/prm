@@ -66,11 +66,11 @@ public:
       m_seats { p.seatPlayers },
       m_actions { std::move(p.actions) },
       m_winners { p.winners } {
-    assert(!m_id.empty() && "id is empty");
-    assert(!m_siteName.empty() && "site is empty");
-    assert(!m_tableName.empty() && "table is empty");
-    assert(m_ante >= 0 && "ante is negative");
-    assert(m_seats.size() > 1 && m_seats.size() < 11);
+    assert(!m_id.empty() and "id is empty");
+    assert(!m_siteName.empty() and "site is empty");
+    assert(!m_tableName.empty() and "table is empty");
+    assert(m_ante >= 0 and "ante is negative");
+    assert(m_seats.size() > 1 and m_seats.size() < 11);
   }
 
   Hand(const Hand&) = delete;

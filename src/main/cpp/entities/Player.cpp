@@ -39,6 +39,6 @@ Player::Player(const Params& p)
   : m_name { p.name },
     m_site { p.site },
     m_comments {p.comments } {
-  assert(!m_name.empty() && "name is empty");
-  assert(!m_site.empty() && "site is empty");
+  assert(!m_name.empty() and "name is empty");
+  assert(!m_site.empty() and "site is empty");
 }

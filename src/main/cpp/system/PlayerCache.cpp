@@ -51,14 +51,14 @@ PlayerCache::PlayerCache(std::string_view siteName) noexcept : m_pImpl { new Imp
 void PlayerCache::setIsHero(std::string_view playerName) {
   const std::lock_guard lock { m_pImpl->m_mutex };
   auto it { m_pImpl->m_players.find(playerName) };
-  assert((m_pImpl->m_players.end() != it) && "Setting hero on a bad player");
+  assert((m_pImpl->m_players.end() != it) and "Setting hero on a bad player");
   it->second->setIsHero(true);
 }
 
 void PlayerCache::erase(std::string_view playerName) {
   const std::lock_guard lock { m_pImpl->m_mutex };
   auto it { m_pImpl->m_players.find(playerName) };
-  assert((m_pImpl->m_players.end() != it) && "Erasing a bad player");
+  assert((m_pImpl->m_players.end() != it) and "Erasing a bad player");
   m_pImpl->m_players.erase(it);
 }
 

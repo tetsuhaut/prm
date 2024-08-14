@@ -47,10 +47,10 @@ public:
 
 module : private;
 
-Site::Site(std::string_view name) : m_name { name } { assert(!m_name.empty() && "name is empty"); }
+Site::Site(std::string_view name) : m_name { name } { assert(!m_name.empty() and "name is empty"); }
 
 void Site::addPlayer(std::unique_ptr<Player> p) {
-  assert(p->getSiteName() == m_name && "player is on another site");
+  assert(p->getSiteName() == m_name and "player is on another site");
 
   if (!m_players.contains(p->getName())) {
     if (p->isHero()) { m_heroName = p->getName(); }
@@ -60,7 +60,7 @@ void Site::addPlayer(std::unique_ptr<Player> p) {
 }
 
 void Site::addGame(std::unique_ptr<CashGame> game) {
-  assert(game->getSiteName() == m_name && "game is on another site");
+  assert(game->getSiteName() == m_name and "game is on another site");
   m_cashGames.push_back(std::move(game));
 }
 
@@ -79,7 +79,7 @@ template<template<typename, typename> typename SmartPointer, typename T, typenam
 [[nodiscard]] std::vector<const CashGame*> Site::viewCashGames() const { return mkView(m_cashGames); }
 
 void Site::addGame(std::unique_ptr<Tournament> game) {
-  assert(game->getSiteName() == m_name && "game is on another site");
+  assert(game->getSiteName() == m_name and "game is on another site");
   m_tournaments.push_back(std::move(game));
 }
 
@@ -101,7 +101,7 @@ void Site::addGame(std::unique_ptr<Tournament> game) {
 }
 
 void Site::merge(Site& other) {
-  assert(other.getName() == m_name && "Can't merge data from different poker sites");
+  assert(other.getName() == m_name and "Can't merge data from different poker sites");
   std::ranges::for_each(other.m_players, [this](auto & pair) { addPlayer(std::move(pair.second)); });
   language::containers::moveInto(other.m_cashGames, m_cashGames);
   language::containers::moveInto(other.m_tournaments, m_tournaments);

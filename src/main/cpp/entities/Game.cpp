@@ -69,7 +69,7 @@ public:
     assert(!m_id.empty());
     assert(!m_site.empty());
     assert(!m_name.empty());
-    assert(m_nbMaxSeats != Seat::seatUnknown && "nbMaxSeats must be defined");
+    assert(m_nbMaxSeats != Seat::seatUnknown and "nbMaxSeats must be defined");
   }
   Game(const Game&) = delete;
   Game(Game&&) = delete;
@@ -115,7 +115,7 @@ public:
                         .variant = p.variant, .limitType = p.limit, .isRealMoney = p.isRealMoney,
                         .nbMaxSeats = p.nbMaxSeats, .startDate = p.startDate }),
     m_buyIn { p.buyIn } {
-    assert(m_buyIn >= 0 && "negative buyIn");
+    assert(m_buyIn >= 0 and "negative buyIn");
   }
   Tournament(const Tournament&) = delete;
   Tournament(Tournament&&) = delete;
@@ -151,8 +151,8 @@ public:
                         .nbMaxSeats = p.nbMaxSeats, .startDate = p.startDate }),
     m_smallBlind { p.smallBlind },
     m_bigBlind { p.bigBlind } {
-    assert(m_smallBlind >= 0 && "negative small blind");
-    assert(m_bigBlind >= 0 && "negative big blind");
+    assert(m_smallBlind >= 0 and "negative small blind");
+    assert(m_bigBlind >= 0 and "negative big blind");
   }
 
   CashGame(const CashGame&) = delete;

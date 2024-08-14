@@ -57,7 +57,7 @@ module : private;
 }
 
 /*[[nodiscard]]*/ Seat tableSeat::fromArrayIndex(std::size_t i) {
-  assert(10 > i && "Can't find a seat for that value");
+  assert(10 > i and "Can't find a seat for that value");
   static constexpr auto SIZET_TO_ENUM = language::Map<std::size_t, Seat, 10> {{{
     {1, Seat::seatOne}, {2, Seat::seatTwo}, {3, Seat::seatThree}, {4, Seat::seatFour}, {5, Seat::seatFive},
     {6, Seat::seatSix}, {7, Seat::seatSeven}, {8, Seat::seatEight}, {9, Seat::seatNine}, {10, Seat::seatTen}

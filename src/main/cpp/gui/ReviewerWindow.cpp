@@ -69,7 +69,7 @@ Fl_Double_Window buildWindow(const Preferences& preferences,
 
 void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self) {
   // we dont't want the Esc key to close the program
-  if (FL_SHORTCUT == Fl::event() && FL_Escape == Fl::event_key()) { return; }
+  if (FL_SHORTCUT == Fl::event() and FL_Escape == Fl::event_key()) { return; }
 
   REVIEWER_WINDOW(self)->m_closeNotifier();
 }
@@ -133,7 +133,7 @@ static constexpr auto NB_SEATS_TO_COEFF = language::Map<Seat, std::array<std::pa
   const auto& [w, h] { wh };
   const auto positions { NB_SEATS_TO_COEFF.at(tableMaxSeats) };
   const auto [coefX, coefY] { positions.at(tableSeat::toArrayIndex(seat)) };
-  assert(coefX != -1 && coefY != -1);
+  assert(coefX != -1 and coefY != -1);
   return { static_cast<int>(coefX* w * 0.85), static_cast<int>(coefY* h * 0.75) };
 }
 

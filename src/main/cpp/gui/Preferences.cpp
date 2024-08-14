@@ -44,11 +44,14 @@ public:
   void saveWindowY(PrefName, int y);
   void saveWindowWidth(PrefName, int width);
   void saveWindowHeight(PrefName, int height);
-  std::vector<std::string> getHandHistoryDirList() const;
+  void loadGameList(Fl_Tree& tree) const;
   [[nodiscard]] std::tuple<int, int, int, int> getMainWindowXYWH() const;
   [[nodiscard]] std::tuple<int, int, int, int> getGameWindowXYWH() const;
   void saveSizeAndPosition(const std::array<int, 4>& xywh, PrefName name);
-  void saveHistoryDirs(Fl_Tree& tree);
+  void saveGameList(Fl_Tree& tree);
+  void savePreviousHistoryDir(std::string_view dir);
+  int getHistoryFilesSize() const;
+  std::string getPreviousHistoryDir() const;
   Preferences() = default;
   Preferences(const Preferences&) = delete;
   ~Preferences() = default;
@@ -68,8 +71,12 @@ static constexpr std::string_view GAME_WINDOW_X = "gamewindowx";
 static constexpr std::string_view GAME_WINDOW_Y = "gamewindowy";
 static constexpr std::string_view GAME_WINDOW_WIDTH = "gamewindoww";
 static constexpr std::string_view GAME_WINDOW_HEIGHT = "gamewindowh";
-static constexpr std::string_view HISTORY_DIR = "historyDir";
-
+static constexpr std::string_view PREVIOUS_HISTORY_DIR = "previousHistoryDir";
+static constexpr std::string_view TREE = "tree";
+static constexpr std::string_view TREE_X = "treex";
+static constexpr std::string_view TREE_Y = "treey";
+static constexpr std::string_view TREE_W = "treew";
+static constexpr std::string_view TREE_H = "treeh";
 
 static void save(Fl_Preferences& fltkPreferences, std::string_view key, auto&& value) {
   if (0 == fltkPreferences.set(key.data(), std::forward<decltype(value)>(value))) {
@@ -91,7 +98,7 @@ static void save(Fl_Preferences& fltkPreferences, std::string_view key, auto&& v
 
 [[nodiscard]] static std::string getString(Fl_Preferences& fltkPreferences, std::string_view key) {
   char value[512];
-  fltkPreferences.get(key.data(), &value[0], "", (int)std::size(value) - 1);
+  fltkPreferences.get(key.data(), &value[0], "", std::ssize(value) - 1);
   return value;
 }
 
@@ -112,6 +119,7 @@ static void save(Fl_Preferences& fltkPreferences, std::string_view key, auto&& v
   auto y { getIntWithDefault(fltkPreferences, yname, (screenHeight - height) / 2) };
   return { x, y, width, height };
 }
+
 } // namespace detail
 
 void Preferences::saveWindowX(PrefName p, int x) {
@@ -146,35 +154,52 @@ void Preferences::saveSizeAndPosition(const std::array<int, 4>& xywh, Preference
   saveWindowHeight(name, h);
 }
 
-void Preferences::saveHistoryDirs(Fl_Tree& tree) {
+void Preferences::saveGameList(Fl_Tree& tree) {
   using namespace detail;
-  auto strList { std::vector<std::string>() };
-  for (auto item = tree.first(); item; item = tree.next(item)) {
-    const auto label { tree.label() ? std::string_view(tree.label()) : std::string_view("") };
-    if ((label.size() > 2) and std::isalpha(label[0]) and (':' == label[1]) and ('\\' == label[2])) {
-      assert(std::filesystem::is_directory(label));
-      strList.emplace_back(label);
-    }
+  save(*m_preferences, TREE_X, tree.x());
+  save(*m_preferences, TREE_Y, tree.y());
+  save(*m_preferences, TREE_W, tree.w());
+  save(*m_preferences, TREE_H, tree.h());
+  int i = 0;
+  for (auto pItem = tree.first(); pItem; pItem = tree.next(pItem)) {
+    save(*m_preferences, std::format("{}{}", TREE, i), pItem->label());
+    ++i;
   }
-  const auto existing { getString(*m_preferences, HISTORY_DIR) };
-  auto toAdd { std::format("{}{}{}", existing, existing.empty() ? "" : ":", language::strings::join(strList, ':'))};
-  detail::save(*m_preferences, HISTORY_DIR, toAdd.c_str());
 }
 
-std::vector<std::string> Preferences::getHandHistoryDirList() const {
+void Preferences::savePreviousHistoryDir(std::string_view dir) {
+  detail::save(*m_preferences, detail::PREVIOUS_HISTORY_DIR, dir.data());
+}
+
+std::string Preferences::getPreviousHistoryDir() const {
+  return detail::getString(*m_preferences, detail::PREVIOUS_HISTORY_DIR);
+}
+
+void Preferences::loadGameList(Fl_Tree& tree) const {
   using namespace detail;
-  const auto dirFlatList { detail::getString(*m_preferences, HISTORY_DIR) };
-  return language::strings::split(dirFlatList, ':');
+  
+  std::string s;
+  int i = 0;
+  do {
+    if (s = getString(*m_preferences, std::format("{}{}", TREE, i)); !s.empty()) {
+      i++;
+      tree.add(s.c_str());
+    }
+  } while (!s.empty());
 }
 
 [[nodiscard]] std::tuple<int, int, int, int> Preferences::getMainWindowXYWH() const {
   using namespace detail;
-  return detail::getGenericWindowXYWH(*m_preferences, MAIN_WINDOW_X, MAIN_WINDOW_Y, MAIN_WINDOW_WIDTH,
+  return getGenericWindowXYWH(*m_preferences, MAIN_WINDOW_X, MAIN_WINDOW_Y, MAIN_WINDOW_WIDTH,
                                       MAIN_WINDOW_HEIGHT);
 }
 
 [[nodiscard]] std::tuple<int, int, int, int> Preferences::getGameWindowXYWH() const {
   using namespace detail;
-  return detail::getGenericWindowXYWH(*m_preferences, GAME_WINDOW_X, GAME_WINDOW_Y, GAME_WINDOW_WIDTH,
+  return getGenericWindowXYWH(*m_preferences, GAME_WINDOW_X, GAME_WINDOW_Y, GAME_WINDOW_WIDTH,
                                       GAME_WINDOW_HEIGHT);
+}
+
+[[nodiscard]] int Preferences::getHistoryFilesSize() const {
+  return m_preferences->entries();
 }
