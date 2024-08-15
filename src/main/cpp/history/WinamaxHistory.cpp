@@ -73,6 +73,9 @@ public:
   [[nodiscard]] static bool isValidHistoryFile(const std::filesystem::path& historyFile);
   static bool isValidHistoryFile(auto) = delete;
 
+  [[nodiscard]] static std::vector<std::filesystem::path> getFiles(const std::filesystem::path& historyDir);
+  [[nodiscard]] std::vector<std::filesystem::path> getFiles(auto) = delete; // use only std::filesystem::path
+
   [[nodiscard]] std::string_view getTableNameFromTableWindowTitle(std::string_view tableWindowTitle)
   const;
 
@@ -106,26 +109,17 @@ getErrorMessageOrHistoryFiles(
     return std::unexpected(
              std::format("The chosen directory '{}' should contain a 'history' directory", dir.string()));
   }
-
-  if (!prm::system::filesystem::isDir(dir / "data" / "buddy")) {
+  if (!prm::system::filesystem::isDir(dir / "data")) {
     return std::unexpected(
-             std::format("The chosen directory '{}' should contain a 'data/buddy' directory", dir.string()));
+             std::format("The chosen directory '{}' should contain a 'data' directory", dir.string()));
   }
-
-  if (!prm::system::filesystem::isDir(dir / "data" / "players")) {
-    return std::unexpected(
-             std::format("The chosen directory '{}' should contain a 'data/players' directory", dir.string()));
-  }
-
   if (!prm::system::filesystem::listSubDirs(histoDir).empty()) {
     return std::unexpected(
              std::format("The chosen directory '{}' should contain a 'history' directory that contains only files",
                          dir.string()));
   }
-
-  if (const auto & allFilesAndDirs { prm::system::filesystem::listFilesAndDirs(histoDir) };
-      !allFilesAndDirs.empty()) {
-    return allFilesAndDirs;
+  if (const auto & fd { prm::system::filesystem::listFilesAndDirs(histoDir) }; !fd.empty()) {
+    return fd;
   }
 
   return std::unexpected(
@@ -141,9 +135,9 @@ getErrorMessageOrHistoryFiles(
 
 /**
  * @return true if the given dir is an existing dir, contains a 'history' subdir which only contains txt files,
- * and if it contains a 'data' subdir, beside 'history', which contain 'buddy' and 'players' subdirs.
+ * and if it contains a 'data' subdir, beside 'history'.
  */
-bool WinamaxHistory::isValidHistoryDir(const std::filesystem::path& dir) {
+/*static*/ bool WinamaxHistory::isValidHistoryDir(const std::filesystem::path& dir) {
   // have to use std::filesystem::path.append() to produce consistent result on all compilers
   const auto& histoDir { (dir / "history").lexically_normal() };
   const auto& expected { getErrorMessageOrHistoryFiles(dir, histoDir) };
@@ -157,7 +151,7 @@ bool WinamaxHistory::isValidHistoryDir(const std::filesystem::path& dir) {
          and containsAFileEndingWith(allFilesAndDirs, "_summary.txt");
 }
 
-std::vector<std::filesystem::path> getFiles(const std::filesystem::path& historyDir) {
+/*static*/ std::vector<std::filesystem::path> WinamaxHistory::getFiles(const std::filesystem::path& historyDir) {
   if (WinamaxHistory::isValidHistoryDir(historyDir)) { return prm::system::filesystem::listTxtFilesInDir(historyDir / "history"); }
 
   return {};
@@ -171,14 +165,11 @@ bool WinamaxHistory::isValidHistoryFile(const std::filesystem::path& historyFile
     !historyFile.filename().string().ends_with("_summary.txt");
 }
 
-[[nodiscard]] std::vector<std::filesystem::path> getFiles(auto) =
-  delete; // use only std::filesystem::path
-
 // using auto&& enhances performances by inlining std::function's logic
 [[nodiscard]] std::vector<std::filesystem::path> getFilesAndNotify(const std::filesystem::path&
     historyDir,
     auto&& setNbFilesCb) {
-  const auto& files { getFiles(historyDir) };
+  const auto& files { WinamaxHistory::getFiles(historyDir) };
 
   if (setNbFilesCb) {
     const auto fileSize{ files.size() };

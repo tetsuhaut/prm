@@ -36,6 +36,7 @@ import entities.Card;
 import entities.Game; // CashGame, Tournament
 import entities.Site;
 import gui.Dimensions; // button size
+import gui.GameList;
 import gui.Preferences;
 import gui.ReviewerWindow;
 import history.WinamaxGameHistory;
@@ -47,8 +48,7 @@ private:
   Preferences m_preferences = Preferences();
   std::unique_ptr<Fl_Double_Window> m_mainWindow = nullptr;
   std::unique_ptr<ReviewerWindow> m_reviewerWindow = nullptr;
-  std::unique_ptr<Fl_Tree> m_games = nullptr;
-  bool handHistoryDirIsUnknown(std::string_view dir);
+  std::unique_ptr<GameList> m_games = nullptr;
 
 public:
   void exit();
@@ -56,7 +56,7 @@ public:
   [[nodiscard]] int run();
   void chooseHandHistoryDirectory();
   void newGameWindow();
-  void addHistoryDirectoryToList(std::string_view dir, const std::vector<std::filesystem::path>& historyFiles);
+  void addHistoryDirectoryToList(std::string_view dir);
 }; // export class MainWindow
 
 module : private;
@@ -64,54 +64,22 @@ module : private;
 namespace fs = std::filesystem;
 static MainWindow* pThis { nullptr };
 static Fl_Button* pReviewerButton { nullptr };
-static constexpr std::string_view CHOSE_HAND_HISTORY_DIRECTORY_MSG { "<chose a hand history directory>" };
-static constexpr std::string_view GAMES_LIST_LABEL { "Hand History Directories" };
 static constexpr std::string_view OPEN_THE_REVIEW_LABEL { "Open the review" };
 static constexpr std::string_view CLOSE_THE_REVIEW_LABEL { "Close the review" };
 
-[[nodiscard]] static constexpr int toInt(std::size_t value) {
-  constexpr int kIntMax { std::numeric_limits<int>::max() };
-  return std::cmp_greater(value, kIntMax) ? kIntMax : static_cast<int>(value);
-}
+//[[nodiscard]] static constexpr int toInt(std::size_t value) {
+//  constexpr int kIntMax { std::numeric_limits<int>::max() };
+//  return std::cmp_greater(value, kIntMax) ? kIntMax : static_cast<int>(value);
+//}
 
-[[nodiscard]] static constexpr int toInt(auto) = delete; // forbid other types
-
-[[nodiscard]] static fs::path getFilenameFromItem(const Fl_Tree& tree, const Fl_Tree_Item& item) {
-  char pathname[256];
-  tree.item_pathname(pathname, sizeof(pathname), &item);
-  return std::string(pathname).substr(GAMES_LIST_LABEL.size() + 1);
-}
-
-[[nodiscard]] static bool isItemHistoryFile(const Fl_Tree& tree, const Fl_Tree_Item& item) {
-  char pathname[256];
-  tree.item_pathname(pathname, sizeof(pathname), &item);
-  return std::string(pathname).starts_with(GAMES_LIST_LABEL) and std::string(pathname).ends_with(".txt");
-}
-
-static void gameListCb(Fl_Widget* w) {
-  auto* tree = static_cast<Fl_Tree*>(w);
-  auto* item = tree->callback_item();
-  if (item and (0 == item->children()) and isItemHistoryFile(*tree, *item)) {
-    pReviewerButton->activate();
-  } else {
-    pReviewerButton->deactivate();
-  }
-}
-
-[[nodiscard]] static Fl_Tree_Item* getSelectedItem(Fl_Tree& tree) {
-  for (auto* item = tree.first(); item; item = tree.next(item)) {
-    if (item->is_selected()) {
-      return item;
-    }
-  }
-  return nullptr;
-}
+//[[nodiscard]] static constexpr int toInt(auto) = delete; // forbid other types
 
 [[nodiscard]] static std::unique_ptr<Fl_Native_File_Chooser> buildHandHistoryDirectoryChooser(Preferences& p) {
   auto pHistoryChoser { std::make_unique<Fl_Native_File_Chooser>() };
   pHistoryChoser->title("Choisissez un répertoire d'historiques de mains");
   pHistoryChoser->type(Fl_Native_File_Chooser::BROWSE_DIRECTORY);
-  pHistoryChoser->directory(p.getPreviousHistoryDir().c_str());
+  auto str { p.getPreviousHistoryDir() };
+  pHistoryChoser->directory(str.c_str());
   return pHistoryChoser;
 }
 
@@ -120,9 +88,9 @@ static void gameListCb(Fl_Widget* w) {
   * Starts the import process.
   */
 void MainWindow::newGameWindow() {
-  const auto selectedItem { getSelectedItem(*m_games) };
-  const auto historyFile { getFilenameFromItem(*m_games, *selectedItem) };
-  const auto site { WinamaxGameHistory::parseGameHistory(historyFile) };
+  const auto oHistoryFile { m_games->getSelectedGameHistoryFile() };
+  assert(oHistoryFile.has_value());
+  const auto site { WinamaxGameHistory::parseGameHistory(oHistoryFile.value()) };
   const auto cashGames { site->viewCashGames() };
 
   if (cashGames.empty()) {
@@ -157,98 +125,24 @@ void MainWindow::newGameWindow() {
 */
 enum class [[nodiscard]] FileChoiceStatus : short { ok = 0, error = -1, cancel = 1 };
 
-[[nodiscard]] static constexpr bool startsLikeAHistoryFile(std::string_view s) {
-  return (s.length() > 11)
-    and std::isdigit(s[0])
-    and std::isdigit(s[1])
-    and std::isdigit(s[2])
-    and std::isdigit(s[3])
-    and std::isdigit(s[4])
-    and std::isdigit(s[5])
-    and std::isdigit(s[6])
-    and std::isdigit(s[7])
-    and '_' == s[8];
-}
-
-/**
- * @returns true if the given path
- * - is a directory
- * - that contains only files
- * - that contains files beginning by 8 digits and _
- * - that contains files ending with .txt
-*/
-
-[[nodiscard]] static std::vector<fs::path> getHistoryFiles(const fs::path& histoDir) {
-  std::vector<fs::path> ret;  
-
-  if (!fs::is_directory(histoDir)) {
-    return {};
-  }
- 
-  for (const auto& dirEntry : fs::directory_iterator(histoDir)) {
-    const auto& entryPath { dirEntry.path() };
-    if (dirEntry.is_regular_file()
-      and startsLikeAHistoryFile(entryPath.filename().string())
-      and entryPath.filename().string().starts_with("20") // like the year 2022
-      and entryPath.string().ends_with(".txt")
-      and !entryPath.string().ends_with("_summary.txt")) {
-      ret.push_back(entryPath);
-    }
-  }
-  return ret;
-}
-
 template<typename T>
 [[nodiscard]] static std::unique_ptr<T> toUniquePtr(void* value) {
   return std::unique_ptr<T>(static_cast<T*>(value));
 }
 
-[[nodiscard]] static std::string toTreeRoot(std::string_view path) {
-  std::string ret;
-  std::ranges::for_each(path, [&](const auto c) {
-    ret += c;
-    // double the anti-slashes
-    if ('\\' == c) { ret += c; }
-  });
-  return ret;
-}
-
-void MainWindow::addHistoryDirectoryToList(std::string_view dir, const std::vector<fs::path>& historyFiles) {
+void MainWindow::addHistoryDirectoryToList(std::string_view dir) {
+  m_games->addDir(dir);
   m_preferences.savePreviousHistoryDir(dir);
-  if (CHOSE_HAND_HISTORY_DIRECTORY_MSG == m_games->last()->label()) {
-    m_games->remove(m_games->last());
-    m_games->activate();
-  }
-  const auto dirNode { std::format("{}/", dir) };
-  std::ranges::for_each(historyFiles, [&](const auto& file) {
-    m_games->add((toTreeRoot(dirNode + file.filename().string()).c_str()));
-  });
-  // tentative de fermeture du dirNode
-  for (auto node = m_games->first(); node; node = m_games->next(node)) {
-    if (!node->is_root() and 0 != node->children()) {
-      node->close();
-    }
-  }
-  /*m_games->resize(m_games->x(), m_games->y(), m_games->w(), dimensions::GAME_LIST_HEIGHT * toInt(historyFiles.size()));
-  m_games->redraw();*/
-}
-
-bool MainWindow::handHistoryDirIsUnknown(std::string_view dir) {
-  for (auto item { m_games->first() }; nullptr != item; item = m_games->next(item)) {
-    if (dir == item->label()) { return false; }
-  }
-  return true;
 }
 
 struct Data {
   MainWindow* pThis { nullptr };
-  std::vector<fs::path> historyFiles;
   std::string dir;
 };
 
 static void addHistoryDirectoryToListAwakeCb(void* hiddenData) {
   auto data { toUniquePtr<Data>(hiddenData) };
-  data->pThis->addHistoryDirectoryToList(data->dir, data->historyFiles);
+  data->pThis->addHistoryDirectoryToList(data->dir);
 }
 
 void MainWindow::chooseHandHistoryDirectory() {
@@ -256,15 +150,13 @@ void MainWindow::chooseHandHistoryDirectory() {
 
   switch (FileChoiceStatus(dirChoser->show())) {
   case FileChoiceStatus::ok: {
-    if (handHistoryDirIsUnknown(dirChoser->filename())) {
-      if (auto historyFiles = getHistoryFiles(dirChoser->filename()); !historyFiles.empty()) {
+    if (const std::filesystem::path p { dirChoser->filename() }; 
+        WinamaxHistory::isValidHistoryDir(p) and !m_games->containsGameHistoryDir(dirChoser->filename())) {
         auto data { std::make_unique<Data>() };
         data->pThis = this;
-        data->historyFiles = historyFiles;
         data->dir = dirChoser->filename();
         Fl::awake(addHistoryDirectoryToListAwakeCb, data.release());
-      }
-    }
+      }    
   } break;
 
   case FileChoiceStatus::error: [[unlikely]] {
@@ -285,7 +177,7 @@ void MainWindow::exit() {
   if (m_mainWindow) {
     std::array xywh {m_mainWindow->x(), m_mainWindow->y(), m_mainWindow->w(), m_mainWindow->h()};
     m_preferences.saveSizeAndPosition(xywh, Preferences::PrefName::mainWindow);
-    m_preferences.saveGameList(*m_games);
+    m_preferences.saveGameHistoryDirs(m_games->getGameHistoryDirs());
   }
 
   /* hide all windows: this will terminate the MainWindow */
@@ -316,29 +208,20 @@ void MainWindow::toggleGameWindow() {
   return pReviewButton;
 }
 
-void populateGames(Fl_Tree& /*tree*/, std::span<const std::string> historyFiles) {
-  auto data { std::make_unique<Data>() };
-  //data->pThis = this;
-  std::vector<fs::path> v;
-  std::ranges::for_each(historyFiles, [&v](auto fileStr) {v.push_back(fileStr); });
-  data->historyFiles = v;
-  //data->dir = dirChoser->filename();
-  Fl::awake(addHistoryDirectoryToListAwakeCb, data.release());
-}
-[[nodiscard]] static std::unique_ptr<Fl_Tree> buildGameList(int x, int y, int width, int height, const Preferences& prefs) {
-  auto tree { std::make_unique<Fl_Tree>(x, y, width, height) };
-  /*if (int historyFilesSize {prefs.getHistoryFilesSize()}; 0 != historyFilesSize) {
-    prefs.loadGameList(*tree);
-    tree->resize(tree->x(), tree->y(), tree->w(), dimensions::GAME_LIST_HEIGHT);
-    tree->redraw();
-  }
-  else*/ {
-    tree->root_label(GAMES_LIST_LABEL.data());
-    tree->add(CHOSE_HAND_HISTORY_DIRECTORY_MSG.data());
-    tree->callback(gameListCb);
-    tree->deactivate();
-  }  
-  return tree;
+[[nodiscard]] static std::unique_ptr<GameList> buildGameList(int x, int y, int width, int height, Preferences& prefs) {
+  // TODO: read preferences
+  auto gameList { std::make_unique<GameList>(x, y, width, height) };
+  gameList->listenToElementSelection([](const auto& item) {
+    if ((0 == item.children()) and std::string(item.label()).ends_with(".txt")) {
+      pReviewerButton->activate();
+    } else {
+      pReviewerButton->deactivate();
+    }
+  });
+  const auto dirs { prefs.readGameHistoryDirs() };
+
+  for (const auto& dir : dirs) { gameList->addDir(dir); }
+  return gameList;
 }
 
 [[nodiscard]] static std::unique_ptr<Fl_Menu_Bar> buildMenuBar(int x, int y, int width, int height) {
@@ -371,7 +254,7 @@ void populateGames(Fl_Tree& /*tree*/, std::span<const std::string> historyFiles)
   m_mainWindow = buildMainWindow(localX, localY, width, height);
   [[maybe_unused]]
   const auto menuBar = buildMenuBar(dimensions::MENUBAR_X, dimensions::MENUBAR_Y, width, dimensions::MENUBAR_HEIGHT);
-  m_games = buildGameList(dimensions::EMPTY_GAME_LIST_X, dimensions::EMPTY_GAME_LIST_Y, width - 10, dimensions::EMPTY_GAME_LIST_HEIGHT, m_preferences);
+  m_games = buildGameList(dimensions::GAME_LIST_X, dimensions::GAME_LIST_Y, width - 10, dimensions::GAME_LIST_HEIGHT, m_preferences);
   pReviewerButton = buildReviewButton(height);
   m_mainWindow->end();
   Fl::lock(); /* "start" the FLTK lock mechanism */

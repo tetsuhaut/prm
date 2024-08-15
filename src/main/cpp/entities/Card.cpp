@@ -1,13 +1,11 @@
 module;
 
-#include <array>
 #include <cassert> // assert
-#include <string_view>
-#include <utility> // std::make_pair
 
 export module entities.Card;
 
 import language.Map;
+import std;
 
 export enum class /*[[nodiscard]]*/ Card : short {
   none = 0,
