@@ -1,12 +1,6 @@
 module;
 
-#include <algorithm> // std::range
-#include <array> // std::array
 #include <cassert>
-#include <memory>
-#include <string>
-#include <unordered_map>
-#include <vector>
 
 export module entities.Hand;
 
@@ -15,6 +9,7 @@ import entities.Card;
 import entities.GameType;
 import entities.Seat;
 import system.Time;
+import std;
 
 export class [[nodiscard]] Hand final {
 private:

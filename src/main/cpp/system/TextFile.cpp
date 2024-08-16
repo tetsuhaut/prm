@@ -2,19 +2,15 @@ module;
 
 #include <gsl/gsl>
 
-#include <algorithm> // std::find_if_not
 #include <cassert> // assert
 #include <cctype> // std::isspace
-#include <filesystem> // std::filesystem::path, std::string, std::string_view, std::stringstream forward declaration
-#include <format>
-#include <fstream>
-#include <iterator> // std::distance
-#include <memory> // uptr
-#include <span>
-#include <sstream> // std::stringstream
-#include <string>
 
 export module system.TextFile;
+
+#pragma warning( push )
+#pragma warning( disable : 4686)
+import std;
+#pragma warning( pop ) 
 
 /**
  * A text file reader.
@@ -89,8 +85,8 @@ template<typename T> requires(std::same_as<T, std::filesystem::path>)
 // use std::filesystem::path as std needs it
 std::string readToString(const std::filesystem::path& p) {
   assert((!isDir(p)) and "given a dir instead of a file");
-  std::string s { std::format("given a non exiting file '{}'", p.string()) };
-  assert((isFile(p)) and s.c_str());
+  std::println("{}", p.string());
+  assert((isFile(p)) and "given a non existing file");
   std::ifstream in { p };
   // decltype(std::ifstream::gcount()) is std::streamsize, which is signed.
   // std::string constructor takes a std::string::size_type, which is unsigned.

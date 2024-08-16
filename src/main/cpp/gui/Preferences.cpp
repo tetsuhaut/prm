@@ -34,15 +34,12 @@ public:
   enum class PrefName : short {
     mainWindow, reviewerWindow, handHistoDir
   };
-  void saveWindowX(PrefName, int x);
-  void saveWindowY(PrefName, int y);
-  void saveWindowWidth(PrefName, int width);
-  void saveWindowHeight(PrefName, int height);
   template<Savable T>
   void save(std::string_view key, T value);
   [[nodiscard]] std::tuple<int, int, int, int> getMainWindowXYWH() const;
   [[nodiscard]] std::tuple<int, int, int, int> getGameWindowXYWH() const;
-  void saveSizeAndPosition(const std::array<int, 4>& xywh, PrefName name);
+  void saveMainWindowSizeAndPosition(const std::array<int, 4>& xywh);
+  void saveGameReviewWindowSizeAndPosition(const std::array<int, 4>& xywh);
   void saveGameHistoryDirs(const std::vector<std::string>& dirs);
   [[nodiscard]] std::vector<std::string> readGameHistoryDirs() /*const*/;
   void savePreviousHistoryDir(std::string_view dir);
@@ -113,42 +110,28 @@ void Preferences::save(std::string_view key, T value) {
   }
 }
 
-void Preferences::saveWindowX(PrefName p, int x) {
+void Preferences::saveMainWindowSizeAndPosition(const std::array<int, 4>& xywh) {
   using namespace detail;
-  auto key = (PrefName::mainWindow == p) ? MAIN_WINDOW_X : GAME_WINDOW_X;
-  save(key, x);
-}
-
-void Preferences::saveWindowY(PrefName p, int y) {
-  using namespace detail;
-  auto key = (PrefName::mainWindow == p) ? MAIN_WINDOW_Y : GAME_WINDOW_Y;
-  save(key, y);
-}
-
-void Preferences::saveWindowWidth(PrefName p, int width) {
-  using namespace detail;
-  auto key = (PrefName::mainWindow == p) ? MAIN_WINDOW_WIDTH : GAME_WINDOW_WIDTH;
-  save(key, width);
-}
-
-void Preferences::saveWindowHeight(PrefName p, int height) {
-  using namespace detail;
-  auto key = (PrefName::mainWindow == p) ? MAIN_WINDOW_HEIGHT : GAME_WINDOW_HEIGHT;
-  save(key, height);
-}
-
-void Preferences::saveSizeAndPosition(const std::array<int, 4>& xywh, Preferences::PrefName name) {
   const auto& [x, y, w, h] { xywh };
-  saveWindowX(name, x);
-  saveWindowY(name, y);
-  saveWindowWidth(name, w);
-  saveWindowHeight(name, h);
+  save(MAIN_WINDOW_X, x);
+  save(MAIN_WINDOW_Y, y);
+  save(MAIN_WINDOW_WIDTH, w);
+  save(MAIN_WINDOW_HEIGHT, h);
+}
+
+void Preferences::saveGameReviewWindowSizeAndPosition(const std::array<int, 4>& xywh) {
+  using namespace detail;
+  const auto& [x, y, w, h] { xywh };
+  save(GAME_WINDOW_X, x);
+  save(GAME_WINDOW_Y, y);
+  save(GAME_WINDOW_WIDTH, w);
+  save(GAME_WINDOW_HEIGHT, h);
 }
 
 void Preferences::saveGameHistoryDirs(const std::vector<std::string>& dirs) {
   using namespace detail;
   bool keepGoing = true;
-  size_t i = 0;
+  std::size_t i = 0;
   do {
     const auto key { std::string(HISTORY_DIR) + std::string(":") + std::to_string(i) };
     if (i < dirs.size()) { save(key, dirs[i].c_str()); }
@@ -162,7 +145,7 @@ void Preferences::saveGameHistoryDirs(const std::vector<std::string>& dirs) {
   std::vector<std::string> ret;
   using namespace detail;
   bool keepGoing = true;
-  size_t i = 0;
+  std::size_t i = 0;
   do {
     const auto key { std::string(HISTORY_DIR) + std::string(":") + std::to_string(i) };
     keepGoing = (0 != m_preferences->entry_exists(key.c_str()));

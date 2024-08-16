@@ -14,16 +14,6 @@ module;
 #  pragma warning(pop)
 #endif  // _MSC_VER
 
-#include <algorithm>
-#include <expected>
-#include <filesystem>
-#include <format>
-#include <functional> // std::function
-#include <iostream> // std::cerr TODO use std::print when available
-#include <ranges>
-#include <span>
-#include <vector>
-
 export module history.WinamaxHistory;
 
 import entities.Action;
@@ -34,6 +24,7 @@ import entities.Site;
 import history.WinamaxGameHistory;
 import language.strings;
 import system.filesystem;
+import std;
 
 
 using FunctionVoid = std::function<void()>;

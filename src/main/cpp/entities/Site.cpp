@@ -1,18 +1,13 @@
 module;
 
-#include <algorithm> // std::transform
 #include <cassert>
-#include <iterator> // std::back_inserter
-#include <memory>
-#include <string> // std::string, std::string_view
-#include <unordered_map>
-#include <vector> // std::vector
 
 export module entities.Site;
 
 import entities.Game; // CashGame, Tournament
 import entities.Player;
 import language.containers;
+import std;
 
 /**
  * A Poker site, i.e. a bunch of hands played on different games, that enables us to build

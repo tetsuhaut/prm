@@ -1,11 +1,11 @@
 module;
 
 #include <cassert>
-#include <string_view>
 
 export module entities.Seat;
 
 import language.Map;
+import std;
 
 export enum class /*[[nodiscard]]*/ Seat : short {
   seatOne, seatTwo, seatThree, seatFour, seatFive, seatSix, seatSeven,
@@ -56,21 +56,26 @@ module : private;
   return STRING_TO_ENUM.at(seatStr);
 }
 
+[[nodiscard]] static constexpr int size_tToInt(std::size_t value) {
+  constexpr int kIntMax { std::numeric_limits<int>::max() };
+  return std::cmp_greater(value, kIntMax) ? kIntMax : static_cast<int>(value);
+}
+
 /*[[nodiscard]]*/ Seat tableSeat::fromArrayIndex(std::size_t i) {
   assert(10 > i and "Can't find a seat for that value");
-  static constexpr auto SIZET_TO_ENUM = language::Map<std::size_t, Seat, 10> {{{
+  static constexpr auto SIZET_TO_ENUM = language::Map<int, Seat, 10> {{{
     {1, Seat::seatOne}, {2, Seat::seatTwo}, {3, Seat::seatThree}, {4, Seat::seatFour}, {5, Seat::seatFive},
     {6, Seat::seatSix}, {7, Seat::seatSeven}, {8, Seat::seatEight}, {9, Seat::seatNine}, {10, Seat::seatTen}
   }}};
-  return SIZET_TO_ENUM.at(i + 1);
+  return SIZET_TO_ENUM.at(size_tToInt(i) + 1);
 }
 
 /*[[nodiscard]]*/ std::size_t tableSeat::toArrayIndex(Seat seat) {
-  static constexpr auto ENUM_TO_SIZET = language::Map<Seat, std::size_t, 10> {{{
+  static constexpr language::Map<Seat, int, 10> ENUM_TO_SIZET {{{
     {Seat::seatOne, 1}, {Seat::seatTwo, 2}, {Seat::seatThree, 3}, {Seat::seatFour, 4}, {Seat::seatFive, 5},
     {Seat::seatSix, 6}, {Seat::seatSeven, 7}, {Seat::seatEight, 8}, {Seat::seatNine, 9}, {Seat::seatTen, 10}
   }}};
-  return ENUM_TO_SIZET.at(seat) - 1;
+  return static_cast<std::size_t>(ENUM_TO_SIZET.at(seat) - 1);
 }
 
 /*[[nodiscard]]*/ std::string_view tableSeat::toString(Seat seat) {

@@ -1,13 +1,13 @@
 module;
 
 #include <ctime> // std::tm
-#include <format>
-#include <iomanip> // std::get_time
-#include <memory> // std::unique_ptr
-#include <sstream> // std::istringstream
-#include <string>
 
 export module system.Time;
+
+#pragma warning( push )
+#pragma warning( disable : 4686)
+import std;
+#pragma warning( pop )
 
 export class [[nodiscard]] Time final {
 private:

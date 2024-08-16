@@ -1,10 +1,10 @@
 module;
 
 #include <cassert>
-#include <string>
-#include <string_view>
 
 export module entities.Player;
+
+import std;
 
 /**
  * A tournament or cashgame poker player.

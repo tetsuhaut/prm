@@ -1,11 +1,8 @@
 module;
 
-#include <filesystem>
-#include <span>
-#include <string> // String, StringView
-#include <vector> // std::erase_if
-
 export module system.filesystem;
+
+import std;
 
 export namespace prm::system::filesystem {
 [[nodiscard]] bool isFile(const std::filesystem::path& p) noexcept;

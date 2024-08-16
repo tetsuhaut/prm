@@ -1,16 +1,5 @@
 module;
 
-#include <algorithm>
-#include <filesystem>
-#include <iostream>
-#include <memory>
-#include <optional>
-#include <print>
-#include <ranges>
-#include <string>
-#include <string_view>
-#include <tuple>
-
 export module history.WinamaxGameHistory;
 
 import entities.Hand;
@@ -22,6 +11,11 @@ import history.WinamaxHandBuilder;
 import language.strings; // language::strings::contains()
 import system.PlayerCache;
 import system.TextFile;
+
+#pragma warning( push )
+#pragma warning( disable : 4686)
+import std;
+#pragma warning( pop ) 
 
 export namespace WinamaxGameHistory {
 [[nodiscard]] std::unique_ptr<Site> parseGameHistory(const std::filesystem::path& gameHistoryFile);

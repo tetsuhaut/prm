@@ -1,9 +1,8 @@
 module;
 
-#include <iterator> // std::begin, std::end, std::back_inserter
-#include <utility> // std::move
-
 export module language.containers;
+
+import std;
 
 export namespace language::containers {
 template<typename SOURCE, typename TARGET>

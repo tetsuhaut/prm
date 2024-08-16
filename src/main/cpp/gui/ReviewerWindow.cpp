@@ -26,10 +26,6 @@ module;
 #endif  // _MSC_VER
 
 #include <cassert> // assert
-#include <format>
-#include <functional> // std::function
-#include <utility> // std::pair
-#include <string_view>
 
 export module gui.ReviewerWindow;
 
@@ -39,6 +35,11 @@ import entities.Hand;
 import entities.Seat; // tableSeat::*
 import gui.Preferences;
 import language.Map;
+
+#pragma warning( push )
+#pragma warning( disable : 4686)
+import std;
+#pragma warning( pop ) 
 
 export class [[nodiscard]] ReviewerWindow final {
   friend void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self);
@@ -197,5 +198,5 @@ ReviewerWindow::ReviewerWindow(Preferences& p, std::string_view label,
 
 ReviewerWindow::~ReviewerWindow() {
   std::array xywh {m_window.x(), m_window.y(), m_window.w(), m_window.h()};
-  m_preferences.saveSizeAndPosition(xywh, Preferences::PrefName::reviewerWindow);
+  m_preferences.saveGameReviewWindowSizeAndPosition(xywh);
 }

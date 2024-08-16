@@ -41,10 +41,12 @@ public:
   GameList& operator=(const GameList&) = delete;
   GameList& operator=(GameList&&) = delete;
   [[nodiscard]] std::optional<std::filesystem::path> getSelectedGameHistoryFile() /*const*/;
+  [[nodiscard]] std::optional<std::string> getSelectedGameHistoryDir() /*const*/;
   void listenToElementSelection(const std::function<void(const Fl_Tree_Item&)>& callback);
   [[nodiscard]] std::vector<std::string> getGameHistoryDirs() /*const*/;
   void setGames(const std::unordered_map<std::string, std::vector<std::string>>& games);
   void addDir(std::string_view dir);
+  void removeDir(std::string_view dir);
   bool containsGameHistoryDir(std::string_view dir) const;
 }; // class GameList
 
@@ -57,12 +59,6 @@ static constexpr std::string_view GAMES_LIST_LABEL { "Hand History Directories" 
   return static_cast<GameList*>(self);
 }
 
-//[[nodiscard]] static bool isItemHistoryFile(const Fl_Tree& tree, const Fl_Tree_Item& item) {
-//  char pathname[256];
-//  tree.item_pathname(pathname, sizeof(pathname), &item);
-//  return std::string(pathname).starts_with(GAMES_LIST_LABEL) and std::string(pathname).ends_with(".txt");
-//}
-
 static void gameListCb(Fl_Widget* w, void* self) {
   auto* tree = static_cast<Fl_Tree*>(w);
 
@@ -71,11 +67,15 @@ static void gameListCb(Fl_Widget* w, void* self) {
   }
 }
 
+static void initTree(Fl_Tree& tree) {
+  tree.root_label(GAMES_LIST_LABEL.data());
+  tree.add(CHOSE_HAND_HISTORY_DIRECTORY_MSG.data());
+}
+
 GameList::GameList(int x, int y, int width, int height) 
 : m_games(x, y, width, height),
   m_elementSelectionCallback() {
-  m_games.root_label(GAMES_LIST_LABEL.data());
-  m_games.add(CHOSE_HAND_HISTORY_DIRECTORY_MSG.data());
+  initTree(m_games);
   m_games.callback(gameListCb, this);
   m_games.deactivate();
 }
@@ -83,12 +83,22 @@ GameList::GameList(int x, int y, int width, int height)
 GameList::~GameList() {}
 
 [[nodiscard]] std::optional<std::filesystem::path> GameList::getSelectedGameHistoryFile() {
-    if (const auto item { m_games.first_selected_item() }; item) {
+    if (const auto item { m_games.first_selected_item() }; item and std::string_view(item->label()).ends_with(".txt")) {
       char pathname[256];
       auto ret { m_games.item_pathname(pathname, sizeof(pathname), item) };
       assert(0 == ret);
       return std::string(pathname).substr(GAMES_LIST_LABEL.size() + 1);
     }
+  return {};
+}
+
+[[nodiscard]] std::optional<std::string> GameList::getSelectedGameHistoryDir() {
+  if (const auto item { m_games.first_selected_item() }; item and !std::string_view(item->label()).ends_with(".txt")) {
+    char pathname[256];
+    auto ret { m_games.item_pathname(pathname, sizeof(pathname), item) };
+    assert(0 == ret);
+    return std::string(pathname);
+  }
   return {};
 }
 
@@ -141,59 +151,39 @@ void GameList::setGames(const std::unordered_map<std::string, std::vector<std::s
   closeDirectories(m_games);
 }
 
-[[nodiscard]] static constexpr bool startsLikeAHistoryFile(std::string_view s) {
-  return (s.length() > 11)
-    and std::isdigit(s[0])
-    and std::isdigit(s[1])
-    and std::isdigit(s[2])
-    and std::isdigit(s[3])
-    and std::isdigit(s[4])
-    and std::isdigit(s[5])
-    and std::isdigit(s[6])
-    and std::isdigit(s[7])
-    and '_' == s[8];
-}
-
 /**
- * @returns true if the given path
- * - is a directory
- * - that contains only files
- * - that contains files beginning by 8 digits and _
- * - that contains files ending with .txt
-*/
-[[nodiscard]] static std::vector<std::filesystem::path> getHistoryFiles(const std::filesystem::path& histoDir) {
-  std::vector<std::filesystem::path> ret;
-
-  if (!std::filesystem::is_directory(histoDir)) { return ret; }
-
-  for (const auto& dirEntry : std::filesystem::directory_iterator(histoDir)) {
-    const auto& entryPath { dirEntry.path() };
-    if (dirEntry.is_regular_file()
-      and startsLikeAHistoryFile(entryPath.filename().string())
-      and entryPath.filename().string().starts_with("20") // like the year 2022
-      and entryPath.string().ends_with(".txt")
-      and !entryPath.string().ends_with("_summary.txt")) {
-      ret.push_back(entryPath);
-    }
-  }
-  return ret;
-}
-
+ * @param dir must contain a "history" subdir
+ */
 void GameList::addDir(std::string_view dir) {
   if (CHOSE_HAND_HISTORY_DIRECTORY_MSG == m_games.last()->label()) {
     m_games.remove(m_games.last());
     m_games.activate();
   }
-  std::filesystem::path p { dir };
-  if (auto historyFiles { WinamaxHistory::getFiles(p) }; !historyFiles.empty()) {
-    const auto dirNode { p.string() + "/"};
-    std::ranges::for_each(historyFiles, [&](const auto& file) {
-      m_games.add((toTreeRoot(dirNode + file.filename().string()).c_str()));
+  const std::filesystem::path p { dir };
+  if (const auto historyFiles { WinamaxHistory::getFiles(p) }; !historyFiles.empty()) {
+    const auto dirNode { (p / "history").lexically_normal() };
+    std::ranges::for_each(historyFiles, [this, &dirNode](const auto& file) {
+      m_games.add((toTreeRoot(dirNode.string() + "/" + file.filename().string()).c_str()));
     });
     closeDirectories(m_games);
   }
+  else {
+    m_games.add(toTreeRoot(p.string() + "/").c_str());
+  }
+}
+
+void GameList::removeDir(std::string_view dir) {
+  if (GAMES_LIST_LABEL == dir) { return; }
+  const auto dirNode { std::string(dir) + "/" };
+  if (auto item { m_games.find_item(dirNode.c_str()) }; item) { m_games.remove(item); }
+  if (GAMES_LIST_LABEL == m_games.last()->label()) {
+    m_games.add(CHOSE_HAND_HISTORY_DIRECTORY_MSG.data());
+    m_games.deactivate();
+  }
+  m_games.redraw();
 }
 
 bool GameList::containsGameHistoryDir(std::string_view dir) const {
-  return nullptr != m_games.find_item(dir.data());
+  const auto dirNode { std::string(dir) + "/" };
+  return nullptr != m_games.find_item(dirNode.c_str());
 }

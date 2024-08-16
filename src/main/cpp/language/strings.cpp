@@ -1,17 +1,14 @@
 module;
 
-#include <cassert>
-#include <charconv> // std::from_chars
-#include <cstring> // std::size_t
-#include <format>
 #include <gsl/gsl>
-#include <iterator> // std::distance
-#include <numeric> // std::accumulate
-#include <ranges>
-#include <string_view>
-#include <vector>
+#include <cassert>
 
 export module language.strings;
+
+#pragma warning( push )
+#pragma warning( disable : 4686)
+import std;
+#pragma warning( pop ) 
 
 export namespace language::strings {
 /**
@@ -42,7 +39,7 @@ template <typename CHAR, std::size_t SIZE>
 
 [[nodiscard]] int toInt(std::string_view numberStr);
 
-[[nodiscard]] size_t toSizeT(std::string_view numberStr);
+[[nodiscard]] std::size_t toSizeT(std::string_view numberStr);
 
 [[nodiscard]] std::vector<std::string> split(std::string_view toBeSplitted, const char delimiter);
 
@@ -154,8 +151,8 @@ static inline TYPE toType(std::string_view s) {
   return toType<int>(numberStr);
 }
 
-[[nodiscard]] size_t language::strings::toSizeT(std::string_view numberStr) {
-  return toType<size_t>(numberStr);
+[[nodiscard]] std::size_t language::strings::toSizeT(std::string_view numberStr) {
+  return toType<std::size_t>(numberStr);
 }
 
 [[nodiscard]] std::vector<std::string> language::strings::split(std::string_view toBeSplitted, const char delimiter) {

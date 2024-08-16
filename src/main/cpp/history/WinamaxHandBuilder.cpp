@@ -1,20 +1,6 @@
 module;
 
 
-#include <algorithm> // std::size(), std::ranges::for_each
-#include <array>
-#include <format>
-#include <iostream>
-#include <memory> // uptr, std::is_same_v
-#include <optional>
-#include <print>
-#include <span>
-#include <string_view>
-#include <tuple>
-#include <unordered_map>
-#include <utility>
-#include <vector>
-
 export module history.WinamaxHandBuilder;
 
 import entities.Action; // Street
@@ -30,6 +16,11 @@ import language.strings;
 import system.PlayerCache;
 import system.TextFile;
 import system.Time;
+
+#pragma warning( push )
+#pragma warning( disable : 4686)
+import std;
+#pragma warning( pop ) 
 
 export namespace WinamaxHandBuilder {
 [[nodiscard]] std::pair<std::unique_ptr<Hand>, std::unique_ptr<GameData>>

@@ -1,11 +1,6 @@
 module;
 
-#include <algorithm>
 #include <cassert>
-#include <iterator> // std::back_inserter
-#include <memory>
-#include <string>
-#include <vector>
 
 export module entities.Game;
 
@@ -13,6 +8,7 @@ import entities.Hand;
 import entities.Seat;
 import language.Map;
 import system.Time;
+import std;
 
 /**
  * Game variants that phud understands.

@@ -1,8 +1,8 @@
 module;
 
-#include <string_view>
-
 export module entities.GameType;
+
+import std;
 
 export enum class [[nodiscard]] GameType : short { none, cashGame, tournament };
 export [[nodiscard]] std::string_view toString(GameType gt);

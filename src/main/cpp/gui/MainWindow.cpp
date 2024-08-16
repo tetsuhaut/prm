@@ -55,6 +55,7 @@ public:
   void toggleGameWindow();
   [[nodiscard]] int run();
   void chooseHandHistoryDirectory();
+  void removeHandHistoryDirectory();
   void newGameWindow();
   void addHistoryDirectoryToList(std::string_view dir);
 }; // export class MainWindow
@@ -150,8 +151,10 @@ void MainWindow::chooseHandHistoryDirectory() {
 
   switch (FileChoiceStatus(dirChoser->show())) {
   case FileChoiceStatus::ok: {
-    if (const std::filesystem::path p { dirChoser->filename() }; 
-        WinamaxHistory::isValidHistoryDir(p) and !m_games->containsGameHistoryDir(dirChoser->filename())) {
+    const std::filesystem::path p { dirChoser->filename() };
+
+    if (!std::filesystem::is_directory(p)) { fl_alert("Veuillez choisir un répertoire"); }
+    else if (!m_games->containsGameHistoryDir(dirChoser->filename())) {
         auto data { std::make_unique<Data>() };
         data->pThis = this;
         data->dir = dirChoser->filename();
@@ -169,6 +172,15 @@ void MainWindow::chooseHandHistoryDirectory() {
   }
 }
 
+void MainWindow::removeHandHistoryDirectory() {
+  // TODO: on prend l'élement actuellement sélectionné, on le supprime
+  if (const auto oDir { m_games->getSelectedGameHistoryDir() }; oDir.has_value()) {
+    m_games->removeDir(oDir.value());
+  }
+
+
+}
+
 /**
   * Called when the user clicks on the 'exit' menu or the X.
   */
@@ -176,8 +188,9 @@ void MainWindow::exit() {
   /* remember the windows position when closing them */
   if (m_mainWindow) {
     std::array xywh {m_mainWindow->x(), m_mainWindow->y(), m_mainWindow->w(), m_mainWindow->h()};
-    m_preferences.saveSizeAndPosition(xywh, Preferences::PrefName::mainWindow);
-    m_preferences.saveGameHistoryDirs(m_games->getGameHistoryDirs());
+    m_preferences.saveMainWindowSizeAndPosition(xywh);
+    const auto dirs { m_games->getGameHistoryDirs() };
+    m_preferences.saveGameHistoryDirs(dirs);
   }
 
   /* hide all windows: this will terminate the MainWindow */
@@ -227,6 +240,7 @@ void MainWindow::toggleGameWindow() {
 [[nodiscard]] static std::unique_ptr<Fl_Menu_Bar> buildMenuBar(int x, int y, int width, int height) {
   auto pMenuBar = std::make_unique<Fl_Menu_Bar>(x, y, width, height);
   pMenuBar->add("&File/Add hand history directory", 0, [](Fl_Widget*, void*) { pThis->chooseHandHistoryDirectory(); });
+  pMenuBar->add("&File/Remove hand history directory", 0, [](Fl_Widget*, void*) { pThis->removeHandHistoryDirectory(); });
   pMenuBar->add("&File/E&xit", 0, [](Fl_Widget*, void*) { pThis->exit(); });
   return pMenuBar;
 }

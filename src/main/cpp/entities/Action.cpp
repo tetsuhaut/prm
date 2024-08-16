@@ -1,14 +1,11 @@
 module;
 
-#include <array>
 #include <cassert> // assert
-#include <stdexcept> // std::range_error
-#include <string>
-#include <string_view>
 
 export module entities.Action;
 
 import language.Map;
+import std;
 
 /**
  * The elementary move a player can do during the game.

@@ -1,5 +1,5 @@
-#include <compare>
 import gui.MainWindow;
+import std;
 
 [[nodiscard]] int main() {
   MainWindow mw;

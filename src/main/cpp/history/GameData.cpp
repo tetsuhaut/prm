@@ -1,12 +1,11 @@
 module;
 
-#include <string>
-
 export module history.GameData;
 
 import entities.Game; // Time, Variant, Limit
 import entities.Seat;
 import system.Time;
+import std;
 
 export struct [[nodiscard]] GameData final {
   Seat m_nbMaxSeats { Seat::seatUnknown };
