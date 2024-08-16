@@ -3,7 +3,6 @@ module;
 #include <gsl/gsl>
 
 #include <cassert> // assert
-#include <cctype> // std::isspace
 
 export module system.TextFile;
 

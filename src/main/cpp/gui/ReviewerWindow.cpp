@@ -116,6 +116,7 @@ using Point = std::pair<int, int>;
 
 static constexpr auto ZERO { std::make_pair<double, double>(-1, -1) };
 
+// TODO: mettre cartes sur les bords
 // TODO: mauvaises positions pour 3
 /* The position of seats, if the window size is 1 x 1 */
 static constexpr auto NB_SEATS_TO_COEFF = language::Map<Seat, std::array<std::pair<double, double>, 10>, 9> { {{

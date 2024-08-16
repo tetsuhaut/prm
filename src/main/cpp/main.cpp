@@ -1,4 +1,5 @@
 import gui.MainWindow;
+
 import std;
 
 [[nodiscard]] int main() {
@@ -6,4 +7,4 @@ import std;
   return mw.run();
 }
 
-// TODO : vérifier que les constexpr sont exportés sinon ça ne compile pas
+// REVIEW : vérifier que les constexpr sont exportés sinon ça ne compile pas

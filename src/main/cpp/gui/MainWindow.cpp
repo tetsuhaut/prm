@@ -41,6 +41,7 @@ import gui.Preferences;
 import gui.ReviewerWindow;
 import history.WinamaxGameHistory;
 import history.WinamaxHistory;
+
 import std;
 
 export class [[nodiscard]] MainWindow final {
@@ -79,8 +80,8 @@ static constexpr std::string_view CLOSE_THE_REVIEW_LABEL { "Close the review" };
   auto pHistoryChoser { std::make_unique<Fl_Native_File_Chooser>() };
   pHistoryChoser->title("Choisissez un répertoire d'historiques de mains");
   pHistoryChoser->type(Fl_Native_File_Chooser::BROWSE_DIRECTORY);
-  auto str { p.getPreviousHistoryDir() };
-  pHistoryChoser->directory(str.c_str());
+  auto prev { p.getPreviousChosenHistoryDir() };
+  pHistoryChoser->directory(prev.c_str());
   return pHistoryChoser;
 }
 
@@ -133,7 +134,7 @@ template<typename T>
 
 void MainWindow::addHistoryDirectoryToList(std::string_view dir) {
   m_games->addDir(dir);
-  m_preferences.savePreviousHistoryDir(dir);
+  m_preferences.savePreviousChosenHistoryDir(dir);
 }
 
 struct Data {
@@ -173,12 +174,9 @@ void MainWindow::chooseHandHistoryDirectory() {
 }
 
 void MainWindow::removeHandHistoryDirectory() {
-  // TODO: on prend l'élement actuellement sélectionné, on le supprime
   if (const auto oDir { m_games->getSelectedGameHistoryDir() }; oDir.has_value()) {
     m_games->removeDir(oDir.value());
   }
-
-
 }
 
 /**
@@ -209,7 +207,7 @@ void MainWindow::toggleGameWindow() {
     // open a new game window and populate it
     // we need to use the same flavor of Fl::awake() in the whole program
     // see https://www.fltk.org/doc-1.4/advanced.html#advanced_multithreading
-    Fl::awake([](void*) { pThis->newGameWindow(); }, nullptr); // TODO
+    Fl::awake([](void*) { pThis->newGameWindow(); }, nullptr);
   }
 }
 
@@ -222,7 +220,6 @@ void MainWindow::toggleGameWindow() {
 }
 
 [[nodiscard]] static std::unique_ptr<GameList> buildGameList(int x, int y, int width, int height, Preferences& prefs) {
-  // TODO: read preferences
   auto gameList { std::make_unique<GameList>(x, y, width, height) };
   gameList->listenToElementSelection([](const auto& item) {
     if ((0 == item.children()) and std::string(item.label()).ends_with(".txt")) {

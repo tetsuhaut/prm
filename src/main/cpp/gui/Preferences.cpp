@@ -18,7 +18,11 @@ export module gui.Preferences;
 
 import gui.Dimensions;
 import language.strings;
+
+#pragma warning( push )
+#pragma warning( disable : 4686)
 import std;
+#pragma warning( pop ) 
 
 template<typename T>
 concept Savable = std::is_same_v<T, double> or std::is_same_v<T, float> or std::is_same_v<T, int> or std::is_same_v<T, const char*>;
@@ -42,8 +46,8 @@ public:
   void saveGameReviewWindowSizeAndPosition(const std::array<int, 4>& xywh);
   void saveGameHistoryDirs(const std::vector<std::string>& dirs);
   [[nodiscard]] std::vector<std::string> readGameHistoryDirs() /*const*/;
-  void savePreviousHistoryDir(std::string_view dir);
-  std::string getPreviousHistoryDir() const;
+  void savePreviousChosenHistoryDir(std::string_view dir);
+  std::string getPreviousChosenHistoryDir() const;
   Preferences() = default;
   Preferences(const Preferences&) = delete;
   ~Preferences() = default;
@@ -128,12 +132,16 @@ void Preferences::saveGameReviewWindowSizeAndPosition(const std::array<int, 4>& 
   save(GAME_WINDOW_HEIGHT, h);
 }
 
+[[nodiscard]] static inline std::string toKey(std::string_view key, std::size_t i) {
+  return std::format("{}|{}", key, i);
+}
+
 void Preferences::saveGameHistoryDirs(const std::vector<std::string>& dirs) {
   using namespace detail;
   bool keepGoing = true;
   std::size_t i = 0;
   do {
-    const auto key { std::string(HISTORY_DIR) + std::string(":") + std::to_string(i) };
+    const auto key { toKey(HISTORY_DIR, i) };
     if (i < dirs.size()) { save(key, dirs[i].c_str()); }
     else if (m_preferences->entry_exists(key.c_str())) { m_preferences->delete_entry(key.c_str()); }
     else { keepGoing = false; }
@@ -147,7 +155,7 @@ void Preferences::saveGameHistoryDirs(const std::vector<std::string>& dirs) {
   bool keepGoing = true;
   std::size_t i = 0;
   do {
-    const auto key { std::string(HISTORY_DIR) + std::string(":") + std::to_string(i) };
+    const auto key { toKey(HISTORY_DIR, i) };
     keepGoing = (0 != m_preferences->entry_exists(key.c_str()));
     if (keepGoing) { ret.push_back(getString(*m_preferences, key.c_str())); }
     i++;
@@ -156,11 +164,11 @@ void Preferences::saveGameHistoryDirs(const std::vector<std::string>& dirs) {
   return ret;
 }
 
-void Preferences::savePreviousHistoryDir(std::string_view dir) {
+void Preferences::savePreviousChosenHistoryDir(std::string_view dir) {
   save(detail::PREVIOUS_HISTORY_DIR, dir.data());
 }
 
-std::string Preferences::getPreviousHistoryDir() const {
+std::string Preferences::getPreviousChosenHistoryDir() const {
   return detail::getString(*m_preferences, detail::PREVIOUS_HISTORY_DIR);
 }
 

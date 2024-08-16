@@ -26,6 +26,7 @@ module;
 export module gui.GameList;
 
 import history.WinamaxHistory;
+
 import std;
 
 export class [[nodiscard]] GameList final {
@@ -159,7 +160,7 @@ void GameList::addDir(std::string_view dir) {
     m_games.remove(m_games.last());
     m_games.activate();
   }
-  const std::filesystem::path p { dir };
+  const std::filesystem::path p { dir.ends_with("history") ? dir.substr(0, dir.length() - std::size("history")) : dir };
   if (const auto historyFiles { WinamaxHistory::getFiles(p) }; !historyFiles.empty()) {
     const auto dirNode { (p / "history").lexically_normal() };
     std::ranges::for_each(historyFiles, [this, &dirNode](const auto& file) {

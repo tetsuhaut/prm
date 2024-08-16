@@ -1,10 +1,11 @@
 module;
 
-#include <cassert>
+#include <cassert> // assert
 
 export module entities.Seat;
 
 import language.Map;
+
 import std;
 
 export enum class /*[[nodiscard]]*/ Seat : short {

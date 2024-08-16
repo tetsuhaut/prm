@@ -1,7 +1,5 @@
 module;
 
-#include <ctime> // std::tm
-
 export module system.Time;
 
 #pragma warning( push )

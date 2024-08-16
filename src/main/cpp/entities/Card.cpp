@@ -5,6 +5,7 @@ module;
 export module entities.Card;
 
 import language.Map;
+
 import std;
 
 export enum class /*[[nodiscard]]*/ Card : short {

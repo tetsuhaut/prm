@@ -1,6 +1,6 @@
 module;
 
-#include <cassert>
+#include <cassert> // assert
 
 export module entities.Hand;
 
@@ -9,6 +9,7 @@ import entities.Card;
 import entities.GameType;
 import entities.Seat;
 import system.Time;
+
 import std;
 
 export class [[nodiscard]] Hand final {

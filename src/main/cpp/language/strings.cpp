@@ -1,7 +1,8 @@
 module;
 
 #include <gsl/gsl>
-#include <cassert>
+
+#include <cassert> // assert
 
 export module language.strings;
 
