@@ -13,6 +13,7 @@ module;
 #  pragma GCC diagnostic ignored "-Weffc++"
 #endif  // _MSC_VER
 
+#include <FL/Fl_Menu_Button.H>
 #include <FL/Fl_Tree.H>
 
 #if defined(_MSC_VER)  // end of specific msvc warnings removal
@@ -27,12 +28,15 @@ export module gui.GameList;
 
 import history.WinamaxHistory;
 
+#pragma warning( push )
+#pragma warning( disable : 4686)
 import std;
+#pragma warning( pop ) 
 
-export class [[nodiscard]] GameList final {
+export class [[nodiscard]] GameList : public Fl_Tree {
 private:
-  Fl_Tree m_games;
   std::function<void(const Fl_Tree_Item&)> m_elementSelectionCallback;
+  std::string_view getItemPathName(const Fl_Tree_Item* pItem) const;
   friend static void gameListCb(Fl_Widget* w, void* self);
 public:
   GameList(int x, int y, int width, int height);
@@ -41,11 +45,11 @@ public:
   GameList(GameList&&) = delete;
   GameList& operator=(const GameList&) = delete;
   GameList& operator=(GameList&&) = delete;
+  int handle(int event); /*[[override]]*/
   [[nodiscard]] std::optional<std::filesystem::path> getSelectedGameHistoryFile() /*const*/;
   [[nodiscard]] std::optional<std::string> getSelectedGameHistoryDir() /*const*/;
   void listenToElementSelection(const std::function<void(const Fl_Tree_Item&)>& callback);
   [[nodiscard]] std::vector<std::string> getGameHistoryDirs() /*const*/;
-  void setGames(const std::unordered_map<std::string, std::vector<std::string>>& games);
   void addDir(std::string_view dir);
   void removeDir(std::string_view dir);
   bool containsGameHistoryDir(std::string_view dir) const;
@@ -56,15 +60,12 @@ module : private;
 static constexpr std::string_view CHOSE_HAND_HISTORY_DIRECTORY_MSG { "<chose a hand history directory>" };
 static constexpr std::string_view GAMES_LIST_LABEL { "Hand History Directories" };
 
-[[nodiscard]] static GameList* THIS(void* self) {
-  return static_cast<GameList*>(self);
-}
-
 static void gameListCb(Fl_Widget* w, void* self) {
-  auto* tree = static_cast<Fl_Tree*>(w);
+  auto* pTree = static_cast<Fl_Tree*>(w);
+  auto* pThis { static_cast<GameList*>(self) };
 
-  if (auto* item = tree->callback_item(); item && THIS(self)->m_elementSelectionCallback) {
-    THIS(self)->m_elementSelectionCallback(*item);
+  if (auto* item = pTree->callback_item(); item && pThis->m_elementSelectionCallback) {
+    pThis->m_elementSelectionCallback(*item);
   }
 }
 
@@ -73,32 +74,45 @@ static void initTree(Fl_Tree& tree) {
   tree.add(CHOSE_HAND_HISTORY_DIRECTORY_MSG.data());
 }
 
-GameList::GameList(int x, int y, int width, int height) 
-: m_games(x, y, width, height),
+GameList::GameList(int x, int y, int width, int height)
+: Fl_Tree(x, y, width, height),
   m_elementSelectionCallback() {
-  initTree(m_games);
-  m_games.callback(gameListCb, this);
-  m_games.deactivate();
+  initTree(*this);
+  this->callback(gameListCb, this);
+  this->deactivate();
 }
 
 GameList::~GameList() {}
 
+int GameList::handle(int event) {
+  if ((FL_PUSH == event) and (FL_RIGHT_MOUSE == Fl::event_button())) {
+    const auto width { 100 };
+    auto* popup { new Fl_Menu_Button(Fl::event_x(), Fl::event_y() - width, width, 100, "Menu")};
+    popup->add("This|is|a popup|menu");
+    popup->popup();
+    return 1;
+  }
+  return Fl_Tree::handle(event);
+}
+
+std::string_view GameList::getItemPathName(const Fl_Tree_Item* pItem) const {
+  char pathname[512] { '\0' };
+  auto ret { this->item_pathname(pathname, sizeof(pathname), pItem) };
+  assert(0 == ret);
+  return pathname;
+}
+
 [[nodiscard]] std::optional<std::filesystem::path> GameList::getSelectedGameHistoryFile() {
-    if (const auto item { m_games.first_selected_item() }; item and std::string_view(item->label()).ends_with(".txt")) {
-      char pathname[256];
-      auto ret { m_games.item_pathname(pathname, sizeof(pathname), item) };
-      assert(0 == ret);
-      return std::string(pathname).substr(GAMES_LIST_LABEL.size() + 1);
+    if (const auto* pItem { this->first_selected_item() }; pItem and std::string_view(pItem->label()).ends_with(".txt")) {
+      const auto pathname { getItemPathName(pItem) };
+      return pathname.substr(GAMES_LIST_LABEL.size() + 1);
     }
   return {};
 }
 
 [[nodiscard]] std::optional<std::string> GameList::getSelectedGameHistoryDir() {
-  if (const auto item { m_games.first_selected_item() }; item and !std::string_view(item->label()).ends_with(".txt")) {
-    char pathname[256];
-    auto ret { m_games.item_pathname(pathname, sizeof(pathname), item) };
-    assert(0 == ret);
-    return std::string(pathname);
+  if (const auto* pItem { this->first_selected_item() }; pItem and !std::string_view(pItem->label()).ends_with(".txt")) {
+    return std::string(getItemPathName(pItem));
   }
   return {};
 }
@@ -110,7 +124,7 @@ void GameList::listenToElementSelection(const std::function<void(const Fl_Tree_I
 [[nodiscard]] std::vector<std::string> GameList::getGameHistoryDirs() /*const*/ {
   std::vector<std::string> ret;
   std::string currentDir;
-  for (auto item = m_games.first(); item; item = m_games.next(item)) {
+  for (auto item = this->first(); item; item = this->next(item)) {
     if ((GAMES_LIST_LABEL != item->label()) and CHOSE_HAND_HISTORY_DIRECTORY_MSG != item->label()) {
       if (0 != item->children()) {
         ret.emplace_back(item->label());
@@ -138,53 +152,39 @@ static void closeDirectories(Fl_Tree& tree) {
   }
 }
 
-void GameList::setGames(const std::unordered_map<std::string, std::vector<std::string>>& games) {
-  if (CHOSE_HAND_HISTORY_DIRECTORY_MSG == m_games.last()->label()) {
-    m_games.remove(m_games.last());
-    m_games.activate();
-  }
-  for (const auto& [dir, files] : games) {
-    const auto dirNode { dir + "/" };
-    std::ranges::for_each(files, [&](const auto& file) {
-      m_games.add((toTreeRoot(dirNode + std::filesystem::path(file).filename().string()).c_str()));
-    });
-  }
-  closeDirectories(m_games);
-}
-
 /**
  * @param dir must contain a "history" subdir
  */
 void GameList::addDir(std::string_view dir) {
-  if (CHOSE_HAND_HISTORY_DIRECTORY_MSG == m_games.last()->label()) {
-    m_games.remove(m_games.last());
-    m_games.activate();
+  if (CHOSE_HAND_HISTORY_DIRECTORY_MSG == this->last()->label()) {
+    this->remove(this->last());
+    this->activate();
   }
   const std::filesystem::path p { dir.ends_with("history") ? dir.substr(0, dir.length() - std::size("history")) : dir };
   if (const auto historyFiles { WinamaxHistory::getFiles(p) }; !historyFiles.empty()) {
     const auto dirNode { (p / "history").lexically_normal() };
     std::ranges::for_each(historyFiles, [this, &dirNode](const auto& file) {
-      m_games.add((toTreeRoot(dirNode.string() + "/" + file.filename().string()).c_str()));
+      this->add((toTreeRoot(dirNode.string() + "/" + file.filename().string()).c_str()));
     });
-    closeDirectories(m_games);
+    closeDirectories(*this);
   }
   else {
-    m_games.add(toTreeRoot(p.string() + "/").c_str());
+    this->add(toTreeRoot(p.string() + "/").c_str());
   }
 }
 
 void GameList::removeDir(std::string_view dir) {
   if (GAMES_LIST_LABEL == dir) { return; }
   const auto dirNode { std::string(dir) + "/" };
-  if (auto item { m_games.find_item(dirNode.c_str()) }; item) { m_games.remove(item); }
-  if (GAMES_LIST_LABEL == m_games.last()->label()) {
-    m_games.add(CHOSE_HAND_HISTORY_DIRECTORY_MSG.data());
-    m_games.deactivate();
+  if (auto item { this->find_item(dirNode.c_str()) }; item) { this->remove(item); }
+  if (GAMES_LIST_LABEL == this->last()->label()) {
+    this->add(CHOSE_HAND_HISTORY_DIRECTORY_MSG.data());
+    this->deactivate();
   }
-  m_games.redraw();
+  this->redraw();
 }
 
 bool GameList::containsGameHistoryDir(std::string_view dir) const {
-  const auto dirNode { std::string(dir) + "/" };
-  return nullptr != m_games.find_item(dirNode.c_str());
+  const auto dirNode { std::format("{}/", dir) };
+  return nullptr != this->find_item(dirNode.c_str());
 }

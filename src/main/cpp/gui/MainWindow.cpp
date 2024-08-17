@@ -37,6 +37,7 @@ import entities.Game; // CashGame, Tournament
 import entities.Site;
 import gui.Dimensions; // button size
 import gui.GameList;
+import gui.Labels;
 import gui.Preferences;
 import gui.ReviewerWindow;
 import history.WinamaxGameHistory;
@@ -66,7 +67,7 @@ module : private;
 namespace fs = std::filesystem;
 static MainWindow* pThis { nullptr };
 static Fl_Button* pReviewerButton { nullptr };
-static constexpr std::string_view OPEN_THE_REVIEW_LABEL { "Open the review" };
+static 
 static constexpr std::string_view CLOSE_THE_REVIEW_LABEL { "Close the review" };
 
 //[[nodiscard]] static constexpr int toInt(std::size_t value) {
@@ -97,7 +98,7 @@ void MainWindow::newGameWindow() {
 
   if (cashGames.empty()) {
     fl_alert("Pas de cashgame détecté dans cet historique");
-    pReviewerButton->label(OPEN_THE_REVIEW_LABEL.data());
+    pReviewerButton->label(labels::OPEN_THE_REVIEW_LABEL.data());
     return;
   }
 
@@ -108,7 +109,7 @@ void MainWindow::newGameWindow() {
     // destroy the existing game window
     m_reviewerWindow.reset();
     // tell the user the review button will open a new game window
-    pReviewerButton->label(OPEN_THE_REVIEW_LABEL.data());
+    pReviewerButton->label(labels::OPEN_THE_REVIEW_LABEL.data());
     };
   m_reviewerWindow = std::make_unique<ReviewerWindow>(m_preferences,
     cashGames[0]->getId(),
@@ -200,7 +201,7 @@ void MainWindow::toggleGameWindow() {
     // destroy the existing game window
     m_reviewerWindow.reset();
     // tell the user the review button will open a new game window
-    pReviewerButton->label(OPEN_THE_REVIEW_LABEL.data());
+    pReviewerButton->label(labels::OPEN_THE_REVIEW_LABEL.data());
   } else {
     // tell the user the review button will close the game window
     pReviewerButton->label(CLOSE_THE_REVIEW_LABEL.data());
@@ -213,7 +214,7 @@ void MainWindow::toggleGameWindow() {
 
 [[nodiscard]] static Fl_Button* buildReviewButton(int bottom) {
   auto pReviewButton = new Fl_Button(dimensions::BUTTON_X, bottom - dimensions::BUTTON_HEIGHT - 5, dimensions::BUTTON_WIDTH,
-    dimensions::BUTTON_HEIGHT, OPEN_THE_REVIEW_LABEL.data());
+    dimensions::BUTTON_HEIGHT, labels::OPEN_THE_REVIEW_LABEL.data());
   pReviewButton->callback([](Fl_Widget*) { pThis->toggleGameWindow(); });
   pReviewButton->deactivate();
   return pReviewButton;

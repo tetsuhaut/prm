@@ -58,10 +58,6 @@ public:
 
 module : private;
 
-[[nodiscard]] ReviewerWindow* REVIEWER_WINDOW(void* self) {
-  return static_cast<ReviewerWindow*>(self);
-}
-
 Fl_Double_Window buildWindow(const Preferences& preferences,
   std::string_view label) {
   const auto [localX, localY, width, height] { preferences.getGameWindowXYWH() };
@@ -72,11 +68,11 @@ void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self) {
   // we dont't want the Esc key to close the program
   if (FL_SHORTCUT == Fl::event() and FL_Escape == Fl::event_key()) { return; }
 
-  REVIEWER_WINDOW(self)->m_closeNotifier();
+  static_cast<ReviewerWindow*>(self)->m_closeNotifier();
 }
 
 [[nodiscard]] std::string getSystemError() {
-  char ret[256] { '\0' };
+  char ret[512] { '\0' };
   strerror_s(ret, std::size(ret), errno);
   return ret;
 }
@@ -92,11 +88,11 @@ void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self) {
 
     case Fl_Image::ERR_FILE_ACCESS:
       fl_alert(std::format("{}: couldn't access image data from {}",
-                           getSystemError().c_str(), imageName).c_str());
+                           getSystemError(), imageName).c_str());
       return nullptr;
 
     case Fl_Image::ERR_FORMAT:
-      fl_alert("%s: couldn't decode image", getSystemError().c_str());
+      fl_alert(std::format("{}: couldn't decode image", getSystemError()).c_str());
       return nullptr;
 
     default:
@@ -111,7 +107,6 @@ void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self) {
   return box;
 }
 
-using PrivateHand = std::pair<Card, Card>;
 using Point = std::pair<int, int>;
 
 static constexpr auto ZERO { std::make_pair<double, double>(-1, -1) };
@@ -139,7 +134,7 @@ static constexpr auto NB_SEATS_TO_COEFF = language::Map<Seat, std::array<std::pa
   return { static_cast<int>(coefX* w * 0.85), static_cast<int>(coefY* h * 0.75) };
 }
 
-[[nodiscard]] PrivateHand getCards(std::string_view player, const Hand& hand,
+[[nodiscard]] std::pair<Card, Card> getCards(std::string_view player, const Hand& hand,
                                    std::string_view hero) {
   if (player.empty()) { return std::make_pair(Card::none, Card::none); }
 

@@ -109,7 +109,7 @@ static constexpr std::string_view PREVIOUS_HISTORY_DIR = "previousHistoryDir";
 template<Savable T>
 void Preferences::save(std::string_view key, T value) {
   if (0 == m_preferences->set(key.data(), value)) {
-    const auto str { "Couldn't save '" + std::string(key) + "' into the preferences repository." };
+    const auto str { std::format("Couldn't save '{}' into the preferences repository.", key) };
     fl_alert(str.c_str());
   }
 }
