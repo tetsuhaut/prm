@@ -27,6 +27,7 @@ module;
 export module gui.GameList;
 
 import history.WinamaxHistory;
+import gui.Labels;
 
 #pragma warning( push )
 #pragma warning( disable : 4686)
@@ -36,7 +37,8 @@ import std;
 export class [[nodiscard]] GameList : public Fl_Tree {
 private:
   std::function<void(const Fl_Tree_Item&)> m_elementSelectionCallback;
-  std::string_view getItemPathName(const Fl_Tree_Item* pItem) const;
+  Fl_Callback* m_reviewCallback;
+  std::string getItemPathName(const Fl_Tree_Item* pItem) const;
   friend static void gameListCb(Fl_Widget* w, void* self);
 public:
   GameList(int x, int y, int width, int height);
@@ -49,6 +51,7 @@ public:
   [[nodiscard]] std::optional<std::filesystem::path> getSelectedGameHistoryFile() /*const*/;
   [[nodiscard]] std::optional<std::string> getSelectedGameHistoryDir() /*const*/;
   void listenToElementSelection(const std::function<void(const Fl_Tree_Item&)>& callback);
+  void setReviewCallback(Fl_Callback* callback);
   [[nodiscard]] std::vector<std::string> getGameHistoryDirs() /*const*/;
   void addDir(std::string_view dir);
   void removeDir(std::string_view dir);
@@ -84,18 +87,22 @@ GameList::GameList(int x, int y, int width, int height)
 
 GameList::~GameList() {}
 
+void GameList::setReviewCallback(Fl_Callback* callback) {
+  m_reviewCallback = callback;
+}
+
 int GameList::handle(int event) {
-  if ((FL_PUSH == event) and (FL_RIGHT_MOUSE == Fl::event_button())) {
+  if ((FL_PUSH == event) and (FL_RIGHT_MOUSE == Fl::event_button()) and getSelectedGameHistoryFile().has_value()) {
     const auto width { 100 };
     auto* popup { new Fl_Menu_Button(Fl::event_x(), Fl::event_y() - width, width, 100, "Menu")};
-    popup->add("This|is|a popup|menu");
+    popup->add(labels::OPEN_THE_REVIEW_LABEL.data(), nullptr, m_reviewCallback);
     popup->popup();
     return 1;
   }
   return Fl_Tree::handle(event);
 }
 
-std::string_view GameList::getItemPathName(const Fl_Tree_Item* pItem) const {
+std::string GameList::getItemPathName(const Fl_Tree_Item* pItem) const {
   char pathname[512] { '\0' };
   auto ret { this->item_pathname(pathname, sizeof(pathname), pItem) };
   assert(0 == ret);
@@ -105,7 +112,7 @@ std::string_view GameList::getItemPathName(const Fl_Tree_Item* pItem) const {
 [[nodiscard]] std::optional<std::filesystem::path> GameList::getSelectedGameHistoryFile() {
     if (const auto* pItem { this->first_selected_item() }; pItem and std::string_view(pItem->label()).ends_with(".txt")) {
       const auto pathname { getItemPathName(pItem) };
-      return pathname.substr(GAMES_LIST_LABEL.size() + 1);
+      return std::filesystem::path(pathname.substr(GAMES_LIST_LABEL.size() + 1));
     }
   return {};
 }

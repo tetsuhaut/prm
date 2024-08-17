@@ -67,7 +67,6 @@ module : private;
 namespace fs = std::filesystem;
 static MainWindow* pThis { nullptr };
 static Fl_Button* pReviewerButton { nullptr };
-static 
 static constexpr std::string_view CLOSE_THE_REVIEW_LABEL { "Close the review" };
 
 //[[nodiscard]] static constexpr int toInt(std::size_t value) {
@@ -212,10 +211,14 @@ void MainWindow::toggleGameWindow() {
   }
 }
 
+static void reviewCallback(Fl_Widget*, void*) {
+  pThis->toggleGameWindow();
+}
+
 [[nodiscard]] static Fl_Button* buildReviewButton(int bottom) {
   auto pReviewButton = new Fl_Button(dimensions::BUTTON_X, bottom - dimensions::BUTTON_HEIGHT - 5, dimensions::BUTTON_WIDTH,
     dimensions::BUTTON_HEIGHT, labels::OPEN_THE_REVIEW_LABEL.data());
-  pReviewButton->callback([](Fl_Widget*) { pThis->toggleGameWindow(); });
+  pReviewButton->callback(reviewCallback);
   pReviewButton->deactivate();
   return pReviewButton;
 }
@@ -229,6 +232,7 @@ void MainWindow::toggleGameWindow() {
       pReviewerButton->deactivate();
     }
   });
+  gameList->setReviewCallback(reviewCallback);
   const auto dirs { prefs.readGameHistoryDirs() };
 
   for (const auto& dir : dirs) { gameList->addDir(dir); }
