@@ -115,7 +115,6 @@ static constexpr auto ZERO { std::make_pair<double, double>(-1, -1) };
 // v
 // y
 // 
-// TODO: mettre cartes sur les bords
 // TODO: mauvaises positions pour 3
 /* The position of seats, if the window size is 1 x 1 */
 static constexpr auto NB_SEATS_TO_COEFF = language::Map<Seat, std::array<std::pair<double, double>, 10>, 9> { {{
@@ -164,8 +163,8 @@ void drawCards(const Point& wh, const Hand& hand, std::string_view hero) {
   };
   const auto& seatPlayers { hand.getSeats() };
 
-  for (const auto seat : seats) {
-    if (const auto & entry { seatPlayers.find(seat) }; entry != seatPlayers.end()) {
+  std::ranges::for_each(seats, [&](const auto seat) {
+    if (const auto& entry { seatPlayers.find(seat) }; entry != seatPlayers.end()) {
       const auto& player { entry->second };
       const auto [card1, card2] { getCards(player, hand, hero) };
       auto box1 { toCardBox(card1) };
@@ -174,7 +173,7 @@ void drawCards(const Point& wh, const Hand& hand, std::string_view hero) {
       box1->position(card1X, card1Y);
       box2->position(box1->x() + box1->w(), box1->y());
     }
-  }
+  });
 }
 
 void drawTable() {
