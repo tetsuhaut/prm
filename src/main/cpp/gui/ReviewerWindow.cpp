@@ -110,7 +110,11 @@ void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self) {
 using Point = std::pair<int, int>;
 
 static constexpr auto ZERO { std::make_pair<double, double>(-1, -1) };
-
+// +----> x
+// |
+// v
+// y
+// 
 // TODO: mettre cartes sur les bords
 // TODO: mauvaises positions pour 3
 /* The position of seats, if the window size is 1 x 1 */
@@ -119,7 +123,7 @@ static constexpr auto NB_SEATS_TO_COEFF = language::Map<Seat, std::array<std::pa
   { Seat::seatThree,  { std::make_pair<double, double>(0.3333, 0.3333), std::make_pair<double, double>(0.6666, 0.3333), std::make_pair<double, double>(0.5, 1),      ZERO, ZERO, ZERO, ZERO, ZERO, ZERO, ZERO } },
   { Seat::seatFour,  { std::make_pair<double, double>(0.25, 0.25),    std::make_pair<double, double>(0.75, 0.25),    std::make_pair<double, double>(0.75, 0.75),  std::make_pair<double, double>(0.25, 0.75),  ZERO, ZERO, ZERO, ZERO, ZERO, ZERO } },
   { Seat::seatFive,  { std::make_pair<double, double>(0.25, 0.25),    std::make_pair<double, double>(0.75, 0.25),    std::make_pair<double, double>(0.75, 0.75),  std::make_pair<double, double>(0.5, 1),      std::make_pair<double, double>(0.25, 0.75), ZERO, ZERO, ZERO, ZERO, ZERO } },
-  { Seat::seatSix,  { std::make_pair<double, double>(0.25, 0.25),    std::make_pair<double, double>(0.5, 0),        std::make_pair<double, double>(0.75, 0.25),  std::make_pair<double, double>(0.75, 0.75),  std::make_pair<double, double>(0.5, 1),     std::make_pair<double, double>(0.25, 0.75), ZERO, ZERO, ZERO, ZERO } },
+  { Seat::seatSix,  { std::make_pair<double, double>(0, 0.25),    std::make_pair<double, double>(0.5, 0),        std::make_pair<double, double>(1, 0.25),  std::make_pair<double, double>(1, 0.75),  std::make_pair<double, double>(0.5, 1),     std::make_pair<double, double>(0, 0.75), ZERO, ZERO, ZERO, ZERO } },
   { Seat::seatSeven,  { std::make_pair<double, double>(0, 0.5),        std::make_pair<double, double>(0.25, 0.25),    std::make_pair<double, double>(0.5, 0),      std::make_pair<double, double>(0.75, 0.25),  std::make_pair<double, double>(1, 0.5),     std::make_pair<double, double>(0.75, 0.75), std::make_pair<double, double>(0.25, 0.75), ZERO, ZERO, ZERO } },
   { Seat::seatEight,  { std::make_pair<double, double>(0, 0.5),        std::make_pair<double, double>(0.25, 0.25),    std::make_pair<double, double>(0.5, 0),      std::make_pair<double, double>(0.75, 0.25),  std::make_pair<double, double>(1, 0.5),     std::make_pair<double, double>(0.75, 0.75), std::make_pair<double, double>(0.5, 1), std::make_pair<double, double>(0.25, 0.75), ZERO, ZERO } },
   { Seat::seatNine,  { std::make_pair<double, double>(0.125, 0.35),   std::make_pair<double, double>(0.35, 0.125),   std::make_pair<double, double>(0.625, 0.125), std::make_pair<double, double>(0.85, 0.35),  std::make_pair<double, double>(0.85, 0.635), std::make_pair<double, double>(0.625, 0.85), std::make_pair<double, double>(0.5, 1), std::make_pair<double, double>(0.35, 0.85), std::make_pair<double, double>(0.125, 0.635), ZERO } },
@@ -153,20 +157,21 @@ void drawPlayButtonBar(const Point& /*wh*/) {
 // v
 // y
 void drawCards(const Point& wh, const Hand& hand, std::string_view hero) {
-  const auto& seatPlayers { hand.getSeats() };
-
-  for (Seat seat : {
+  static constexpr std::array seats {
          Seat::seatOne, Seat::seatTwo, Seat::seatThree, Seat::seatFour, Seat::seatFive, Seat::seatSix,
          Seat::seatSeven,
          Seat::seatEight, Seat::seatNine, Seat::seatTen
-       }) {
+  };
+  const auto& seatPlayers { hand.getSeats() };
+
+  for (const auto seat : seats) {
     if (const auto & entry { seatPlayers.find(seat) }; entry != seatPlayers.end()) {
       const auto& player { entry->second };
       const auto [card1, card2] { getCards(player, hand, hero) };
-      const auto [card1X, card1Y] { getCardsPosition(wh, seat, hand.getMaxSeats()) };
       auto box1 { toCardBox(card1) };
-      box1->position(card1X, card1Y);
       auto box2 { toCardBox(card2) };
+      const auto [card1X, card1Y] { getCardsPosition(wh, seat, hand.getMaxSeats()) };
+      box1->position(card1X, card1Y);
       box2->position(box1->x() + box1->w(), box1->y());
     }
   }
@@ -193,6 +198,6 @@ ReviewerWindow::ReviewerWindow(Preferences& p, std::string_view label,
 }
 
 ReviewerWindow::~ReviewerWindow() {
-  std::array xywh {m_window.x(), m_window.y(), m_window.w(), m_window.h()};
+  const std::array xywh {m_window.x(), m_window.y(), m_window.w(), m_window.h()};
   m_preferences.saveGameReviewWindowSizeAndPosition(xywh);
 }
