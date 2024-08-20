@@ -14,8 +14,6 @@ export namespace dimensions {
 constexpr int MAIN_WINDOW_WIDTH = 800;
 constexpr int MAIN_WINDOW_HEIGHT = 600;
 constexpr int SPACE = 5;
-constexpr int BUTTON_X = SPACE;
-constexpr int BUTTON_Y = 25;
 constexpr int BUTTON_HEIGHT = 25;
 constexpr int BUTTON_WIDTH = 120;
 constexpr int MENUBAR_X = 0;

@@ -15,6 +15,7 @@ module;
 
 #include <FL/Fl.H> // Fl::event()
 #include <FL/Fl_Box.H>
+#include <FL/Fl_Button.H>
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_GIF_Image.H>
 #include <FL/FL_ask.H> // fl_alert
@@ -33,6 +34,8 @@ import entities.Card;
 import entities.Game; // Game, CashGame, Tournament
 import entities.Hand;
 import entities.Seat; // tableSeat::*
+import gui.Dimensions; // button size
+import gui.Labels;
 import gui.Preferences;
 import language.Map;
 
@@ -44,13 +47,15 @@ import std;
 export class [[nodiscard]] ReviewerWindow final {
   friend void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self);
 private:
-  Preferences& m_preferences;
   Fl_Double_Window m_window;
   std::function<void()> m_closeNotifier;
+  const std::vector<const Hand*>& m_hands;
+  Preferences& m_preferences;
+  const Hand& m_currentHand;
 
 public:
   ReviewerWindow(Preferences& p, std::string_view label, std::function<void()> closeNotifier,
-                 std::string_view hero, const Hand& hand);
+                 std::string_view hero, const std::vector<const Hand*>& hands);
   ReviewerWindow(const ReviewerWindow&) = delete;
   ReviewerWindow& operator=(const ReviewerWindow& t) = delete;
   ~ReviewerWindow();
@@ -146,8 +151,26 @@ static constexpr auto NB_SEATS_TO_COEFF = language::Map<Seat, std::array<std::pa
   return std::make_pair(Card::back, Card::back);
 }
 
-void drawPlayButtonBar(const Point& /*wh*/) {
-  // TODO
+static void previousHandCallback(Fl_Widget*, void*) {
+
+}
+
+// +----> x
+// | cards/bets
+// | |</<</play/pause/>>/>|
+// |
+// v
+// y
+void drawPlayButtonBar(const int bottom) {
+  auto previousHand { new Fl_Button(dimensions::SPACE, bottom - dimensions::BUTTON_HEIGHT - dimensions::SPACE,
+    dimensions::BUTTON_WIDTH,
+    dimensions::BUTTON_HEIGHT, labels::PREVIOUS_HAND_LABEL.data()) };
+  previousHand->callback(previousHandCallback);
+  //auto* previousAction { new Fl_Button() };
+  //auto* play { new Fl_Button() };
+  //auto* pause { new Fl_Button() };
+  //auto* nextAction { new Fl_Button() };
+  //auto* nextHand { new Fl_Button() };
 }
 
 // +----> x
@@ -180,18 +203,26 @@ void drawTable() {
   // TODO: dessiner un genre d'ovale
 }
 
+// +----> x
+// | cards/bets
+// | |</<</play/pause/>>/>|
+// |
+// v
+// y
 ReviewerWindow::ReviewerWindow(Preferences& p, std::string_view label,
                                std::function<void()> closeNotifier,
                                std::string_view hero,
-                               const Hand& hand)
-  : m_preferences { p },
-    m_window { buildWindow(p, label) },
-    m_closeNotifier { closeNotifier } {
+                               const std::vector<const Hand*>& hands)
+  : m_window { buildWindow(p, label) },
+    m_closeNotifier { closeNotifier },
+    m_hands { hands },
+    m_preferences { p },
+    m_currentHand { *m_hands[0] } {
   m_window.callback(reviewerWindowCb, this);
   const auto wh { std::make_pair(m_window.w(), m_window.h())};
   drawTable();
-  drawCards(wh, hand, hero);
-  drawPlayButtonBar(wh);
+  drawCards(wh, *hands[0], hero);
+  drawPlayButtonBar(m_window.h());
   m_window.end();
   m_window.show();
 }

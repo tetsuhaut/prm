@@ -114,7 +114,7 @@ void MainWindow::newGameWindow() {
     cashGames[0]->getId(),
     deleteReviewerWindow,
     site->whoIsHero(),
-    *cashGames[0]->viewHands()[0]);
+    cashGames[0]->viewHands());
 }
 
 /**
@@ -216,7 +216,7 @@ static void reviewCallback(Fl_Widget*, void*) {
 }
 
 [[nodiscard]] static Fl_Button* buildReviewButton(int bottom) {
-  auto pReviewButton = new Fl_Button(dimensions::BUTTON_X, bottom - dimensions::BUTTON_HEIGHT - 5, dimensions::BUTTON_WIDTH,
+  auto pReviewButton = new Fl_Button(dimensions::SPACE, bottom - dimensions::BUTTON_HEIGHT - dimensions::SPACE, dimensions::BUTTON_WIDTH,
     dimensions::BUTTON_HEIGHT, labels::OPEN_THE_REVIEW_LABEL.data());
   pReviewButton->callback(reviewCallback);
   pReviewButton->deactivate();
