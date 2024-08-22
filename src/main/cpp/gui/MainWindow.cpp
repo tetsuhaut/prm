@@ -35,7 +35,7 @@ export module gui.MainWindow;
 import entities.Card;
 import entities.Game; // CashGame, Tournament
 import entities.Site;
-import gui.Dimensions; // button size
+import gui.dimensions; // button size
 import gui.GameList;
 import gui.Labels;
 import gui.Preferences;
@@ -167,10 +167,9 @@ void MainWindow::chooseHandHistoryDirectory() {
     fl_alert(dirChoser->errmsg());
     } break;
 
-  case FileChoiceStatus::cancel: [[fallthrough]];
-
-  default: /* nothing to do */ break;
+  case FileChoiceStatus::cancel: /* nothing to do */ break;
   }
+  std::unreachable();
 }
 
 void MainWindow::removeHandHistoryDirectory() {

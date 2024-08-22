@@ -1,6 +1,6 @@
 module;
 
-export module gui.Dimensions;
+export module gui.dimensions;
 
 // +----> x
 // | menu

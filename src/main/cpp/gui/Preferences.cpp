@@ -16,7 +16,7 @@ module;
 
 export module gui.Preferences;
 
-import gui.Dimensions;
+import gui.dimensions;
 import language.strings;
 
 #pragma warning( push )

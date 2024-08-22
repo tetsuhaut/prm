@@ -34,7 +34,7 @@ import entities.Card;
 import entities.Game; // Game, CashGame, Tournament
 import entities.Hand;
 import entities.Seat; // tableSeat::*
-import gui.Dimensions; // button size
+import gui.dimensions; // button size
 import gui.Labels;
 import gui.Preferences;
 import language.Map;
@@ -45,13 +45,15 @@ import std;
 #pragma warning( pop ) 
 
 export class [[nodiscard]] ReviewerWindow final {
-  friend void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self);
+  friend static void reviewerWindowCb(Fl_Widget*, void* self);
+  friend static void nextHandCallback(Fl_Widget*, void* self);
 private:
   Fl_Double_Window m_window;
   std::function<void()> m_closeNotifier;
-  const std::vector<const Hand*>& m_hands;
+  std::vector<const Hand*> m_hands;
+  std::string m_hero;
   Preferences& m_preferences;
-  const Hand& m_currentHand;
+  const Hand* m_pCurrentHand;
 
 public:
   ReviewerWindow(Preferences& p, std::string_view label, std::function<void()> closeNotifier,
@@ -59,6 +61,7 @@ public:
   ReviewerWindow(const ReviewerWindow&) = delete;
   ReviewerWindow& operator=(const ReviewerWindow& t) = delete;
   ~ReviewerWindow();
+  bool nextHand();
 }; // export class ReviewerWindow
 
 module : private;
@@ -69,7 +72,7 @@ Fl_Double_Window buildWindow(const Preferences& preferences,
   return Fl_Double_Window(localX, localY, width, height, label.data());
 }
 
-void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self) {
+static void reviewerWindowCb(Fl_Widget*, void* self) {
   // we dont't want the Esc key to close the program
   if (FL_SHORTCUT == Fl::event() and FL_Escape == Fl::event_key()) { return; }
 
@@ -89,7 +92,9 @@ void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self) {
 
   switch (image->fail()) {
     case Fl_Image::ERR_NO_IMAGE:
-      [[fallthrough]];
+      fl_alert(std::format("{}: couldn't find image data from {}",
+        getSystemError(), imageName).c_str());
+      return nullptr;
 
     case Fl_Image::ERR_FILE_ACCESS:
       fl_alert(std::format("{}: couldn't access image data from {}",
@@ -100,9 +105,15 @@ void reviewerWindowCb(Fl_Widget* /*menuBar*/, void* self) {
       fl_alert(std::format("{}: couldn't decode image", getSystemError()).c_str());
       return nullptr;
 
-    default:
+    case Fl_Image::ERR_MEMORY_ACCESS:
+      fl_alert(std::format("{}: image decoder tried to access memory outside of given memory block",
+        getSystemError()).c_str());
+      return nullptr;
+
+    case 0:
       return image;
   }
+  std::unreachable();
 }
 
 [[nodiscard]] Fl_Box* toCardBox(Card card) {
@@ -134,8 +145,7 @@ static constexpr auto NB_SEATS_TO_COEFF = language::Map<Seat, std::array<std::pa
   { Seat::seatTen, { std::make_pair<double, double>(0.125, 0.35),   std::make_pair<double, double>(0.35, 0.125),   std::make_pair<double, double>(0.5, 0),      std::make_pair<double, double>(0.625, 0.125), std::make_pair<double, double>(0.85, 0.35), std::make_pair<double, double>(0.85, 0.635), std::make_pair<double, double>(0.625, 0.85), std::make_pair<double, double>(0.5, 1), std::make_pair<double, double>(0.35, 0.85), std::make_pair<double, double>(0.125, 0.635) } }
 }}};
 
-[[nodiscard]] Point getCardsPosition(const Point& wh, Seat seat, Seat tableMaxSeats) {
-  const auto& [w, h] { wh };
+[[nodiscard]] Point getCardsPosition(int w, int h, Seat seat, Seat tableMaxSeats) {
   const auto positions { NB_SEATS_TO_COEFF.at(tableMaxSeats) };
   const auto [coefX, coefY] { positions.at(tableSeat::toArrayIndex(seat)) };
   assert(coefX != -1 and coefY != -1);
@@ -151,34 +161,12 @@ static constexpr auto NB_SEATS_TO_COEFF = language::Map<Seat, std::array<std::pa
   return std::make_pair(Card::back, Card::back);
 }
 
-static void previousHandCallback(Fl_Widget*, void*) {
-
-}
-
-// +----> x
-// | cards/bets
-// | |</<</play/pause/>>/>|
-// |
-// v
-// y
-void drawPlayButtonBar(const int bottom) {
-  auto previousHand { new Fl_Button(dimensions::SPACE, bottom - dimensions::BUTTON_HEIGHT - dimensions::SPACE,
-    dimensions::BUTTON_WIDTH,
-    dimensions::BUTTON_HEIGHT, labels::PREVIOUS_HAND_LABEL.data()) };
-  previousHand->callback(previousHandCallback);
-  //auto* previousAction { new Fl_Button() };
-  //auto* play { new Fl_Button() };
-  //auto* pause { new Fl_Button() };
-  //auto* nextAction { new Fl_Button() };
-  //auto* nextHand { new Fl_Button() };
-}
-
 // +----> x
 // |
 // |
 // v
 // y
-void drawCards(const Point& wh, const Hand& hand, std::string_view hero) {
+static void drawCards(int w, int h, const Hand& hand, std::string_view hero) {
   static constexpr std::array seats {
          Seat::seatOne, Seat::seatTwo, Seat::seatThree, Seat::seatFour, Seat::seatFive, Seat::seatSix,
          Seat::seatSeven,
@@ -192,15 +180,84 @@ void drawCards(const Point& wh, const Hand& hand, std::string_view hero) {
       const auto [card1, card2] { getCards(player, hand, hero) };
       auto box1 { toCardBox(card1) };
       auto box2 { toCardBox(card2) };
-      const auto [card1X, card1Y] { getCardsPosition(wh, seat, hand.getMaxSeats()) };
+      const auto [card1X, card1Y] { getCardsPosition(w, h, seat, hand.getMaxSeats()) };
       box1->position(card1X, card1Y);
       box2->position(box1->x() + box1->w(), box1->y());
     }
-  });
+    });
 }
 
-void drawTable() {
+static void drawTable() {
   // TODO: dessiner un genre d'ovale
+}
+
+static void previousHandCallback(Fl_Widget*, void* self) {
+
+}
+
+static void previousActionCallback(Fl_Widget*, void* self) {
+
+}
+
+static void playCallback(Fl_Widget*, void* self) {
+
+}
+
+static void pauseCallback(Fl_Widget*, void* self) {
+
+}
+
+static void nextActionCallback(Fl_Widget*, void* self) {
+
+}
+
+struct Data {
+  int w;
+  int h;
+  const Hand* currentHand;
+  std::string hero;
+};
+
+static void nextHandCallback(Fl_Widget*, void* self) {
+  if (auto pThis { static_cast<ReviewerWindow*>(self) }; pThis->nextHand()) {
+    auto awaitCb = [](void* hiddenData) {
+      auto data { std::unique_ptr<Data>(static_cast<Data*>(hiddenData)) };
+      drawTable();
+      drawCards(data->w, data->h, *data->currentHand, data->hero);
+    };
+    auto data = new Data();
+    data->w = pThis->m_window.w();
+    data->h = pThis->m_window.h();
+    data->currentHand = pThis->m_pCurrentHand;
+    data->hero = pThis->m_hero;
+    Fl::awake(awaitCb, data);
+  }
+}
+
+static inline Fl_Button* buildButton(int x, int y, std::string_view label, Fl_Callback cb, void* cbData) {
+  using namespace dimensions;
+  auto ret { new Fl_Button(x, y, BUTTON_WIDTH, BUTTON_HEIGHT, label.data()) };
+  ret->callback(cb, cbData);
+  return ret;
+}
+
+// +----> x
+// | cards/bets
+// | |</<</play/pause/>>/>|
+// |
+// v
+// y
+void drawPlayButtonBar(const int bottom, const int width, ReviewerWindow* self) {
+  using namespace dimensions;
+  const auto y { bottom - BUTTON_HEIGHT - SPACE };
+  const auto x { static_cast<int>(0.5 * (static_cast<double>(width) - 6.0 * static_cast<double>(BUTTON_WIDTH))) };
+  auto previousHand { buildButton(x, y, labels::PREVIOUS_HAND_LABEL, previousHandCallback, self) };
+  auto previousAction { buildButton(previousHand->x() + BUTTON_WIDTH, y, labels::PREVIOUS_ACTION_LABEL, previousActionCallback, self) };
+  auto play { buildButton(previousAction->x() + BUTTON_WIDTH, y, labels::PLAY_LABEL, playCallback, self) };
+  auto pause { buildButton(play->x() + BUTTON_WIDTH, y, labels::PAUSE_LABEL, pauseCallback, self) };
+  auto nextAction { buildButton(pause->x() + BUTTON_WIDTH, y, labels::NEXT_ACTION_LABEL, nextActionCallback, self) };
+  auto nextHand { buildButton(nextAction->x() + BUTTON_WIDTH, y, labels::NEXT_HAND_LABEL, nextHandCallback, self) };
+  std::ignore = nextHand;
 }
 
 // +----> x
@@ -216,13 +273,13 @@ ReviewerWindow::ReviewerWindow(Preferences& p, std::string_view label,
   : m_window { buildWindow(p, label) },
     m_closeNotifier { closeNotifier },
     m_hands { hands },
+    m_hero { hero },
     m_preferences { p },
-    m_currentHand { *m_hands[0] } {
+  m_pCurrentHand { m_hands[0] } {
   m_window.callback(reviewerWindowCb, this);
-  const auto wh { std::make_pair(m_window.w(), m_window.h())};
   drawTable();
-  drawCards(wh, *hands[0], hero);
-  drawPlayButtonBar(m_window.h());
+  drawCards(m_window.w(), m_window.h(), *m_pCurrentHand, m_hero);
+  drawPlayButtonBar(m_window.h(), m_window.w(), this);
   m_window.end();
   m_window.show();
 }
@@ -230,4 +287,11 @@ ReviewerWindow::ReviewerWindow(Preferences& p, std::string_view label,
 ReviewerWindow::~ReviewerWindow() {
   const std::array xywh {m_window.x(), m_window.y(), m_window.w(), m_window.h()};
   m_preferences.saveGameReviewWindowSizeAndPosition(xywh);
+}
+
+// return false if there is no other hand, else return true and make m_currentHand point to the next hand
+bool ReviewerWindow::nextHand() {
+  const auto nextHandExists { m_pCurrentHand != m_hands.back() };
+  m_pCurrentHand = nextHandExists ? m_pCurrentHand + 1 : nullptr;
+  return nextHandExists;
 }
